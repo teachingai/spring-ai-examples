@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-ai-functions" />
+        <module name="spring-ai-sql" />
+        <module name="spring-ai-gemma" />
+        <module name="spring-ai-ollama" />
+        <module name="spring-ai-chatglm3" />
+        <module name="spring-ai-image-gen" />
+        <module name="spring-ai-azure-bedrock" />
+        <module name="spring-ai-openai" />
+        <module name="spring-ai-erniebot" />
+        <module name="spring-ai-azure-openai" />
+        <module name="spring-ai-pangu" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-ai-azure-bedrock" options="-parameters" />
+      <module name="spring-ai-azure-openai" options="-parameters" />
+      <module name="spring-ai-chatglm3" options="-parameters" />
+      <module name="spring-ai-erniebot" options="-parameters" />
+      <module name="spring-ai-functions" options="-parameters" />
+      <module name="spring-ai-gemma" options="-parameters" />
+      <module name="spring-ai-image-gen" options="-parameters" />
+      <module name="spring-ai-ollama" options="-parameters" />
+      <module name="spring-ai-openai" options="-parameters" />
+      <module name="spring-ai-pangu" options="-parameters" />
+      <module name="spring-ai-sql" options="-parameters" />
+    </option>
+  </component>
+</project>

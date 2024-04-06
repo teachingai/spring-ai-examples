@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+	
+    <groupId>com.github.hiwepy</groupId>
+    <artifactId>spring-ai-examples</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>spring-ai-examples</name>
+    <description>Example For Spring AI</description>
+	
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>21</java.version>
+        <spring-ai.version>0.8.1</spring-ai.version>
+    </properties>
+
+    <modules>
+        <module>spring-ai-azure-openai</module>
+        <module>spring-ai-azure-bedrock</module>
+        <module>spring-ai-chatglm3</module>
+        <module>spring-ai-erniebot</module>
+        <module>spring-ai-functions</module>
+        <module>spring-ai-gemma</module>
+        <module>spring-ai-image-gen</module>
+        <module>spring-ai-ollama</module>
+        <module>spring-ai-openai</module>
+        <module>spring-ai-pangu</module>
+        <module>spring-ai-sql</module>
+    </modules>
+  
+	<repositories>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+ 
+</project>
