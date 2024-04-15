@@ -11,7 +11,7 @@
     <artifactId>spring-ai-openai</artifactId>
     <name>spring-ai-openai</name>
     <description>spring-ai-openai</description>
-    
+
     <properties>
         <java.version>21</java.version>
         <spring-ai.version>0.8.1</spring-ai.version>
@@ -41,10 +41,6 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-azure-vector-store-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-elasticsearch-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>

@@ -3,15 +3,22 @@
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/spring-ai-azure-bedrock/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-azure-openai/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-chatglm3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-erniebot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-gemma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-image-gen/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-mistralai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-transformers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-vertexai-palm2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.2.3/src/main/resources" charset="UTF-8" />

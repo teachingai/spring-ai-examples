@@ -7,34 +7,54 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-ai-functions" />
         <module name="spring-ai-sql" />
+        <module name="spring-ai-image-gen" />
+        <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-erniebot" />
+        <module name="spring-ai-vertexai-palm2" />
+        <module name="spring-ai-zhipuai" />
+        <module name="spring-ai-pangu" />
+        <module name="spring-ai-functions" />
         <module name="spring-ai-gemma" />
         <module name="spring-ai-ollama" />
-        <module name="spring-ai-chatglm3" />
-        <module name="spring-ai-image-gen" />
         <module name="spring-ai-azure-bedrock" />
         <module name="spring-ai-openai" />
-        <module name="spring-ai-erniebot" />
+        <module name="spring-ai-stabilityai" />
+        <module name="spring-ai-mistralai" />
+        <module name="spring-ai-bedrockai" />
         <module name="spring-ai-azure-openai" />
-        <module name="spring-ai-pangu" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="spring-ai-bedrockai (1)" target="1.5" />
+      <module name="spring-ai-bedrockai (2)" target="17" />
+      <module name="spring-ai-chatglm3" target="21" />
+      <module name="spring-ai-transformers" target="17" />
+      <module name="spring-ai-vertexai-paml2" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-ai-azure-bedrock" options="-parameters" />
       <module name="spring-ai-azure-openai" options="-parameters" />
+      <module name="spring-ai-bedrockai" options="-parameters" />
+      <module name="spring-ai-bedrockai (2)" options="-parameters" />
       <module name="spring-ai-chatglm3" options="-parameters" />
       <module name="spring-ai-erniebot" options="-parameters" />
       <module name="spring-ai-functions" options="-parameters" />
       <module name="spring-ai-gemma" options="-parameters" />
       <module name="spring-ai-image-gen" options="-parameters" />
+      <module name="spring-ai-mistralai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-pangu" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
+      <module name="spring-ai-stabilityai" options="-parameters" />
+      <module name="spring-ai-transformers" options="-parameters" />
+      <module name="spring-ai-vertexai-gemini" options="-parameters" />
+      <module name="spring-ai-vertexai-palm2" options="-parameters" />
+      <module name="spring-ai-vertexai-paml2" options="-parameters" />
+      <module name="spring-ai-zhipuai" options="-parameters" />
     </option>
   </component>
 </project>
