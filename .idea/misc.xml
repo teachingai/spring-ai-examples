@@ -9,6 +9,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/spring-ai-functions/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-ai-image-gen/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-transformers/pom.xml" />
       </set>
     </option>

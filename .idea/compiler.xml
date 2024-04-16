@@ -3,33 +3,46 @@
   <component name="CompilerConfiguration">
     <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-ai-sql" />
-        <module name="spring-ai-image-gen" />
-        <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-zhipuai-milvus-store" />
         <module name="spring-ai-erniebot" />
         <module name="spring-ai-vertexai-palm2" />
+        <module name="spring-ai-zhipuai-neo4j-store" />
+        <module name="spring-ai-zhipuai-functions" />
+        <module name="spring-ai-azure-bedrock" />
+        <module name="spring-ai-bedrockai" />
+        <module name="spring-ai-zhipuai-weaviate-store" />
+        <module name="spring-ai-zhipuai-prompt" />
+        <module name="spring-ai-azure-openai" />
+        <module name="spring-ai-zhipuai-langfuse" />
+        <module name="spring-ai-zhipuai-chroma-store" />
+        <module name="spring-ai-zhipuai-redis-store" />
+        <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-zhipuai-pgvector-store" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-pangu" />
-        <module name="spring-ai-functions" />
         <module name="spring-ai-gemma" />
         <module name="spring-ai-ollama" />
-        <module name="spring-ai-azure-bedrock" />
+        <module name="spring-ai-zhipuai-qdrant-store" />
+        <module name="spring-ai-zhipuai-pinecone-store" />
         <module name="spring-ai-openai" />
         <module name="spring-ai-stabilityai" />
         <module name="spring-ai-mistralai" />
-        <module name="spring-ai-bedrockai" />
-        <module name="spring-ai-azure-openai" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="spring-ai-bedrockai (1)" target="1.5" />
       <module name="spring-ai-bedrockai (2)" target="17" />
       <module name="spring-ai-chatglm3" target="21" />
+      <module name="spring-ai-functions" target="17" />
+      <module name="spring-ai-image-gen" target="17" />
       <module name="spring-ai-transformers" target="17" />
+      <module name="spring-ai-vector-chroma" target="17" />
       <module name="spring-ai-vertexai-paml2" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -51,10 +64,22 @@
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
       <module name="spring-ai-transformers" options="-parameters" />
+      <module name="spring-ai-vector-chroma" options="-parameters" />
       <module name="spring-ai-vertexai-gemini" options="-parameters" />
       <module name="spring-ai-vertexai-palm2" options="-parameters" />
       <module name="spring-ai-vertexai-paml2" options="-parameters" />
       <module name="spring-ai-zhipuai" options="-parameters" />
+      <module name="spring-ai-zhipuai-chroma-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-functions" options="-parameters" />
+      <module name="spring-ai-zhipuai-langfuse" options="-parameters" />
+      <module name="spring-ai-zhipuai-milvus-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-neo4j-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-pgvector-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-pinecone-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-prompt" options="-parameters" />
+      <module name="spring-ai-zhipuai-qdrant-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-redis-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-weaviate-store" options="-parameters" />
     </option>
   </component>
 </project>

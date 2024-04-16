@@ -20,6 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <fastjson2.version>2.0.47</fastjson2.version>
 		<java.version>17</java.version>
         <spring-ai.version>0.8.1</spring-ai.version>
     </properties>
@@ -29,18 +30,40 @@
         <module>spring-ai-azure-bedrock</module>
         <module>spring-ai-bedrockai</module>
         <module>spring-ai-erniebot</module>
-        <module>spring-ai-functions</module>
         <module>spring-ai-gemma</module>
-        <module>spring-ai-image-gen</module>
         <module>spring-ai-mistralai</module>
+        <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama</module>
+        <!--<module>spring-ai-ollama-functions</module>
+        <module>spring-ai-ollama-prompt</module>
+        <module>spring-ai-ollama-langfuse</module>
+        <module>spring-ai-ollama-chroma-store</module>
+        <module>spring-ai-ollama-milvus-store</module>
+        <module>spring-ai-ollama-neo4j-store</module>
+        <module>spring-ai-ollama-pgvector-store</module>
+        <module>spring-ai-ollama-pinecone-store</module>
+        <module>spring-ai-ollama-qdrant-store</module>
+        <module>spring-ai-ollama-redis-store</module>
+        <module>spring-ai-ollama-weaviate-store</module>-->
         <module>spring-ai-openai</module>
         <module>spring-ai-pangu</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
         <module>spring-ai-vertexai-palm2</module>
         <module>spring-ai-vertexai-gemini</module>
+        <!-- 基于 智普AI 的相关整合示例 -->
         <module>spring-ai-zhipuai</module>
+        <module>spring-ai-zhipuai-functions</module>
+        <module>spring-ai-zhipuai-prompt</module>
+        <module>spring-ai-zhipuai-langfuse</module>
+        <module>spring-ai-zhipuai-chroma-store</module>
+        <module>spring-ai-zhipuai-milvus-store</module>
+        <module>spring-ai-zhipuai-neo4j-store</module>
+        <module>spring-ai-zhipuai-pgvector-store</module>
+        <module>spring-ai-zhipuai-pinecone-store</module>
+        <module>spring-ai-zhipuai-qdrant-store</module>
+        <module>spring-ai-zhipuai-redis-store</module>
+        <module>spring-ai-zhipuai-weaviate-store</module>
     </modules>
 
 	<repositories>
@@ -56,6 +79,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
             <!-- For Chat Completion & Embedding -->
             <dependency>
                 <groupId>org.springframework.ai</groupId>
@@ -131,12 +160,12 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
-                <artifactId>spring-ai-pinecone-store-spring-boot-starter</artifactId>
+                <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
-                <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+                <artifactId>spring-ai-pinecone-store-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
