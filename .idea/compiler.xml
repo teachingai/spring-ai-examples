@@ -10,15 +10,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-ai-sql" />
         <module name="spring-ai-zhipuai-milvus-store" />
-        <module name="spring-ai-erniebot" />
         <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-zhipuai-neo4j-store" />
+        <module name="spring-ai-qianfan" />
         <module name="spring-ai-zhipuai-functions" />
-        <module name="spring-ai-azure-bedrock" />
         <module name="spring-ai-bedrockai" />
         <module name="spring-ai-zhipuai-weaviate-store" />
         <module name="spring-ai-zhipuai-prompt" />
         <module name="spring-ai-moonshotai" />
+        <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
         <module name="spring-ai-zhipuai-langfuse" />
         <module name="spring-ai-zhipuai-chroma-store" />
@@ -27,7 +27,6 @@
         <module name="spring-ai-zhipuai-pgvector-store" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-pangu" />
-        <module name="spring-ai-gemma" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-zhipuai-qdrant-store" />
         <module name="spring-ai-zhipuai-pinecone-store" />
@@ -37,10 +36,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="spring-ai-azure-bedrock" target="17" />
       <module name="spring-ai-bedrockai (1)" target="1.5" />
       <module name="spring-ai-bedrockai (2)" target="17" />
       <module name="spring-ai-chatglm3" target="21" />
       <module name="spring-ai-functions" target="17" />
+      <module name="spring-ai-gemma" target="17" />
       <module name="spring-ai-image-gen" target="17" />
       <module name="spring-ai-transformers" target="17" />
       <module name="spring-ai-vector-chroma" target="17" />
@@ -54,15 +55,16 @@
       <module name="spring-ai-bedrockai" options="-parameters" />
       <module name="spring-ai-bedrockai (2)" options="-parameters" />
       <module name="spring-ai-chatglm3" options="-parameters" />
-      <module name="spring-ai-erniebot" options="-parameters" />
       <module name="spring-ai-functions" options="-parameters" />
       <module name="spring-ai-gemma" options="-parameters" />
+      <module name="spring-ai-huggingface" options="-parameters" />
       <module name="spring-ai-image-gen" options="-parameters" />
       <module name="spring-ai-mistralai" options="-parameters" />
       <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-pangu" options="-parameters" />
+      <module name="spring-ai-qianfan" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
       <module name="spring-ai-transformers" options="-parameters" />

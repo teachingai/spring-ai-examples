@@ -5,15 +5,16 @@
     <file url="file://$PROJECT_DIR$/spring-ai-azure-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-erniebot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-gemma/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-huggingface/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-image-gen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-mistralai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-moonshotai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-pangu/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-qianfan/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-transformers/src/main/java" charset="UTF-8" />

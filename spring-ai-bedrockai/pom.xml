@@ -25,7 +25,7 @@
         <!-- For Chat Completion -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-bedrock-ai-spring-boot-starter</artifactId>
         </dependency>
         <!-- For Embedding  -->
         <dependency>

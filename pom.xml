@@ -27,10 +27,8 @@
 
     <modules>
         <module>spring-ai-azure-openai</module>
-        <module>spring-ai-azure-bedrock</module>
         <module>spring-ai-bedrockai</module>
-        <module>spring-ai-erniebot</module>
-        <module>spring-ai-gemma</module>
+        <module>spring-ai-huggingface</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
@@ -48,6 +46,7 @@
         <module>spring-ai-ollama-weaviate-store</module>-->
         <module>spring-ai-openai</module>
         <module>spring-ai-pangu</module>
+        <module>spring-ai-qianfan</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
         <module>spring-ai-vertexai-palm2</module>
@@ -95,6 +94,11 @@
             <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bedrock-ai-spring-boot-starter</artifactId>
+                <version>${spring-ai.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-huggingface</artifactId>
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
