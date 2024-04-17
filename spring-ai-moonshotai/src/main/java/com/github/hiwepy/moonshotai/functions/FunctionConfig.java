@@ -1,4 +1,4 @@
-package com.github.hiwepy.zhipuai.functions;
+package com.github.hiwepy.moonshotai.functions;
 
 import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.ai.model.function.FunctionCallbackWrapper;

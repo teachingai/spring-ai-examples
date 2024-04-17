@@ -1,4 +1,4 @@
-package com.github.hiwepy.zhipuai.functions;
+package com.github.hiwepy.moonshotai.functions;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
