@@ -18,6 +18,7 @@
         <module name="spring-ai-bedrockai" />
         <module name="spring-ai-zhipuai-weaviate-store" />
         <module name="spring-ai-zhipuai-prompt" />
+        <module name="spring-ai-moonshotai" />
         <module name="spring-ai-azure-openai" />
         <module name="spring-ai-zhipuai-langfuse" />
         <module name="spring-ai-zhipuai-chroma-store" />
@@ -58,6 +59,7 @@
       <module name="spring-ai-gemma" options="-parameters" />
       <module name="spring-ai-image-gen" options="-parameters" />
       <module name="spring-ai-mistralai" options="-parameters" />
+      <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-pangu" options="-parameters" />

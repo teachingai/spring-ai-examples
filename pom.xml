@@ -32,6 +32,7 @@
         <module>spring-ai-erniebot</module>
         <module>spring-ai-gemma</module>
         <module>spring-ai-mistralai</module>
+        <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama</module>
         <!--<module>spring-ai-ollama-functions</module>

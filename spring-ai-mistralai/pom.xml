@@ -27,6 +27,11 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
         </dependency>
+        <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
+        </dependency> -->
         <!-- For Embedding  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
