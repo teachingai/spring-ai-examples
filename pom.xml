@@ -45,7 +45,8 @@
         <module>spring-ai-ollama-redis-store</module>
         <module>spring-ai-ollama-weaviate-store</module>-->
         <module>spring-ai-openai</module>
-        <module>spring-ai-pangu</module>
+        <module>spring-ai-huaweiai-gallery</module>
+        <module>spring-ai-huaweiai-pangu</module>
         <module>spring-ai-qianfan</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
@@ -102,9 +103,24 @@
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-huawei-ai-pangu-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-huawei-ai-gallery-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-moonshotai-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
@@ -130,6 +146,11 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-vertex-ai-gemini-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <!-- For Embedding -->
             <dependency>

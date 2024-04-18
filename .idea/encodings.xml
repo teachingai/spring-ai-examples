@@ -7,6 +7,9 @@
     <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-gemma/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-gallery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-openai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-huggingface/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-image-gen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-mistralai/src/main/java" charset="UTF-8" />

@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/spring-ai-azure-bedrock/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-functions/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-gemma/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-ai-huaweiai-openai/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-image-gen/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-transformers/pom.xml" />
       </set>

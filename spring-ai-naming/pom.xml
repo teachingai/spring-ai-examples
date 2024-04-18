@@ -8,36 +8,31 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-pangu</artifactId>
-    <name>spring-ai-pangu</name>
-    <description>spring-ai-pangu</description>
+    <artifactId>spring-ai-naming</artifactId>
+    <name>spring-ai-naming</name>
+    <description>spring-ai-naming</description>
 
     <dependencies>
-        <!-- For Lombok -->
+        <!-- For H2 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
-        <!-- For Commons -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <!-- For Caffeine -->
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-        </dependency>
-        <!-- For FastJson2 -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
             <groupId>com.github.hiwepy</groupId>
             <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
+            <version>${spring-ai.version}</version>
         </dependency>
         <!-- For Web Server -->
         <dependency>
@@ -67,18 +62,12 @@
 
     <repositories>
         <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
+            <id>spring-milestone</id>
+            <name>Spring Milestone Repository</name>
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <!--必须与 settings.xml 的 id 一致-->
-            <id>aiban-tianyin-core</id>
-            <name>core</name>
-            <url>https://aiban-maven.pkg.coding.net/repository/tianyin/core/</url>
         </repository>
     </repositories>
 
