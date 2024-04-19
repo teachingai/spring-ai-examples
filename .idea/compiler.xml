@@ -40,12 +40,13 @@
       <module name="spring-ai-azure-bedrock" target="17" />
       <module name="spring-ai-bedrockai (1)" target="1.5" />
       <module name="spring-ai-bedrockai (2)" target="17" />
-      <module name="spring-ai-chatglm3" target="21" />
+      <module name="spring-ai-chatglm3" target="17" />
+      <module name="spring-ai-erniebot" target="19" />
       <module name="spring-ai-functions" target="17" />
       <module name="spring-ai-gemma" target="17" />
       <module name="spring-ai-huaweiai-openai" target="17" />
       <module name="spring-ai-image-gen" target="17" />
-      <module name="spring-ai-pangu" target="17" />
+      <module name="spring-ai-pangu" target="19" />
       <module name="spring-ai-transformers" target="17" />
       <module name="spring-ai-vector-chroma" target="17" />
       <module name="spring-ai-vertexai-paml2" target="17" />
