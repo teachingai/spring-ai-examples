@@ -25,20 +25,20 @@ public class ChatController {
         this.chatClient = chatClient;
     }
 
-    @GetMapping("/ai/generate")
+    @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         return Map.of("generation", chatClient.call(message));
     }
 
-    @GetMapping("/ai/prompt")
+    @GetMapping("/v1/prompt")
     public List<Generation> prompt(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
         Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
         return chatClient.call(prompt).getResults();
     }
 
-    @GetMapping("/ai/generateStream")
-    public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+    @PostMapping("/v1/chat/completions")
+    public Flux<ChatResponse> chatCompletions(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
         return chatClient.stream(prompt);
     }
