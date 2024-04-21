@@ -18,6 +18,7 @@
         <module name="spring-ai-zhipuai-weaviate-store" />
         <module name="spring-ai-zhipuai-prompt" />
         <module name="spring-ai-moonshotai" />
+        <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
         <module name="spring-ai-zhipuai-langfuse" />
@@ -66,6 +67,7 @@
       <module name="spring-ai-huaweiai-pangu" options="-parameters" />
       <module name="spring-ai-huggingface" options="-parameters" />
       <module name="spring-ai-image-gen" options="-parameters" />
+      <module name="spring-ai-llmsfreeapi" options="-parameters" />
       <module name="spring-ai-mistralai" options="-parameters" />
       <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />

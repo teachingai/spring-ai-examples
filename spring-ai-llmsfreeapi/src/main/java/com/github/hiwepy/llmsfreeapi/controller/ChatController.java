@@ -1,37 +1,44 @@
-package com.github.hiwepy.zhipuai.controller;
+package com.github.hiwepy.llmsfreeapi.controller;
 
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
 import org.springframework.ai.chat.messages.Message;
+import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
-import org.springframework.ai.zhipuai.ZhipuAiChatClient;
+import org.springframework.ai.llmsfreeapi.LLMsFreeApiChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 public class ChatController {
 
-    @Value("classpath:/prompt.st")
-    private Resource promptResource;
-    private final SystemPromptTemplate systemPromptTemplate;
-    private final ZhipuAiChatClient chatClient;
+    private final String systemPromptTemplate;
+    private final LLMsFreeApiChatClient chatClient;
 
     @Autowired
-    public ChatController(@Value("classpath:/prompt.st") Resource sqlPromptTemplateResource,
-                          ZhipuAiChatClient chatClient) {
-        this.systemPromptTemplate = new SystemPromptTemplate(sqlPromptTemplateResource);
+    public ChatController( @Value("classpath:/prompt.st") Resource sqlPromptTemplateResource,
+                           LLMsFreeApiChatClient chatClient) {
+        try (InputStream inputStream = sqlPromptTemplateResource.getInputStream()) {
+            this.systemPromptTemplate = StreamUtils.copyToString(inputStream, Charset.defaultCharset());
+        }
+        catch (IOException ex) {
+            throw new RuntimeException("Failed to read resource", ex);
+        }
         this.chatClient = chatClient;
     }
 
@@ -41,17 +48,9 @@ public class ChatController {
     }
 
     @GetMapping("/v1/prompt")
-    public List<Generation> prompt(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
-        Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
-        return chatClient.call(prompt).getResults();
-    }
-
-    @GetMapping("/v1/prompt2")
-    public List<Generation> prompt2(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        Message systemMessage = systemPromptTemplate.createMessage();
-        Message userMessage = new UserMessage(message);
-        Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
+    public List<Generation> prompt() {
+        Message systemMessage = new SystemMessage(systemPromptTemplate);
+        Prompt prompt = new Prompt(List.of(systemMessage));
         return chatClient.call(prompt).getResults();
     }
 

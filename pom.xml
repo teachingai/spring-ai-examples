@@ -28,7 +28,10 @@
     <modules>
         <module>spring-ai-azure-openai</module>
         <module>spring-ai-bedrockai</module>
+        <module>spring-ai-huaweiai-gallery</module>
+        <module>spring-ai-huaweiai-pangu</module>
         <module>spring-ai-huggingface</module>
+        <module>spring-ai-llmsfreeapi</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
@@ -45,8 +48,6 @@
         <module>spring-ai-ollama-redis-store</module>
         <module>spring-ai-ollama-weaviate-store</module>-->
         <module>spring-ai-openai</module>
-        <module>spring-ai-huaweiai-gallery</module>
-        <module>spring-ai-huaweiai-pangu</module>
         <module>spring-ai-qianfan</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
@@ -104,6 +105,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-llms-free-api-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hiwepy</groupId>
                 <artifactId>spring-ai-huawei-ai-pangu-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -126,6 +132,12 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                        <groupId>org.springframework.boot</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
