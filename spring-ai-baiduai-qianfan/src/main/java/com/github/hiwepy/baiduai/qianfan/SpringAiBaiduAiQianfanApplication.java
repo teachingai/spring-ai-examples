@@ -1,4 +1,4 @@
-package com.github.hiwepy.qianfan;
+package com.github.hiwepy.baiduai.qianfan;
 
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.boot.SpringApplication;
@@ -9,10 +9,10 @@ import org.springframework.web.servlet.function.RouterFunctions;
 import org.springframework.web.servlet.function.ServerResponse;
 
 @SpringBootApplication
-public class SpringAiQianfanApplication {
+public class SpringAiBaiduAiQianfanApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiQianfanApplication.class, args);
+        SpringApplication.run(SpringAiBaiduAiQianfanApplication.class, args);
     }
 
     @Bean

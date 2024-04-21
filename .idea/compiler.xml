@@ -11,8 +11,8 @@
         <module name="spring-ai-sql" />
         <module name="spring-ai-zhipuai-milvus-store" />
         <module name="spring-ai-vertexai-palm2" />
+        <module name="spring-ai-baiduai-qianfan" />
         <module name="spring-ai-zhipuai-neo4j-store" />
-        <module name="spring-ai-qianfan" />
         <module name="spring-ai-zhipuai-functions" />
         <module name="spring-ai-bedrockai" />
         <module name="spring-ai-zhipuai-weaviate-store" />
@@ -57,6 +57,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-ai-azure-bedrock" options="-parameters" />
       <module name="spring-ai-azure-openai" options="-parameters" />
+      <module name="spring-ai-baiduai-qianfan" options="-parameters" />
       <module name="spring-ai-bedrockai" options="-parameters" />
       <module name="spring-ai-bedrockai (2)" options="-parameters" />
       <module name="spring-ai-chatglm3" options="-parameters" />
@@ -73,7 +74,6 @@
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-pangu" options="-parameters" />
-      <module name="spring-ai-qianfan" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
       <module name="spring-ai-transformers" options="-parameters" />

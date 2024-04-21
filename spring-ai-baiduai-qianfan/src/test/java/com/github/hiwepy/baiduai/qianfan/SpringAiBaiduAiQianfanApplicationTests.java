@@ -1,10 +1,10 @@
-package com.github.hiwepy.qianfan;
+package com.github.hiwepy.baiduai.qianfan;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringAiQianfanApplicationTests {
+class SpringAiBaiduAiQianfanApplicationTests {
 
     @Test
     void contextLoads() {

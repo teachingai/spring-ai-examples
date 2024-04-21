@@ -27,6 +27,7 @@
 
     <modules>
         <module>spring-ai-azure-openai</module>
+        <module>spring-ai-baiduai-qianfan</module>
         <module>spring-ai-bedrockai</module>
         <module>spring-ai-huaweiai-gallery</module>
         <module>spring-ai-huaweiai-pangu</module>
@@ -48,7 +49,6 @@
         <module>spring-ai-ollama-redis-store</module>
         <module>spring-ai-ollama-weaviate-store</module>-->
         <module>spring-ai-openai</module>
-        <module>spring-ai-qianfan</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
         <module>spring-ai-vertexai-palm2</module>
@@ -92,6 +92,11 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-azure-openai-spring-boot-starter</artifactId>
                 <version>${spring-ai.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.hiwepy</groupId>
+                <artifactId>spring-ai-baidu-ai-qianfan-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
