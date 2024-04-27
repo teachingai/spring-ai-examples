@@ -66,6 +66,7 @@
         <module>spring-ai-zhipuai-qdrant-store</module>
         <module>spring-ai-zhipuai-redis-store</module>
         <module>spring-ai-zhipuai-weaviate-store</module>
+        <module>spring-ai-stepfun</module>
     </modules>
 
 	<repositories>
