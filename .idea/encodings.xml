@@ -21,6 +21,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-stepfun/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-transformers/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vector-chroma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />

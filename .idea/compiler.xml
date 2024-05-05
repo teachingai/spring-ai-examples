@@ -27,6 +27,7 @@
         <module name="spring-ai-zhipuai-redis-store" />
         <module name="spring-ai-vertexai-gemini" />
         <module name="spring-ai-zhipuai-pgvector-store" />
+        <module name="spring-ai-stepfun" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-zhipuai-qdrant-store" />
@@ -77,6 +78,7 @@
       <module name="spring-ai-pangu" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
+      <module name="spring-ai-stepfun" options="-parameters" />
       <module name="spring-ai-transformers" options="-parameters" />
       <module name="spring-ai-vector-chroma" options="-parameters" />
       <module name="spring-ai-vertexai-gemini" options="-parameters" />

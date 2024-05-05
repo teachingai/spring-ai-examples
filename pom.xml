@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.github.hiwepy</groupId>
+    <groupId>com.github.teachingai</groupId>
     <artifactId>spring-ai-examples</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -101,7 +101,7 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-baidu-ai-qianfan-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -116,17 +116,17 @@
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-llms-free-api-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-huawei-ai-pangu-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-huawei-ai-gallery-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -136,7 +136,7 @@
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-moonshotai-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
@@ -178,7 +178,7 @@
                 <version>${spring-ai.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.hiwepy</groupId>
+                <groupId>com.github.teachingai</groupId>
                 <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>

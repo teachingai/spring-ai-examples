@@ -35,7 +35,7 @@ LLMs Free API 客户端提供 Spring Boot 自动配置。要启用它，请将�
 
 ```xml
 <dependency>
-    <groupId>com.github.hiwepy</groupId>
+    <groupId>com.github.teachingai</groupId>
     <artifactId>spring-ai-llms-free-api-spring-boot-starter</artifactId>
 </dependency>
 ```
