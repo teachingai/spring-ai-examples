@@ -26,6 +26,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-vector-chroma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-palm2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-chatbot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-chroma-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-langfuse/src/main/java" charset="UTF-8" />
@@ -35,6 +36,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-pinecone-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-prompt/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-qdrant-store/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-rag/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-redis-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-weaviate-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai/src/main/java" charset="UTF-8" />

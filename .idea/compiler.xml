@@ -10,6 +10,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-ai-sql" />
         <module name="spring-ai-zhipuai-milvus-store" />
+        <module name="spring-ai-zhipuai-chatbot" />
         <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-baiduai-qianfan" />
         <module name="spring-ai-zhipuai-neo4j-store" />
@@ -29,6 +30,7 @@
         <module name="spring-ai-zhipuai-pgvector-store" />
         <module name="spring-ai-stepfun" />
         <module name="spring-ai-zhipuai" />
+        <module name="spring-ai-zhipuai-rag" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-zhipuai-qdrant-store" />
         <module name="spring-ai-zhipuai-pinecone-store" />
@@ -85,6 +87,7 @@
       <module name="spring-ai-vertexai-palm2" options="-parameters" />
       <module name="spring-ai-vertexai-paml2" options="-parameters" />
       <module name="spring-ai-zhipuai" options="-parameters" />
+      <module name="spring-ai-zhipuai-chatbot" options="-parameters" />
       <module name="spring-ai-zhipuai-chroma-store" options="-parameters" />
       <module name="spring-ai-zhipuai-functions" options="-parameters" />
       <module name="spring-ai-zhipuai-langfuse" options="-parameters" />
@@ -94,6 +97,7 @@
       <module name="spring-ai-zhipuai-pinecone-store" options="-parameters" />
       <module name="spring-ai-zhipuai-prompt" options="-parameters" />
       <module name="spring-ai-zhipuai-qdrant-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-rag" options="-parameters" />
       <module name="spring-ai-zhipuai-redis-store" options="-parameters" />
       <module name="spring-ai-zhipuai-weaviate-store" options="-parameters" />
     </option>
