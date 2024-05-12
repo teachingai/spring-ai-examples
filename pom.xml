@@ -57,7 +57,8 @@
         <module>spring-ai-zhipuai</module>
         <module>spring-ai-zhipuai-functions</module>
         <module>spring-ai-zhipuai-prompt</module>
-        <module>spring-ai-zhipuai-langfuse</module>
+        <module>spring-ai-zhipuai-rag</module>
+        <module>spring-ai-zhipuai-chatbot</module>
         <module>spring-ai-zhipuai-chroma-store</module>
         <module>spring-ai-zhipuai-milvus-store</module>
         <module>spring-ai-zhipuai-neo4j-store</module>
@@ -66,6 +67,7 @@
         <module>spring-ai-zhipuai-qdrant-store</module>
         <module>spring-ai-zhipuai-redis-store</module>
         <module>spring-ai-zhipuai-weaviate-store</module>
+        <module>spring-ai-zhipuai-langfuse</module>
         <module>spring-ai-stepfun</module>
     </modules>
 
