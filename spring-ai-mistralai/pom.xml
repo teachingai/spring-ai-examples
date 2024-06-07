@@ -24,54 +24,54 @@
         </dependency>
         <!-- For Chat Completion -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
         </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
         </dependency> -->
         <!-- For Embedding  -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-postgresml-spring-boot-starter</artifactId>
         </dependency>
         <!-- For Vector Store  -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-azure-vector-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-milvus-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-pinecone-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-qdrant-store-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-redis-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-weaviate-store-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>

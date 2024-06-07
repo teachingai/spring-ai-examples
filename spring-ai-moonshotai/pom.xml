@@ -41,12 +41,12 @@
         </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
         </dependency> -->
         <!-- For Vector Store  -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-redis-spring-boot-starter</artifactId>
         </dependency>
         <!-- For Web Server -->

@@ -30,6 +30,7 @@
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-zhipuai-qdrant-store" />
+        <module name="spring-ai-qwen" />
         <module name="spring-ai-zhipuai-pinecone-store" />
         <module name="spring-ai-openai" />
         <module name="spring-ai-stabilityai" />
@@ -75,6 +76,7 @@
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-pangu" options="-parameters" />
+      <module name="spring-ai-qwen" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
       <module name="spring-ai-transformers" options="-parameters" />
