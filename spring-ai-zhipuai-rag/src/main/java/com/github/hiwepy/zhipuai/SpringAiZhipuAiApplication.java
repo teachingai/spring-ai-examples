@@ -1,13 +1,13 @@
-package com.github.hiwepy.ollama;
+package com.github.hiwepy.zhipuai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringAiOllamaApplication {
+public class SpringAiZhipuAiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiOllamaApplication.class, args);
+        SpringApplication.run(SpringAiZhipuAiApplication.class, args);
     }
 
 }
