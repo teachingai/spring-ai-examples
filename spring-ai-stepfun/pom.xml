@@ -97,21 +97,4 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <!--必须与 settings.xml 的 id 一致-->
-            <id>aiban-tianyin-core</id>
-            <name>core</name>
-            <url>https://aiban-maven.pkg.coding.net/repository/tianyin/core/</url>
-        </repository>
-    </repositories>
-
 </project>

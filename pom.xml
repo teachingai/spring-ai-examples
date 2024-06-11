@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.3</version>
+        <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -79,10 +79,14 @@
             </snapshots>
         </repository>
         <repository>
-            <!--必须与 settings.xml 的 id 一致-->
-            <id>aiban-tianyin-core</id>
-            <name>core</name>
-            <url>https://aiban-maven.pkg.coding.net/repository/tianyin/core/</url>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -123,6 +127,12 @@
                 <groupId>io.springboot.ai</groupId>
                 <artifactId>spring-ai-tika-document-reader</artifactId>
                 <version>1.0.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springboot.ai/spring-ai-retry -->
+            <dependency>
+                <groupId>io.springboot.ai</groupId>
+                <artifactId>spring-ai-retry</artifactId>
+                <version>${spring-ai.version}</version>
             </dependency>
             <!-- For Chat Completion & Embedding -->
             <!-- https://mvnrepository.com/artifact/io.springboot.ai/spring-ai-azure-openai-spring-boot-starter -->

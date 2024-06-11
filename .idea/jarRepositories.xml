@@ -7,6 +7,16 @@
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="wans-hz-wisdom-edu-maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="aliyun-releases" />
+      <option name="name" value="Aliyun Releases Repository" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/repositories/releases" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -27,6 +37,11 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="aliyun-snapshots" />
+      <option name="name" value="Aliyun Snapshots Repository" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spring-milestone" />
       <option name="name" value="Spring Milestone Repository" />
       <option name="url" value="https://repo.spring.io/milestone" />
@@ -42,6 +57,11 @@
       <option name="url" value="https://wans-hz-maven.pkg.coding.net/repository/wisdom-edu/maven/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="aliyun-repos" />
+      <option name="name" value="aliyun-repos" />
+      <option name="url" value="https://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spring-milestones" />
       <option name="name" value="Spring Milestones" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
@@ -49,6 +69,11 @@
     <remote-repository>
       <option name="id" value="aiban-tianyin-core" />
       <option name="name" value="core" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
     </remote-repository>
     <remote-repository>
@@ -60,6 +85,11 @@
       <option name="id" value="aliyun-central" />
       <option name="name" value="Aliyun Central Repository" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://repo1.maven.org/maven2/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -75,6 +105,11 @@
       <option name="id" value="aliyun-releases" />
       <option name="name" value="Aliyun Releases Repository" />
       <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="wans-hz-wisdom-edu-maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://wans-hz-maven.pkg.coding.net/repository/base-platform/maven/" />
     </remote-repository>
   </component>
 </project>

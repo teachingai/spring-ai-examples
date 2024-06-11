@@ -25,14 +25,12 @@
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>com.github.teachingai</groupId>
-            <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>io.springboot.ai</groupId>
+            <artifactId>spring-ai-zhipu-ai-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-            <version>${spring-ai.version}</version>
         </dependency>
         <!-- For Web Server -->
         <dependency>
@@ -59,16 +57,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>

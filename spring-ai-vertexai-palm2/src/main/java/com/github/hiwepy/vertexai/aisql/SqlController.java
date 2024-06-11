@@ -1,6 +1,6 @@
 package com.github.hiwepy.vertexai.aisql;
 
-import com.github.hiwepy.zhipuai.exception.SqlGenerationException;
+import com.github.hiwepy.vertexai.exception.SqlGenerationException;
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
