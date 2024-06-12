@@ -8,11 +8,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-zhipuai-chatbot</artifactId>
-    <name>spring-ai-zhipuai-chatbot</name>
-    <description>spring-ai-zhipuai-chatbot</description>
+    <artifactId>spring-ai-zhipuai-agents</artifactId>
+    <name>spring-ai-zhipuai-agents</name>
+    <description>spring-ai-zhipuai-agents</description>
 
     <dependencies>
+
         <!-- For Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -33,21 +34,46 @@
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
         </dependency>
-        <!-- For Chat Completion & Embedding -->
+        <!-- For Log4j2 -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- For Chat Completion & Embedding -->
+        <!--<dependency>
             <groupId>com.github.teachingai</groupId>
             <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
+        </dependency>-->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
-        </dependency> -->
+            <groupId>io.springboot.ai</groupId>
+            <artifactId>spring-ai-zhipu-ai-spring-boot-starter</artifactId>
+        </dependency>
         <!-- For Web Server -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- For Embed Tomcat -->
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency> -->
+        <!-- For Embed Jetty -->
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency> -->
+        <!-- For Embed Undertow -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,24 +93,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <!--必须与 settings.xml 的 id 一致-->
-            <id>aiban-tianyin-core</id>
-            <name>core</name>
-            <url>https://aiban-maven.pkg.coding.net/repository/tianyin/core/</url>
-        </repository>
-    </repositories>
 
 </project>

@@ -20,6 +20,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-qwen/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-qwen/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stepfun/src/main/java" charset="UTF-8" />
@@ -27,8 +28,8 @@
     <file url="file://$PROJECT_DIR$/spring-ai-vector-chroma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-palm2/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-chatbot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-chroma-store/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-embedding/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-langfuse/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-milvus-store/src/main/java" charset="UTF-8" />
@@ -44,6 +45,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.2.3/src/main/resources" charset="UTF-8" />
+    <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.3.0/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -8,9 +8,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-zhipuai</artifactId>
-    <name>spring-ai-zhipuai</name>
-    <description>spring-ai-zhipuai</description>
+    <artifactId>spring-ai-zhipuai-prometheus</artifactId>
+    <name>spring-ai-zhipuai-prometheus</name>
+    <description>spring-ai-zhipuai-prometheus</description>
 
     <dependencies>
 
