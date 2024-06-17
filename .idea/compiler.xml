@@ -7,43 +7,50 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-ai-sql" />
-        <module name="spring-ai-zhipuai-milvus-store" />
         <module name="spring-ai-zhipuai-prometheus" />
+        <module name="spring-ai-zhipuai-store-redis" />
+        <module name="spring-ai-zhipuai-store-weaviate" />
         <module name="spring-ai-baiduai-qianfan" />
         <module name="spring-ai-vertexai-palm2" />
-        <module name="spring-ai-zhipuai-neo4j-store" />
+        <module name="spring-ai-zhipuai-store-neo4j" />
         <module name="spring-ai-zhipuai-functions" />
         <module name="spring-ai-bedrockai" />
         <module name="spring-ai-anthropic" />
         <module name="spring-ai-moonshotai" />
         <module name="spring-ai-zhipuai-prompt" />
-        <module name="spring-ai-zhipuai-weaviate-store" />
         <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
+        <module name="spring-ai-zhipuai-store-chroma" />
         <module name="spring-ai-azure-openai" />
+        <module name="spring-ai-zhipuai-store-qdrant" />
+        <module name="spring-ai-zhipuai-store-pgvector" />
         <module name="spring-ai-zhipuai-agents" />
         <module name="spring-ai-zhipuai-embedding" />
+        <module name="spring-ai-zhipuai-store-cassandra" />
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-zhipuai-langfuse" />
-        <module name="spring-ai-zhipuai-redis-store" />
+        <module name="spring-ai-zhipuai-store-mongodb" />
         <module name="spring-ai-vertexai-gemini" />
-        <module name="spring-ai-zhipuai-mongodb-store" />
-        <module name="spring-ai-zhipuai-pgvector-store" />
+        <module name="spring-ai-zhipuai-store-es" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-zhipuai-rag" />
         <module name="spring-ai-ollama" />
+        <module name="spring-ai-zhipuai-store-milvus" />
         <module name="spring-ai-qwen" />
-        <module name="spring-ai-zhipuai-qdrant-store" />
-        <module name="spring-ai-zhipuai-pinecone-store" />
         <module name="spring-ai-openai" />
         <module name="spring-ai-mistralai" />
         <module name="spring-ai-stabilityai" />
         <module name="spring-ai-huaweiai-gallery" />
+        <module name="spring-ai-zhipuai-store-pinecone" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-ai-zhipuai-cassandra-store" target="17" />
+      <module name="spring-ai-zhipuai-chroma-store" target="17" />
       <module name="spring-ai-zhipuai-chroma-store (1)" target="1.5" />
       <module name="spring-ai-zhipuai-chroma-store (2)" target="17" />
+      <module name="spring-ai-zhipuai-milvus-store" target="17" />
+      <module name="spring-ai-zhipuai-pgvector-store" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -74,16 +81,21 @@
       <module name="spring-ai-zhipuai-functions" options="-parameters" />
       <module name="spring-ai-zhipuai-langfuse" options="-parameters" />
       <module name="spring-ai-zhipuai-milvus-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-mongodb-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-neo4j-store" options="-parameters" />
       <module name="spring-ai-zhipuai-pgvector-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-pinecone-store" options="-parameters" />
       <module name="spring-ai-zhipuai-prometheus" options="-parameters" />
       <module name="spring-ai-zhipuai-prompt" options="-parameters" />
-      <module name="spring-ai-zhipuai-qdrant-store" options="-parameters" />
       <module name="spring-ai-zhipuai-rag" options="-parameters" />
-      <module name="spring-ai-zhipuai-redis-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-weaviate-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-cassandra" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-chroma" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-es" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-milvus" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-mongodb" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-neo4j" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-pgvector" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-pinecone" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-qdrant" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-redis" options="-parameters" />
+      <module name="spring-ai-zhipuai-store-weaviate" options="-parameters" />
     </option>
   </component>
 </project>

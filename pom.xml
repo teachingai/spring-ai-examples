@@ -61,16 +61,17 @@
         <module>spring-ai-zhipuai-functions</module>
         <module>spring-ai-zhipuai-embedding</module>
         <module>spring-ai-zhipuai-rag</module>
-        <module>spring-ai-zhipuai-cassandra-store</module>
-        <module>spring-ai-zhipuai-chroma-store</module>
-        <module>spring-ai-zhipuai-milvus-store</module>
-        <module>spring-ai-zhipuai-mongodb-store</module>
-        <module>spring-ai-zhipuai-neo4j-store</module>
-        <module>spring-ai-zhipuai-pgvector-store</module>
-        <module>spring-ai-zhipuai-pinecone-store</module>
-        <module>spring-ai-zhipuai-qdrant-store</module>
-        <module>spring-ai-zhipuai-redis-store</module>
-        <module>spring-ai-zhipuai-weaviate-store</module>
+        <module>spring-ai-zhipuai-store-cassandra</module>
+        <module>spring-ai-zhipuai-store-chroma</module>
+        <module>spring-ai-zhipuai-store-es</module>
+        <module>spring-ai-zhipuai-store-milvus</module>
+        <module>spring-ai-zhipuai-store-mongodb</module>
+        <module>spring-ai-zhipuai-store-neo4j</module>
+        <module>spring-ai-zhipuai-store-pgvector</module>
+        <module>spring-ai-zhipuai-store-pinecone</module>
+        <module>spring-ai-zhipuai-store-qdrant</module>
+        <module>spring-ai-zhipuai-store-redis</module>
+        <module>spring-ai-zhipuai-store-weaviate</module>
         <module>spring-ai-zhipuai-langfuse</module>
         <module>spring-ai-zhipuai-prometheus</module>
         <module>spring-ai-zhipuai-agents</module>
