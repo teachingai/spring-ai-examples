@@ -26,6 +26,7 @@
     </properties>
 
     <modules>
+        <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
         <module>spring-ai-baiduai-qianfan</module>
         <module>spring-ai-bedrockai</module>
@@ -60,8 +61,10 @@
         <module>spring-ai-zhipuai-functions</module>
         <module>spring-ai-zhipuai-embedding</module>
         <module>spring-ai-zhipuai-rag</module>
+        <module>spring-ai-zhipuai-cassandra-store</module>
         <module>spring-ai-zhipuai-chroma-store</module>
         <module>spring-ai-zhipuai-milvus-store</module>
+        <module>spring-ai-zhipuai-mongodb-store</module>
         <module>spring-ai-zhipuai-neo4j-store</module>
         <module>spring-ai-zhipuai-pgvector-store</module>
         <module>spring-ai-zhipuai-pinecone-store</module>
@@ -72,8 +75,15 @@
         <module>spring-ai-zhipuai-prometheus</module>
         <module>spring-ai-zhipuai-agents</module>
     </modules>
-
+<!--
 	<repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -82,17 +92,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    </repositories>-->
 
     <dependencyManagement>
         <dependencies>

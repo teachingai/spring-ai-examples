@@ -5,7 +5,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-ai-zhipuai-rag/pom.xml" />
       </list>
     </option>
   </component>

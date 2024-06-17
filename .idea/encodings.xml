@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/spring-ai-azure-bedrock/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-anthropic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-azure-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-baiduai-qianfan/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-functions/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-gemma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-gallery/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-huaweiai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-huggingface/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-image-gen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-llmsfreeapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-mistralai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-moonshotai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-openai/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-pangu/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-qwen/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-qwen/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-stepfun/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-transformers/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spring-ai-vector-chroma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-palm2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-agents/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-cassandra-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-chroma-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-embedding/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-langfuse/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-milvus-store/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-mongodb-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-neo4j-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-pgvector-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-pinecone-store/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-prometheus/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-prompt/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-qdrant-store/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai-rag/src/main/java" charset="UTF-8" />
@@ -44,7 +38,6 @@
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-    <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.2.3/src/main/resources" charset="UTF-8" />
     <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.3.0/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

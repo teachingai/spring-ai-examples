@@ -1,105 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-ai-sql" />
         <module name="spring-ai-zhipuai-milvus-store" />
-        <module name="spring-ai-vertexai-palm2" />
+        <module name="spring-ai-zhipuai-prometheus" />
         <module name="spring-ai-baiduai-qianfan" />
+        <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-zhipuai-neo4j-store" />
         <module name="spring-ai-zhipuai-functions" />
         <module name="spring-ai-bedrockai" />
-        <module name="spring-ai-zhipuai-weaviate-store" />
-        <module name="spring-ai-zhipuai-prompt" />
+        <module name="spring-ai-anthropic" />
         <module name="spring-ai-moonshotai" />
+        <module name="spring-ai-zhipuai-prompt" />
+        <module name="spring-ai-zhipuai-weaviate-store" />
         <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
-        <module name="spring-ai-zhipuai-langfuse" />
+        <module name="spring-ai-zhipuai-agents" />
+        <module name="spring-ai-zhipuai-embedding" />
         <module name="spring-ai-huaweiai-pangu" />
-        <module name="spring-ai-zhipuai-chroma-store" />
+        <module name="spring-ai-zhipuai-langfuse" />
         <module name="spring-ai-zhipuai-redis-store" />
         <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-zhipuai-mongodb-store" />
         <module name="spring-ai-zhipuai-pgvector-store" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-zhipuai-rag" />
         <module name="spring-ai-ollama" />
-        <module name="spring-ai-zhipuai-qdrant-store" />
         <module name="spring-ai-qwen" />
+        <module name="spring-ai-zhipuai-qdrant-store" />
         <module name="spring-ai-zhipuai-pinecone-store" />
         <module name="spring-ai-openai" />
-        <module name="spring-ai-stabilityai" />
         <module name="spring-ai-mistralai" />
+        <module name="spring-ai-stabilityai" />
         <module name="spring-ai-huaweiai-gallery" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="spring-ai-azure-bedrock" target="17" />
-      <module name="spring-ai-bedrockai (1)" target="1.5" />
-      <module name="spring-ai-bedrockai (2)" target="17" />
-      <module name="spring-ai-chatglm3" target="17" />
-      <module name="spring-ai-erniebot" target="19" />
-      <module name="spring-ai-functions" target="17" />
-      <module name="spring-ai-gemma" target="17" />
-      <module name="spring-ai-huaweiai-openai" target="17" />
-      <module name="spring-ai-image-gen" target="17" />
-      <module name="spring-ai-pangu" target="19" />
-      <module name="spring-ai-qianfan" target="17" />
-      <module name="spring-ai-stepfun" target="17" />
-      <module name="spring-ai-transformers" target="17" />
-      <module name="spring-ai-vector-chroma" target="17" />
-      <module name="spring-ai-vertexai-paml2" target="17" />
-      <module name="spring-ai-zhipuai-chatbot" target="17" />
+    <bytecodeTargetLevel>
+      <module name="spring-ai-zhipuai-chroma-store (1)" target="1.5" />
+      <module name="spring-ai-zhipuai-chroma-store (2)" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="spring-ai-azure-bedrock" options="-parameters" />
+      <module name="spring-ai-anthropic" options="-parameters" />
       <module name="spring-ai-azure-openai" options="-parameters" />
       <module name="spring-ai-baiduai-qianfan" options="-parameters" />
       <module name="spring-ai-bedrockai" options="-parameters" />
-      <module name="spring-ai-bedrockai (2)" options="-parameters" />
-      <module name="spring-ai-chatglm3" options="-parameters" />
-      <module name="spring-ai-functions" options="-parameters" />
-      <module name="spring-ai-gemma" options="-parameters" />
       <module name="spring-ai-huaweiai-gallery" options="-parameters" />
-      <module name="spring-ai-huaweiai-openai" options="-parameters" />
       <module name="spring-ai-huaweiai-pangu" options="-parameters" />
       <module name="spring-ai-huggingface" options="-parameters" />
-      <module name="spring-ai-image-gen" options="-parameters" />
       <module name="spring-ai-llmsfreeapi" options="-parameters" />
       <module name="spring-ai-mistralai" options="-parameters" />
       <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
-      <module name="spring-ai-pangu" options="-parameters" />
-      <module name="spring-ai-qwen" options="" />
+      <module name="spring-ai-qwen" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
-      <module name="spring-ai-stepfun" options="-parameters" />
-      <module name="spring-ai-transformers" options="-parameters" />
-      <module name="spring-ai-vector-chroma" options="-parameters" />
       <module name="spring-ai-vertexai-gemini" options="-parameters" />
       <module name="spring-ai-vertexai-palm2" options="-parameters" />
-      <module name="spring-ai-vertexai-paml2" options="-parameters" />
       <module name="spring-ai-zhipuai" options="-parameters" />
-      <module name="spring-ai-zhipuai-chatbot" options="-parameters" />
+      <module name="spring-ai-zhipuai-agents" options="-parameters" />
+      <module name="spring-ai-zhipuai-cassandra-store" options="-parameters" />
       <module name="spring-ai-zhipuai-chroma-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-chroma-store (2)" options="-parameters" />
+      <module name="spring-ai-zhipuai-embedding" options="-parameters" />
       <module name="spring-ai-zhipuai-functions" options="-parameters" />
       <module name="spring-ai-zhipuai-langfuse" options="-parameters" />
       <module name="spring-ai-zhipuai-milvus-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-mongodb-store" options="-parameters" />
       <module name="spring-ai-zhipuai-neo4j-store" options="-parameters" />
       <module name="spring-ai-zhipuai-pgvector-store" options="-parameters" />
       <module name="spring-ai-zhipuai-pinecone-store" options="-parameters" />
+      <module name="spring-ai-zhipuai-prometheus" options="-parameters" />
       <module name="spring-ai-zhipuai-prompt" options="-parameters" />
       <module name="spring-ai-zhipuai-qdrant-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-rag" options="" />
+      <module name="spring-ai-zhipuai-rag" options="-parameters" />
       <module name="spring-ai-zhipuai-redis-store" options="-parameters" />
       <module name="spring-ai-zhipuai-weaviate-store" options="-parameters" />
     </option>
