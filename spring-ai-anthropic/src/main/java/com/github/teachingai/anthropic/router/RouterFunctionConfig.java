@@ -1,6 +1,6 @@
-package com.github.teachingai.ollama.router;
+package com.github.teachingai.anthropic.router;
 
-import org.springframework.ai.zhipuai.ZhipuAiChatClient;
+import org.springframework.ai.anthropic.AnthropicChatClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.function.ServerResponse;
 public class RouterFunctionConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> routes(ZhipuAiChatClient chatClient) {
+    public RouterFunction<ServerResponse> routes(AnthropicChatClient chatClient) {
         return RouterFunctions.route()
                 .GET("/route/v1/generate", req ->
                         ServerResponse.ok().body(

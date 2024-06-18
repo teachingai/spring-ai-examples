@@ -1,11 +1,11 @@
-package com.github.teachingai.ollama.controller;
+package com.github.teachingai.anthropic.controller;
 
+import org.springframework.ai.anthropic.AnthropicChatClient;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.zhipuai.ZhipuAiChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,10 +19,10 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final ZhipuAiChatClient chatClient;
+    private final AnthropicChatClient chatClient;
 
     @Autowired
-    public ChatController(ZhipuAiChatClient chatClient) {
+    public ChatController(AnthropicChatClient chatClient) {
         this.chatClient = chatClient;
     }
 

@@ -1,13 +1,13 @@
-package com.github.teachingai.ollama;
+package com.github.teachingai.anthropic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringAiZhipuAiApplication {
+public class SpringAiAnthropicApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiZhipuAiApplication.class, args);
+        SpringApplication.run(SpringAiAnthropicApplication.class, args);
     }
 
 }
