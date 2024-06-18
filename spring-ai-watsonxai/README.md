@@ -1,8 +1,8 @@
-## spring-ai-zhipuai
+## spring-ai-ollama
 
 ### 项目介绍
 
-spring-ai-zhipuai 基于 Spring Boot 3.x 、Spring AI 和 [智普AI](https://open.bigmodel.cn/) 提供的 ChatGLM 大语言模型提供的智能对话能力，支持对话问答、文本生成等功能。
+spring-ai-ollama 基于 Spring Boot 3.x 、Spring AI 和 [智普AI](https://open.bigmodel.cn/) 提供的 ChatGLM 大语言模型提供的智能对话能力，支持对话问答、文本生成等功能。
 
 
 ### 智普AI

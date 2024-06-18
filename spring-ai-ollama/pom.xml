@@ -38,7 +38,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <!-- For Chat Completion -->
+        <!-- For Chat Completion & Embedding -->
         <dependency>
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>

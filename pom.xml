@@ -38,43 +38,32 @@
         <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama</module>
-        <!--<module>spring-ai-ollama-functions</module>
         <module>spring-ai-ollama-prompt</module>
+        <module>spring-ai-ollama-functions</module>
+        <module>spring-ai-ollama-embedding</module>
+        <module>spring-ai-ollama-fine-tuning</module>
+        <module>spring-ai-ollama-rag-cassandra</module>
+        <module>spring-ai-ollama-rag-chroma</module>
+        <module>spring-ai-ollama-rag-es</module>
+        <module>spring-ai-ollama-rag-milvus</module>
+        <module>spring-ai-ollama-rag-mongodb</module>
+        <module>spring-ai-ollama-rag-neo4j</module>
+        <module>spring-ai-ollama-rag-pgvector</module>
+        <module>spring-ai-ollama-rag-pinecone</module>
+        <module>spring-ai-ollama-rag-qdrant</module>
+        <module>spring-ai-ollama-rag-redis</module>
+        <module>spring-ai-ollama-rag-weaviate</module>
         <module>spring-ai-ollama-langfuse</module>
-        <module>spring-ai-ollama-chroma-store</module>
-        <module>spring-ai-ollama-milvus-store</module>
-        <module>spring-ai-ollama-neo4j-store</module>
-        <module>spring-ai-ollama-pgvector-store</module>
-        <module>spring-ai-ollama-pinecone-store</module>
-        <module>spring-ai-ollama-qdrant-store</module>
-        <module>spring-ai-ollama-redis-store</module>
-        <module>spring-ai-ollama-weaviate-store</module>-->
+        <module>spring-ai-ollama-prometheus</module>
+        <module>spring-ai-ollama-agents</module>
         <module>spring-ai-openai</module>
         <module>spring-ai-qwen</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
         <module>spring-ai-vertexai-palm2</module>
         <module>spring-ai-vertexai-gemini</module>
-        <!-- 基于 智普AI 的相关整合示例 -->
+        <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
-        <module>spring-ai-zhipuai-prompt</module>
-        <module>spring-ai-zhipuai-functions</module>
-        <module>spring-ai-zhipuai-embedding</module>
-        <module>spring-ai-zhipuai-rag</module>
-        <module>spring-ai-zhipuai-store-cassandra</module>
-        <module>spring-ai-zhipuai-store-chroma</module>
-        <module>spring-ai-zhipuai-store-es</module>
-        <module>spring-ai-zhipuai-store-milvus</module>
-        <module>spring-ai-zhipuai-store-mongodb</module>
-        <module>spring-ai-zhipuai-store-neo4j</module>
-        <module>spring-ai-zhipuai-store-pgvector</module>
-        <module>spring-ai-zhipuai-store-pinecone</module>
-        <module>spring-ai-zhipuai-store-qdrant</module>
-        <module>spring-ai-zhipuai-store-redis</module>
-        <module>spring-ai-zhipuai-store-weaviate</module>
-        <module>spring-ai-zhipuai-langfuse</module>
-        <module>spring-ai-zhipuai-prometheus</module>
-        <module>spring-ai-zhipuai-agents</module>
     </modules>
 <!--
 	<repositories>

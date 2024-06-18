@@ -16,7 +16,7 @@
         　　	%l   输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java: 10 )
         -->
         <!-- 定义应用名称 -->
-        <property name="APP_NAME">spring-ai-zhipuai</property>
+        <property name="APP_NAME">spring-ai-qwen</property>
         <!-- 日志输出格式:什么时间（日志时间）?什么应用（应用标记）?什么位置（线程、类、方法）?发送了什么（日志内容）? -->
         <Property name="LOG_CONSOLE_LAYOUT">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[${APP_NAME}]}{red} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
 		<Property name="LOG_CONSOLE_LAYOUT">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[${APP_NAME}]}{red} [%clr{%p} %clr{${sys:PID}}{magenta}] %clr{---}{faint} %clr{[%t]}{faint} %clr{[%C:%M:%L]}{cyan} %clr{:}{faint} %m%n%xwEx</Property>

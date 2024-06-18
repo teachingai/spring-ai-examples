@@ -42,12 +42,18 @@
         <!-- For Chat Completion & Embedding -->
         <!--<dependency>
             <groupId>com.github.teachingai</groupId>
-            <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>-->
         <dependency>
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-zhipu-ai-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.bigmodel.openapi</groupId>
+            <artifactId>oapi-java-sdk</artifactId>
+            <version>release-V4-2.0.2</version>
+            <scope>test</scope>
         </dependency>
         <!-- For Web Server -->
         <dependency>
