@@ -28,7 +28,7 @@
     <modules>
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
-        <module>spring-ai-baiduai-qianfan</module>
+        <module>spring-ai-baidu-qianfan</module>
         <module>spring-ai-bedrockai</module>
         <module>spring-ai-huaweiai-gallery</module>
         <module>spring-ai-huaweiai-pangu</module>

@@ -11,7 +11,6 @@
         <module name="spring-ai-ollama-prometheus" />
         <module name="spring-ai-ollama-rag-chroma" />
         <module name="spring-ai-ollama-rag-pgvector" />
-        <module name="spring-ai-baiduai-qianfan" />
         <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-ollama-rag-cassandra" />
         <module name="spring-ai-ollama-rag-pinecone" />
@@ -25,6 +24,7 @@
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
         <module name="spring-ai-ollama-functions" />
+        <module name="spring-ai-baidu-qianfan" />
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
@@ -88,7 +88,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-ai-anthropic" options="-parameters" />
       <module name="spring-ai-azure-openai" options="-parameters" />
-      <module name="spring-ai-baiduai-qianfan" options="-parameters" />
+      <module name="spring-ai-baidu-qianfan" options="-parameters" />
       <module name="spring-ai-bedrockai" options="-parameters" />
       <module name="spring-ai-huaweiai-gallery" options="-parameters" />
       <module name="spring-ai-huaweiai-pangu" options="-parameters" />
