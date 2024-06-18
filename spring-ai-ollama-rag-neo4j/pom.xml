@@ -48,6 +48,12 @@
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
         </dependency>
+        <!-- For springdoc -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
         <!-- For Web Server -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
