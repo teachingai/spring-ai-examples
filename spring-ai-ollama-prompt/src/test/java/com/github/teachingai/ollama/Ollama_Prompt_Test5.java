@@ -1,5 +1,6 @@
 package com.github.teachingai.ollama;
 
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
 import org.springframework.ai.chat.messages.AssistantMessage;
@@ -13,6 +14,7 @@ import org.springframework.ai.ollama.api.OllamaOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Ollama_Prompt_Test5 {
 
@@ -47,8 +49,21 @@ public class Ollama_Prompt_Test5 {
 
     private class DST {
 
-        private String update(String user_input, String model){
-            return user_input;
+        private String update(JSONObject state, JSONObject nlu_semantics){
+
+            if (nlu_semantics.containsKey("name")){
+                state.clear();
+            }
+            if (nlu_semantics.containsKey("sort")){
+               String slot = nlu_semantics.getJSONObject("sort").getString("value");
+                if (state.containsKey(slot) && state.getJSONObject(slot).getString("operator").equals("==")){
+                     state.remove(slot);
+                }
+            }
+            for (Map.Entry<String, Object> entry : nlu_semantics.entrySet()) {
+                state.put(entry.getKey(), entry.getValue());
+            }
+            return state.toJSONString();
         }
 
     }
