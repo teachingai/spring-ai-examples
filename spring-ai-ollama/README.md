@@ -1,2 +1,5 @@
-IMPORTANT: For this to work, you'll need to install [Ollama](https://ollama.com/) and
-the Gemma:2b model.
+# spring-ai-ollama
+
+> 这是一个基于 Ollama + Spring AI 的入门学习项目，主要用于学习和研究。
+
+

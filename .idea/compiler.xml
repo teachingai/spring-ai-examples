@@ -46,6 +46,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-ai-baiduai-qianfan" target="17" />
       <module name="spring-ai-ollama-rag" target="17" />
       <module name="spring-ai-ollama-store-cassandra" target="17" />
       <module name="spring-ai-ollama-store-chroma" target="17" />
@@ -67,10 +68,14 @@
       <module name="spring-ai-zhipuai-functions" target="17" />
       <module name="spring-ai-zhipuai-langfuse" target="17" />
       <module name="spring-ai-zhipuai-milvus-store" target="17" />
+      <module name="spring-ai-zhipuai-neo4j-store" target="17" />
       <module name="spring-ai-zhipuai-pgvector-store" target="17" />
+      <module name="spring-ai-zhipuai-pinecone-store" target="17" />
       <module name="spring-ai-zhipuai-prometheus" target="17" />
       <module name="spring-ai-zhipuai-prompt" target="17" />
+      <module name="spring-ai-zhipuai-qdrant-store" target="17" />
       <module name="spring-ai-zhipuai-rag" target="17" />
+      <module name="spring-ai-zhipuai-redis-store" target="17" />
       <module name="spring-ai-zhipuai-store-cassandra" target="17" />
       <module name="spring-ai-zhipuai-store-chroma" target="17" />
       <module name="spring-ai-zhipuai-store-es" target="17" />
@@ -82,6 +87,7 @@
       <module name="spring-ai-zhipuai-store-qdrant" target="17" />
       <module name="spring-ai-zhipuai-store-redis" target="17" />
       <module name="spring-ai-zhipuai-store-weaviate" target="17" />
+      <module name="spring-ai-zhipuai-weaviate-store" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

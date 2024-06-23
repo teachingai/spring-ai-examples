@@ -22,6 +22,11 @@
       <option name="url" value="https://aiban-maven.pkg.coding.net/repository/tianyin/core/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="wans-hz-wisdom-base-maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.aliyun.com/repository/central" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="aliyun-releases" />
       <option name="name" value="Aliyun Releases Repository" />
       <option name="url" value="http://mirrors.cloud.tencent.com/nexus/repository/maven-public/" />
@@ -47,9 +52,19 @@
       <option name="url" value="https://repo1.maven.org/maven2/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="wans-hz-wisdom-edu-maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://wans-hz-maven.pkg.coding.net/repository/wisdom-edu/maven/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="aliyun-snapshots" />
       <option name="name" value="Aliyun Snapshots Repository" />
       <option name="url" value="http://mirrors.cloud.tencent.com/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="wans-hz-wisdom-edu-maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.aliyun.com/repository/central" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="aliyun-snapshots" />

@@ -11,10 +11,9 @@ public class OllamaChatTest {
     public static void main(String[] args) {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create()
-                        .withModel("qwen:7b")
-                        .withTemperature(0.9f));
+        var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
+                .withModel("qwen:7b")
+                .withTemperature(0.9f));
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
