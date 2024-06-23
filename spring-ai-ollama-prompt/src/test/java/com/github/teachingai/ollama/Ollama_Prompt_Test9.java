@@ -5,12 +5,14 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Ollama_Prompt_Test9 {
 
@@ -68,12 +70,14 @@ public class Ollama_Prompt_Test9 {
 
         String cot = "请一步一步分析以下对话后，输出Y或N\n";
 
-        String prompt = instruction + output_format + cot  + "对话记录：" + context;
+        PromptTemplate promptTemplate = new PromptTemplate("{instruction} \n\n {output_format} \n\n {cot} \n\n 对话记录：{context}");
+        // Prompt prompt = promptTemplate.create(Map.of("instruction", instruction, "output_format", output_format, "cot", cot, "context", context));
+        String promptStr = promptTemplate.render(Map.of("instruction", instruction, "output_format", output_format, "cot", cot, "context", context));
 
         // 连续调用 5 次
         for (int i = 0; i < 5; i++) {
             System.out.println("------第" + (i + 1) + "次------");
-            getCompletion(chatClient, prompt, "qwen2:7b");
+            getCompletion(chatClient, promptStr, "qwen2:7b");
         }
 
         for (Message message : messages) {
