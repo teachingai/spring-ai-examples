@@ -1,10 +1,10 @@
 package com.github.teachingai.ollama;
 
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.OllamaEmbeddingClient;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 
@@ -18,8 +18,9 @@ public class OllamaEmbeddingTest {
         var ollamaApi = new OllamaApi();
         //指定使用的模型
         var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("gemma"));
-        //测试数据
+                .withDefaultOptions(OllamaOptions.create().withModel("qwen2:1.5b"));
+
+        // 测试数据
         VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
         vectorStore.add(List.of(
                 new Document("白日依山尽，黄河入海流。欲穷千里目，更上一层楼。"),
@@ -30,13 +31,15 @@ public class OllamaEmbeddingTest {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print("请输入关键词: ");
-            String message = scanner.nextLine();
-            if (message.equals("exit")) {
+            String query = scanner.nextLine();
+            if (query.equals("exit")) {
                 break;
             }
-            List<Document> documents = vectorStore.similaritySearch(message);
+            System.out.print("Embedding 结果: " + embeddingClient.embed(query));
+            List<Document> documents = vectorStore.similaritySearch(SearchRequest.query(query));
             System.out.println("查询结果: ");
             for (Document doc : documents) {
+                System.out.println(doc.getEmbedding());
                 System.out.println(doc.getContent());
             }
         }
