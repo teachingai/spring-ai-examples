@@ -8,7 +8,7 @@
 ### 知识点 
 
 - ChatGLM-4-9B 模型
-- LORA 微调
+- LoRA、QLoRA 微调
   https://blog.csdn.net/spiderwower/article/details/138755776
 - Ollama 自定义模型
 
@@ -16,7 +16,7 @@
 
 ```
 spring-ai-ollama-fine-tuning
-├── src/main/java/com/example/demo
+├── src/main/java/com/github/teachingai/ollama
 │   ├── controller
 │   │   └── ChatController.java
 │   ├── model
