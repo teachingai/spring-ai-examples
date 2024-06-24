@@ -1,9 +1,6 @@
 package com.github.teachingai.ollama.router;
 
-import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.ollama.OllamaChatClient;
+import com.github.teachingai.ollama.service.IEmbeddingService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
@@ -14,20 +11,16 @@ import org.springframework.web.servlet.function.ServerResponse;
 public class RouterFunctionConfig {
 
     @Bean
-    RouterFunction<ServerResponse> routes(OllamaChatClient chatClient) {
+    RouterFunction<ServerResponse> routes(IEmbeddingService embeddingService) {
         return RouterFunctions.route()
-                .GET("/generate", req ->
+                .GET("/route/v1/embedding", req ->
                         ServerResponse.ok().body(
-                                chatClient.call(req.param("message")
-                                        .orElse("tell me a joke"))))
-                .GET("/prompt", req -> {
-                    PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
-                    Prompt prompt = new Prompt(new UserMessage(req.param("prompt").orElse("Tell me a joke")));
-                    return ServerResponse.ok().body( chatClient.call(prompt));
-                })
-                .GET("/chat", req -> {
-                    Prompt prompt = new Prompt(new UserMessage(req.param("message").orElse("Tell me a joke")));
-                    return ServerResponse.ok().body(chatClient.stream(prompt));
+                                embeddingService.embedding(req.param("text").orElse("tell me a joke"))))
+                .POST("/route/v1/embedding", req -> {
+
+                    var file = req.multipartData().getFirst("file");
+                    return ServerResponse.ok().body( embeddingService.embedding(file));
+
                 })
                 .build();
     }
