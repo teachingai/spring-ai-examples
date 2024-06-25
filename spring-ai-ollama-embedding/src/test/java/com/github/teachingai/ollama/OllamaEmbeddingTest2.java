@@ -2,21 +2,12 @@ package com.github.teachingai.ollama;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
-import org.springframework.ai.ollama.api.OllamaApi;
-import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.reader.ExtractedTextFormatter;
-import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
-import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 该示例用于学习文档解析

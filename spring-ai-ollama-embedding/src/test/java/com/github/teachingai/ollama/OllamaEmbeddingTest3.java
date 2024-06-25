@@ -8,12 +8,8 @@ import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.reader.ExtractedTextFormatter;
 import org.springframework.ai.reader.pdf.ParagraphPdfDocumentReader;
 import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
-import org.springframework.ai.vectorstore.SearchRequest;
-import org.springframework.ai.vectorstore.SimpleVectorStore;
-import org.springframework.ai.vectorstore.VectorStore;
 
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * 该示例用于学习文档解析
@@ -27,7 +23,7 @@ public class OllamaEmbeddingTest3 {
 
         var ollamaApi = new OllamaApi();
         var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("qwen2:7b"));
+                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
 
         /**
          * 1、解析 llama2.pdf
