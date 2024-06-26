@@ -7,12 +7,33 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Embedding Service
+ */
 public interface IEmbeddingService {
 
-    public Map embedding(String text);
+    /**
+     * Embed text
+     *
+     * @param text text to embed
+     * @return embeddings
+     */
+    Map embedding(String text);
 
-    public List<Map> embedding(MultipartFile file);
+    /**
+     * Embed Document File
+     *
+     * @param file file to embed
+     * @return embeddings
+     */
+    List<Map> embedding(MultipartFile file) throws IOException;
 
-    public List<Map> embedding(Part file) throws IOException;
+    /**
+     * Embed Document File
+     *
+     * @param file file to embed
+     * @return embeddings
+     */
+    List<Map> embedding(Part file) throws IOException;
 
 }
