@@ -28,7 +28,6 @@
     <modules>
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
-        <module>spring-ai-baidu-qianfan</module>
         <module>spring-ai-bedrockai</module>
         <module>spring-ai-huaweiai-gallery</module>
         <module>spring-ai-huaweiai-pangu</module>
@@ -39,7 +38,7 @@
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama</module>
         <module>spring-ai-ollama-prompt</module>
-        <module>spring-ai-ollama-functions</module>
+        <module>spring-ai-ollama-function-calling</module>
         <module>spring-ai-ollama-embedding</module>
         <module>spring-ai-ollama-fine-tuning</module>
         <module>spring-ai-ollama-rag-cassandra</module>
@@ -57,6 +56,7 @@
         <module>spring-ai-ollama-prometheus</module>
         <module>spring-ai-ollama-agents</module>
         <module>spring-ai-openai</module>
+        <module>spring-ai-qianfan</module>
         <module>spring-ai-qwen</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>

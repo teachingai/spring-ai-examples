@@ -8,9 +8,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-baidu-qianfan</artifactId>
-    <name>spring-ai-baidu-qianfan</name>
-    <description>spring-ai-baidu-qianfan</description>
+    <artifactId>spring-ai-qianfan</artifactId>
+    <name>spring-ai-qianfan</name>
+    <description>spring-ai-qianfan</description>
 
     <dependencies>
         <!-- For Lombok -->

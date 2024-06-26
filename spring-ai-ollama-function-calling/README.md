@@ -1,4 +1,4 @@
-## spring-ai-ollama-functions
+## spring-ai-ollama-function-calling
 
 ### 项目介绍
 
@@ -6,13 +6,13 @@
 
 ### 知识点
 
-- Function calling 原理
-- Ollama 支持 Function calling 模型
+- Function Calling 原理
+- Ollama 支持的 Function Calling 模型
 
 ### 项目结构
 
 ```
-spring-ai-ollama-functions
+spring-ai-ollama-function-calling
 ├── src/main/java/com/github/teachingai/ollama
 │   ├── controller
 │   │   └── ChatController.java
@@ -29,7 +29,19 @@ spring-ai-ollama-functions
 └── README.md
 ```
 
-### Ollama Function calling 模型
+![](/function_calling.png)
+ 
+Spring AI 目前支持以下 AI 模型的函数调用
+
+- OpenAI：请参阅 [Open AI函数调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/openai-chat-functions.html)。
+- VertexAI Gemini：请参阅 [Vertex AI Gemini 函数调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/vertexai-gemini-chat-functions.html)。
+- Azure OpenAI：请参阅 [Azure OpenAI 函数调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/azure-open-ai-chat-functions.html)。
+- Mistral AI：请参阅 [Mistral AI 功能调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/mistralai-chat-functions.html)。
+- Anthropic Claude：请参阅 [Anthropic Claude 函数调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/anthropic-chat-functions.html)。
+- MiniMax：请参阅 [MiniMax函数调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/minimax-chat-functions.html)。
+- ZhiPu AI：请参阅 [ZhiPu AI功能调用文档](https://docs.spring.io/spring-ai/reference/api/chat/functions/zhipuai-chat-functions.html)。
+
+### Ollama Function Calling 模型
 
 #### 1、Mistral
 
@@ -49,7 +61,7 @@ Mistral AI 团队指出，Mistral 7B：
 | `v0.2`          | 2024 年 3 月 23 日 | Mistral 7B 的小版本        |
 | `v0.1`          | 2023 年 9 月 27 日 | 初始发行                   |
 
-##### Function calling
+##### Function Calling
 
 > Mistral 0.3 支持使用 Ollama 的原始模式进行函数调用。
 

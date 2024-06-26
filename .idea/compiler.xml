@@ -13,6 +13,7 @@
         <module name="spring-ai-ollama-rag-pgvector" />
         <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-ollama-rag-cassandra" />
+        <module name="spring-ai-qianfan" />
         <module name="spring-ai-ollama-rag-pinecone" />
         <module name="spring-ai-ollama-fine-tuning" />
         <module name="spring-ai-ollama-rag-neo4j" />
@@ -23,8 +24,6 @@
         <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
-        <module name="spring-ai-ollama-functions" />
-        <module name="spring-ai-baidu-qianfan" />
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
@@ -35,6 +34,7 @@
         <module name="spring-ai-ollama-langfuse" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-ollama-embedding" />
+        <module name="spring-ai-ollama-function-calling" />
         <module name="spring-ai-qwen" />
         <module name="spring-ai-openai" />
         <module name="spring-ai-mistralai" />
@@ -94,7 +94,6 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-ai-anthropic" options="-parameters" />
       <module name="spring-ai-azure-openai" options="-parameters" />
-      <module name="spring-ai-baidu-qianfan" options="-parameters" />
       <module name="spring-ai-bedrockai" options="-parameters" />
       <module name="spring-ai-huaweiai-gallery" options="-parameters" />
       <module name="spring-ai-huaweiai-pangu" options="-parameters" />
@@ -106,7 +105,7 @@
       <module name="spring-ai-ollama-agents" options="-parameters" />
       <module name="spring-ai-ollama-embedding" options="-parameters" />
       <module name="spring-ai-ollama-fine-tuning" options="-parameters" />
-      <module name="spring-ai-ollama-functions" options="-parameters" />
+      <module name="spring-ai-ollama-function-calling" options="-parameters" />
       <module name="spring-ai-ollama-langfuse" options="-parameters" />
       <module name="spring-ai-ollama-prometheus" options="-parameters" />
       <module name="spring-ai-ollama-prompt" options="-parameters" />
@@ -134,6 +133,7 @@
       <module name="spring-ai-ollama-store-redis" options="-parameters" />
       <module name="spring-ai-ollama-store-weaviate" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
+      <module name="spring-ai-qianfan" options="-parameters" />
       <module name="spring-ai-qwen" options="-parameters" />
       <module name="spring-ai-sql" options="-parameters" />
       <module name="spring-ai-stabilityai" options="-parameters" />
