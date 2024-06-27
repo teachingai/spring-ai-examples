@@ -24,6 +24,7 @@
         <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
+        <module name="spring-ai-ollama-functions" />
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
@@ -47,6 +48,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-ai-baidu-qianfan" target="17" />
       <module name="spring-ai-baiduai-qianfan" target="17" />
       <module name="spring-ai-ollama-rag" target="17" />
       <module name="spring-ai-ollama-store-cassandra" target="17" />
@@ -108,6 +110,7 @@
       <module name="spring-ai-ollama-embedding" options="-parameters" />
       <module name="spring-ai-ollama-fine-tuning" options="-parameters" />
       <module name="spring-ai-ollama-function-calling" options="-parameters" />
+      <module name="spring-ai-ollama-functions" options="-parameters" />
       <module name="spring-ai-ollama-langfuse" options="-parameters" />
       <module name="spring-ai-ollama-prometheus" options="-parameters" />
       <module name="spring-ai-ollama-prompt" options="-parameters" />
