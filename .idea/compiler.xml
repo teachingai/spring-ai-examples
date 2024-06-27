@@ -42,6 +42,7 @@
         <module name="spring-ai-watsonxai" />
         <module name="spring-ai-huaweiai-gallery" />
         <module name="spring-ai-ollama-rag-es" />
+        <module name="spring-ai-minimax" />
         <module name="spring-ai-ollama-rag-milvus" />
       </profile>
     </annotationProcessing>
@@ -99,6 +100,7 @@
       <module name="spring-ai-huaweiai-pangu" options="-parameters" />
       <module name="spring-ai-huggingface" options="-parameters" />
       <module name="spring-ai-llmsfreeapi" options="-parameters" />
+      <module name="spring-ai-minimax" options="-parameters" />
       <module name="spring-ai-mistralai" options="-parameters" />
       <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />

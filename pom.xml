@@ -33,6 +33,7 @@
         <module>spring-ai-huaweiai-pangu</module>
         <module>spring-ai-huggingface</module>
         <module>spring-ai-llmsfreeapi</module>
+        <module>spring-ai-minimax</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
