@@ -17,12 +17,12 @@ public class OllamaFunctionCallingTest1 {
          * qwen2:7b ：https://ollama.com/library/qwen2
          * mistral ：https://ollama.com/library/mistral
          */
-        var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
+        var ollamaApi = new MyOllamaApi();
+        var chatClient = new MyOllamaChatClient(ollamaApi, OllamaOptions.create()
                 .withModel("qwen:7b")
                 .withFormat("json")
                 .withTemperature(0.9f));
-        
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print(">>> ");
