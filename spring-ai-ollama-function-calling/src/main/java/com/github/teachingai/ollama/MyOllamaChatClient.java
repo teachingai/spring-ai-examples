@@ -34,17 +34,17 @@ public class MyOllamaChatClient extends AbstractFunctionCallSupport<MyOllamaApi.
     /**
      * Default options to be used for all chat requests.
      */
-    private OllamaOptions defaultOptions;
+    private OllamaChatOptions defaultOptions;
 
     public MyOllamaChatClient(MyOllamaApi chatApi) {
-        this(chatApi, OllamaOptions.create().withModel(OllamaOptions.DEFAULT_MODEL));
+        this(chatApi, OllamaChatOptions.builder().withModel(OllamaOptions.DEFAULT_MODEL).build());
     }
 
-    public MyOllamaChatClient(MyOllamaApi chatApi, OllamaOptions defaultOptions) {
+    public MyOllamaChatClient(MyOllamaApi chatApi, OllamaChatOptions defaultOptions) {
         this(chatApi, defaultOptions, null);
     }
 
-    public MyOllamaChatClient(MyOllamaApi chatApi, OllamaOptions defaultOptions, FunctionCallbackContext functionCallbackContext) {
+    public MyOllamaChatClient(MyOllamaApi chatApi, OllamaChatOptions defaultOptions, FunctionCallbackContext functionCallbackContext) {
         super(functionCallbackContext);
         Assert.notNull(chatApi, "MyOllamaApi must not be null");
         Assert.notNull(defaultOptions, "DefaultOptions must not be null");
@@ -64,7 +64,7 @@ public class MyOllamaChatClient extends AbstractFunctionCallSupport<MyOllamaApi.
     /**
      * @deprecated Use {@link OllamaOptions} constructor instead.
      */
-    public MyOllamaChatClient withDefaultOptions(OllamaOptions options) {
+    public MyOllamaChatClient withDefaultOptions(OllamaChatOptions options) {
         this.defaultOptions = options;
         return this;
     }

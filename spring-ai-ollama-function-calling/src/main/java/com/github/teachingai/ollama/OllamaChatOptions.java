@@ -71,6 +71,11 @@ public class OllamaChatOptions extends OllamaOptions implements FunctionCallingO
 
         private final OllamaChatOptions options = new OllamaChatOptions();
 
+        public Builder withModel(String model) {
+            this.options.setModel(model);
+            return this;
+        }
+
         public Builder withFormat(String format) {
             this.options.setFormat(format);
             return this;
@@ -82,162 +87,163 @@ public class OllamaChatOptions extends OllamaOptions implements FunctionCallingO
         }
 
         public Builder withUseNUMA(Boolean useNUMA) {
-            this.useNUMA = useNUMA;
+            this.options.setUseNUMA(useNUMA);
             return this;
         }
 
         public Builder withNumCtx(Integer numCtx) {
-            this.numCtx = numCtx;
+            this.options.setNumCtx(numCtx);
             return this;
         }
 
         public Builder withNumBatch(Integer numBatch) {
-            this.numBatch = numBatch;
+            this.options.setNumBatch(numBatch);
             return this;
         }
 
         public Builder withNumGQA(Integer numGQA) {
-            this.numGQA = numGQA;
+            this.options.setNumGQA(numGQA);
             return this;
         }
 
         public Builder withNumGPU(Integer numGPU) {
-            this.numGPU = numGPU;
+            this.options.setNumGPU(numGPU);
             return this;
         }
 
         public Builder withMainGPU(Integer mainGPU) {
-            this.mainGPU = mainGPU;
+            this.options.setMainGPU(mainGPU);
             return this;
         }
 
         public Builder withLowVRAM(Boolean lowVRAM) {
-            this.lowVRAM = lowVRAM;
+            this.options.setLowVRAM(lowVRAM);
             return this;
         }
 
         public Builder withF16KV(Boolean f16KV) {
-            this.f16KV = f16KV;
+            this.options.setF16KV(f16KV);
             return this;
         }
 
         public Builder withLogitsAll(Boolean logitsAll) {
-            this.logitsAll = logitsAll;
+            this.options.setLogitsAll(logitsAll);
             return this;
         }
 
         public Builder withVocabOnly(Boolean vocabOnly) {
-            this.vocabOnly = vocabOnly;
+            this.options.setVocabOnly(vocabOnly);
             return this;
         }
 
         public Builder withUseMMap(Boolean useMMap) {
-            this.useMMap = useMMap;
+            this.options.setUseMMap(useMMap);
             return this;
         }
 
         public Builder withUseMLock(Boolean useMLock) {
-            this.useMLock = useMLock;
+            this.options.setUseMLock(useMLock);
             return this;
         }
 
         public Builder withRopeFrequencyBase(Float ropeFrequencyBase) {
-            this.ropeFrequencyBase = ropeFrequencyBase;
+            this.options.setRopeFrequencyBase(ropeFrequencyBase);
             return this;
         }
 
         public Builder withRopeFrequencyScale(Float ropeFrequencyScale) {
-            this.ropeFrequencyScale = ropeFrequencyScale;
+            this.options.setRopeFrequencyScale(ropeFrequencyScale);
             return this;
         }
 
         public Builder withNumThread(Integer numThread) {
-            this.numThread = numThread;
+            this.options.setNumThread(numThread);
             return this;
         }
 
         public Builder withNumKeep(Integer numKeep) {
-            this.numKeep = numKeep;
+            this.options.setNumKeep(numKeep);
             return this;
         }
 
         public Builder withSeed(Integer seed) {
-            this.seed = seed;
+            this.options.setSeed(seed);
             return this;
         }
 
+
         public Builder withNumPredict(Integer numPredict) {
-            this.options.numPredict = numPredict;
+            this.options.setNumPredict(numPredict);
             return this;
         }
 
         public Builder withTopK(Integer topK) {
-            this.options.topK = topK;
+            this.options.setTopK(topK);
             return this;
         }
 
         public Builder withTopP(Float topP) {
-            this.options.topP = topP;
+            this.options.setTopP(topP);
             return this;
         }
 
         public Builder withTfsZ(Float tfsZ) {
-            this.options.tfsZ = tfsZ;
+            this.options.setTfsZ(tfsZ);
             return this;
         }
 
         public Builder withTypicalP(Float typicalP) {
-            this.options.typicalP = typicalP;
+            this.options.setTypicalP(typicalP);
             return this;
         }
 
         public Builder withRepeatLastN(Integer repeatLastN) {
-            this.options.repeatLastN = repeatLastN;
+            this.options.setRepeatLastN(repeatLastN);
             return this;
         }
 
         public Builder withTemperature(Float temperature) {
-            this.options.temperature = temperature;
+            this.options.setTemperature(temperature);
             return this;
         }
 
         public Builder withRepeatPenalty(Float repeatPenalty) {
-            this.options.repeatPenalty = repeatPenalty;
+            this.options.setRepeatPenalty(repeatPenalty);
             return this;
         }
 
         public Builder withPresencePenalty(Float presencePenalty) {
-            this.options.presencePenalty = presencePenalty;
+            this.options.setPresencePenalty(presencePenalty);
             return this;
         }
 
         public Builder withFrequencyPenalty(Float frequencyPenalty) {
-            this.options.frequencyPenalty = frequencyPenalty;
+            this.options.setFrequencyPenalty(frequencyPenalty);
             return this;
         }
 
         public Builder withMirostat(Integer mirostat) {
-            this.options.mirostat = mirostat;
+            this.options.setMirostat(mirostat);
             return this;
         }
 
         public Builder withMirostatTau(Float mirostatTau) {
-            this.options.mirostatTau = mirostatTau;
+            this.options.setMirostatTau(mirostatTau);
             return this;
         }
 
         public Builder withMirostatEta(Float mirostatEta) {
-            this.mirostatEta = mirostatEta;
+            this.options.setMirostatEta(mirostatEta);
             return this;
         }
 
         public Builder withPenalizeNewline(Boolean penalizeNewline) {
-            this.options.penalizeNewline = penalizeNewline;
+            this.options.setPenalizeNewline(penalizeNewline);
             return this;
         }
 
         public Builder withStop(List<String> stop) {
-            this.options.stop = stop;
+            this.options.setStop(stop);
             return this;
         }
 
