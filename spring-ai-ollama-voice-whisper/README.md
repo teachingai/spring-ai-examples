@@ -4,13 +4,12 @@
 
 > 基于 Spring Boot 3.x 、Spring AI 和 [Ollama](https://ollama.com/)、[Whisper](https://github.com/openai/whisper) 的 Text-To-Speech (TTS) 功能示例。
 
-整合 Whisper 音频转录 与 本地 Ollama 服务器并输出 Text-To-Speech (TTS) 音频响应
+整合 Whisper 音频转录 与 本地 Ollama 服务器并输出 Speech-To-Text (STT) 语音识别
 
-下面是离线模式下三种工具的简单组合：
+下面是离线模式下2种工具的简单组合：
 
+- 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
 - 语音识别：在离线模式下运行 [Whisper](https://github.com/openai/whisper) 本地模型
-- 大型语言模式：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
-- 离线文本转语音：[pyttsx3](https://pypi.org/project/pyttsx3)
 
 xtts_v2(include voice cloning)
 Or EmotiVoice(rom NetEase)

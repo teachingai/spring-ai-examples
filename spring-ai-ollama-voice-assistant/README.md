@@ -11,7 +11,7 @@
 - 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
 - 语音识别：在离线模式下运行 [Whisper](https://github.com/openai/whisper) 本地模型
 - 文本转语音：在离线模式下运行 [ChatTTS](https://github.com/2noise/ChatTTS) 本地模型
-- 语言克隆：在离线模式下运行 [OpenVoice](https://github.com/myshell-ai/OpenVoice) xtts_v2(include voice cloning) Or EmotiVoice(rom NetEase)
+- 语言克隆：在离线模式下运行 [OpenVoice](https://github.com/myshell-ai/OpenVoice) EmotiVoice(rom NetEase)
 
 ### 先决条件
 
@@ -307,9 +307,15 @@ copy /y ..\..\build\bin\Release\whisper.dll build\generated\resources\main\win32
 ```
 https://mvnrepository.com/artifact/io.github.ggerganov/whispercpp
 
-
 ### Voice Cloning
 
+#### EmotiVoice
+
+- Github：https://github.com/netease-youdao/EmotiVoice
+
+> EmotiVoice是一个强大的开源TTS引擎，完全免费，支持中英文双语，包含2000多种不同的音色，以及特色的情感合成功能，支持合成包含快乐、兴奋、悲伤、愤怒等广泛情感的语音。
+
+ 
 #### OpenVoice
 
 - Github：https://github.com/myshell-ai/OpenVoice

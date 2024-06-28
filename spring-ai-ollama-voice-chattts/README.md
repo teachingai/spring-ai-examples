@@ -8,8 +8,8 @@
 
 下面是离线模式下2种工具的简单组合：
 
-- 大型语言模式：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
-- 离线文本转语音：在离线模式下运行 [ChatTTS](https://github.com/2noise/ChatTTS) 本地模型
+- 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
+- 文本转语音：在离线模式下运行 [ChatTTS](https://github.com/2noise/ChatTTS) 本地模型
 
 ### 先决条件
 
