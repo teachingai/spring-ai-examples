@@ -315,6 +315,18 @@ https://mvnrepository.com/artifact/io.github.ggerganov/whispercpp
 
 > EmotiVoice是一个强大的开源TTS引擎，完全免费，支持中英文双语，包含2000多种不同的音色，以及特色的情感合成功能，支持合成包含快乐、兴奋、悲伤、愤怒等广泛情感的语音。
 
+## 快速入门
+
+### EmotiVoice Docker镜像
+
+尝试EmotiVoice最简单的方法是运行docker镜像。你需要一台带有NVidia GPU的机器。先按照[Linux](https://www.server-world.info/en/note?os=Ubuntu_22.04&p=nvidia&f=2)和[Windows WSL2](https://zhuanlan.zhihu.com/p/653173679)平台的说明安装NVidia容器工具包。然后可以直接运行EmotiVoice镜像：
+
+```sh
+docker run -dp 127.0.0.1:8501:8501 syq163/emoti-voice:latest
+```
+
+现在打开浏览器，导航到 http://localhost:8501 ，就可以体验`EmotiVoice`强大的TTS功能。从2024年的docker镜像版本开始，通过 `http://localhost:8000/` 可以使用类 `OpenAI TTS` 的API功能。
+
  
 #### OpenVoice
 
