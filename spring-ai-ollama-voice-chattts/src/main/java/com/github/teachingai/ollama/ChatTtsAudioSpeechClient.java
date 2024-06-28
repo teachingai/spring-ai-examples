@@ -1,5 +1,6 @@
 package com.github.teachingai.ollama;
 
+import com.github.teachingai.ollama.api.ApiUtils;
 import com.github.teachingai.ollama.api.ChatTtsAudioApi;
 import com.github.teachingai.ollama.api.ChatTtsResponseHeaderExtractor;
 import com.github.teachingai.ollama.api.common.OllamaApiException;
@@ -9,23 +10,24 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.metadata.RateLimit;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.model.ModelOptions;
 import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
 
 import java.io.InputStream;
 import java.time.Duration;
+import java.util.Set;
 
 public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechClient {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final ChatTtsAudioSpeechOptions defaultOptions;
-
-    private static final Integer SPEED = 1;
 
     public final RetryTemplate retryTemplate = RetryTemplate.builder()
             .maxAttempts(10)
@@ -43,14 +45,18 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
      * @param audioApi The ChatTtsAudioApi to use for speech synthesis.
      */
     public ChatTtsAudioSpeechClient(ChatTtsAudioApi audioApi) {
-        this(audioApi,
-                ChatTtsAudioSpeechOptions.builder()
-                        .withTemperature(0.7F)
-                        .withTopP(0.7F)
-                        .withTopK(20)
-                        .withTextSeed(42F)
+        this(audioApi, ChatTtsAudioSpeechOptions.builder()
+                        .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
+                        .withTopP(ApiUtils.DEFAULT_TOP_P)
+                        .withTopK(ApiUtils.DEFAULT_TOP_K)
+                        .withMaxInferTokens(ApiUtils.DEFAULT_MAX_INFER_TOKENS)
+                        .withMaxRefineTokens(ApiUtils.DEFAULT_MAX_REFINE_TOKENS)
+                        .withSpeed(ApiUtils.DEFAULT_SPEED)
+                        .withTextSeed(ApiUtils.DEFAULT_TEXT_SEED)
+                        .withCustomVoice(0)
+                        .withSkipRefine(0)
+                        .withStream(0)
                         .withVoice(ChatTtsAudioApi.SpeechRequest.Voice.VOICE_SEED_1983_RESTORED_EMB.getValue())
-                        .withSpeed(SPEED)
                         .build());
     }
 
@@ -83,12 +89,23 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
             ChatTtsAudioApi.SpeechRequest speechRequest = this.createRequestBody(speechPrompt);
 
             ResponseEntity<ChatTtsAudioApi.SpeechResponse> speechEntity = this.audioApi.createSpeech(speechRequest);
-
+            if (speechEntity == null) {
+                logger.warn("No speech response returned for speechRequest: {}", speechRequest);
+                return new SpeechResponse(new Speech());
+            }
+            if (speechEntity.getStatusCode().isError()) {
+                logger.error("Error response returned for speechRequest: {}, StatusCode: {}", speechRequest, speechEntity.getStatusCode());
+                throw new OllamaApiException("Error response returned for speechRequest: " + speechRequest);
+            }
             var speech = speechEntity.getBody();
-
             if (speech == null) {
                 logger.warn("No speech response returned for speechRequest: {}", speechRequest);
                 return new SpeechResponse(new Speech());
+            }
+            logger.info("Speech response: {}", speech);
+            if(speech.code() == 1){
+                logger.error("Error response returned, Code: {}, Msg: {}", speech.code(), speech.msg());
+                throw new OllamaApiException("Error response returned, Code: " + speech.code() + ", Msg: " + speech.msg());
             }
 
             RateLimit rateLimits = ChatTtsResponseHeaderExtractor.extractAiResponseHeaders(speechEntity);
@@ -122,23 +139,19 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
     }
 
     private ChatTtsAudioApi.SpeechRequest createRequestBody(SpeechPrompt prompt) {
-        ChatTtsAudioSpeechOptions options = this.defaultOptions;
+
+        String input = prompt.getInstructions().getText();
+        var request = new ChatTtsAudioApi.SpeechRequest(input);
+
+        if (this.defaultOptions != null) {
+            request = ModelOptionsUtils.merge(request, this.defaultOptions, ChatTtsAudioApi.SpeechRequest.class);
+        }
 
         if (prompt.getOptions() != null) {
             if (prompt.getOptions() instanceof ChatTtsAudioSpeechOptions runtimeOptions) {
-                options = this.merge(options, runtimeOptions);
-
-            } else {
-                throw new IllegalArgumentException("Prompt options are not of type SpeechOptions: "
-                        + prompt.getOptions().getClass().getSimpleName());
-            }
-        }
-
-        // runtime options
-        ModelOptions runtimeOptions = null;
-        if (prompt.getOptions() != null) {
-            if (prompt.getOptions() instanceof ChatTtsAudioSpeechOptions runtimeSpeechOptions) {
-                runtimeOptions = ModelOptionsUtils.copyToTarget(runtimeSpeechOptions, ModelOptions.class, ChatTtsAudioSpeechOptions.class);
+                var updatedRuntimeOptions = ModelOptionsUtils.copyToTarget(runtimeOptions, ModelOptions.class,
+                        ChatTtsAudioSpeechOptions.class);
+                request = ModelOptionsUtils.merge(request, updatedRuntimeOptions, ChatTtsAudioApi.SpeechRequest.class);
             }
             else {
                 throw new IllegalArgumentException("Prompt options are not of type SpeechOptions: "
@@ -146,26 +159,9 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
             }
         }
 
-        ChatTtsAudioSpeechOptions mergedOptions = ModelOptionsUtils.merge(runtimeOptions, this.defaultOptions, ChatTtsAudioSpeechOptions.class);
 
-        String input = StringUtils.isNotBlank(options.getText()) ? options.getText() : prompt.getInstructions().getText();
+        return request;
 
-        ChatTtsAudioApi.SpeechRequest.Builder requestBuilder = ChatTtsAudioApi.SpeechRequest.builder()
-                .withText(input)
-                .withPrompt(mergedOptions.getPrompt())
-                .withVoice(mergedOptions.getVoice())
-                .withSpeed(mergedOptions.getSpeed())
-                .withTemperature(mergedOptions.getTemperature())
-                .withTopP(mergedOptions.getTopP())
-                .withTopK(mergedOptions.getTopK())
-                .withMaxRefineTokens(mergedOptions.getMaxRefineTokens())
-                .withMaxInferTokens(mergedOptions.getMaxInferTokens())
-                .withTextSeed(mergedOptions.getTextSeed())
-                .withSkipRefine(mergedOptions.getSkipRefine())
-                .withStream(mergedOptions.getStream())
-                .withCustomVoice(options.getCustomVoice());
-
-        return requestBuilder.build();
     }
 
     private ChatTtsAudioSpeechOptions merge(ChatTtsAudioSpeechOptions source, ChatTtsAudioSpeechOptions target) {

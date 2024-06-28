@@ -6,7 +6,9 @@ import org.springframework.ai.retry.RetryUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.Assert;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,7 +16,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ChatTtsAudioApi {
 
@@ -39,7 +40,9 @@ public class ChatTtsAudioApi {
     public ChatTtsAudioApi(String baseUrl,
                            RestClient.Builder restClientBuilder,
                            ResponseErrorHandler responseErrorHandler) {
-        this.restClient = restClientBuilder.baseUrl(baseUrl).defaultStatusHandler(responseErrorHandler).build();
+        this.restClient = restClientBuilder.baseUrl(baseUrl).messageConverters((x) -> {
+            x.add(new FormHttpMessageConverter());
+        }).defaultStatusHandler(responseErrorHandler).build();
         this.webClient = WebClient.builder().baseUrl(baseUrl).build();
     }
 
@@ -54,7 +57,9 @@ public class ChatTtsAudioApi {
                            RestClient.Builder restClientBuilder,
                            WebClient.Builder webClientBuilder,
                            ResponseErrorHandler responseErrorHandler) {
-        this.restClient = restClientBuilder.baseUrl(baseUrl).defaultStatusHandler(responseErrorHandler).build();
+        this.restClient = restClientBuilder.baseUrl(baseUrl).messageConverters((x) -> {
+            x.add(new FormHttpMessageConverter());
+        }).defaultStatusHandler(responseErrorHandler).build();
         this.webClient = webClientBuilder.baseUrl(baseUrl).build();
     }
 
@@ -78,35 +83,8 @@ public class ChatTtsAudioApi {
             @JsonProperty("is_stream") Integer stream,
             @JsonProperty("custom_voice") Integer customVoice) {
 
-        public SpeechRequest(String text, String prompt, String voice, Integer speed, Float temperature, Float topP, Integer topK,
-                             Integer maxRefineTokens, Integer maxInferTokens, Float textSeed, Integer skipRefine, Integer stream,
-                             Integer customVoice) {
-            Assert.hasText(text, "text must not be empty");
-            Assert.hasText(voice, "voice must not be empty");
-            Assert.notNull(speed, "speed must not be null");
-            Assert.notNull(temperature, "temperature must not be null");
-            Assert.notNull(topP, "topP must not be null");
-            Assert.notNull(topK, "topK must not be null");
-            Assert.notNull(textSeed, "textSeed must not be null");
-            Assert.notNull(maxRefineTokens, "maxRefineTokens must not be null");
-            Assert.notNull(maxInferTokens, "maxInferTokens must not be null");
-            Assert.notNull(textSeed, "textSeed must not be null");
-            Assert.notNull(customVoice, "customVoice must not be null");
-            Assert.isTrue(speed > 0 && speed <= 9, "speed must be between 1 and 9");
-            Assert.isTrue(temperature > 0 && temperature <= 1, "temperature must be between 0 and 1");
-            this.text = text;
-            this.prompt = prompt;
-            this.voice = voice;
-            this.speed = speed;
-            this.temperature = Objects.requireNonNullElse(temperature, 0.3F);
-            this.topP = Objects.requireNonNullElse(topP, 0.7F);
-            this.topK = Objects.requireNonNullElse(topK, 20);
-            this.maxRefineTokens = maxRefineTokens;
-            this.maxInferTokens = maxInferTokens;
-            this.textSeed = textSeed;
-            this.skipRefine = Objects.requireNonNullElse(skipRefine, 0);
-            this.stream = Objects.requireNonNullElse(stream, 0);
-            this.customVoice = customVoice;
+        public SpeechRequest(String text) {
+            this(text, null, null, null, null, null, null, null, null, null, null, null, null);
         }
 
         /**
@@ -150,100 +128,6 @@ public class ChatTtsAudioApi {
 
         }
 
-        public static Builder builder() {
-            return new Builder();
-        }
-
-        /**
-         * Builder for the SpeechRequest.
-         */
-        public static class Builder {
-
-            private String text;
-            private String prompt;
-            private String voice;
-            private Integer speed = 1;
-            private Float temperature = 0.3F;
-            private Float topP = 0.7F;
-            private Integer topK = 20;
-            private Integer maxRefineTokens;
-            private Integer maxInferTokens;
-            private Float textSeed;
-            private Integer skipRefine;
-            private Integer stream;
-            private Integer customVoice;
-
-            public Builder withText(String text) {
-                this.text = text;
-                return this;
-            }
-
-            public Builder withPrompt(String prompt) {
-                this.prompt = prompt;
-                return this;
-            }
-
-            public Builder withVoice(String voice) {
-                this.voice = voice;
-                return this;
-            }
-
-            public Builder withSpeed(Integer speed) {
-                this.speed = speed;
-                return this;
-            }
-
-            public Builder withTemperature(Float temperature) {
-                this.temperature = temperature;
-                return this;
-            }
-
-            public Builder withTopP(Float topP) {
-                this.topP = topP;
-                return this;
-            }
-
-            public Builder withTopK(Integer topK) {
-                this.topK = topK;
-                return this;
-            }
-
-            public Builder withMaxRefineTokens(Integer maxRefineTokens) {
-                this.maxRefineTokens = maxRefineTokens;
-                return this;
-            }
-
-            public Builder withMaxInferTokens(Integer maxInferTokens) {
-                this.maxInferTokens = maxInferTokens;
-                return this;
-            }
-
-            public Builder withTextSeed(Float textSeed) {
-                this.textSeed = textSeed;
-                return this;
-            }
-
-            public Builder withSkipRefine(Integer skipRefine) {
-                this.skipRefine = skipRefine;
-                return this;
-            }
-
-            public Builder withStream(Integer stream) {
-                this.stream = stream;
-                return this;
-            }
-
-            public Builder withCustomVoice(Integer customVoice) {
-                this.customVoice = customVoice;
-                return this;
-            }
-
-            public SpeechRequest build() {
-                return new SpeechRequest(this.text, this.prompt, this.voice, this.speed, this.temperature, this.topP, this.topK,
-                        this.maxRefineTokens, this.maxInferTokens, this.textSeed, this.skipRefine, this.stream, this.customVoice);
-            }
-
-        }
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -266,11 +150,20 @@ public class ChatTtsAudioApi {
 
     /**
      * Request to generates audio from the input text.
-     * @param requestBody The request body.
+     * @param speechRequest The request body.
      * @return Response entity containing the audio SpeechResponse.
      */
-    public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest requestBody) {
-        return this.restClient.post().uri("/tts").body(requestBody).retrieve().toEntity(SpeechResponse.class);
+    public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) {
+
+        Assert.notNull(speechRequest, "The request body can not be null.");
+        Assert.isTrue(speechRequest.stream() == 0, "Request must set the steam property to 0.");
+        MultiValueMap body = ApiUtils.toMultiValueMap(speechRequest);
+        return this.restClient.post()
+                .uri("/tts")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(body)
+                .retrieve()
+                .toEntity(SpeechResponse.class);
     }
 
     /**

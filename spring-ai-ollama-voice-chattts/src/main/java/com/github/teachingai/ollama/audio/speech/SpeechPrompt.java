@@ -1,6 +1,8 @@
 package com.github.teachingai.ollama.audio.speech;
 
 import com.github.teachingai.ollama.ChatTtsAudioSpeechOptions;
+import com.github.teachingai.ollama.api.ApiUtils;
+import com.github.teachingai.ollama.api.ChatTtsAudioApi;
 import org.springframework.ai.model.ModelOptions;
 import org.springframework.ai.model.ModelRequest;
 
@@ -21,11 +23,17 @@ public class SpeechPrompt implements ModelRequest<SpeechMessage> {
 
     public SpeechPrompt(String instructions) {
         this(new SpeechMessage(instructions), ChatTtsAudioSpeechOptions.builder()
-                .withSpeed(1)
-                .withTemperature(0.7F)
-                .withTopP(0.7F)
-                .withTopK(20)
-                .withTextSeed(42F)
+                .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
+                .withTopP(ApiUtils.DEFAULT_TOP_P)
+                .withTopK(ApiUtils.DEFAULT_TOP_K)
+                .withMaxInferTokens(ApiUtils.DEFAULT_MAX_INFER_TOKENS)
+                .withMaxRefineTokens(ApiUtils.DEFAULT_MAX_REFINE_TOKENS)
+                .withSpeed(ApiUtils.DEFAULT_SPEED)
+                .withTextSeed(ApiUtils.DEFAULT_TEXT_SEED)
+                .withCustomVoice(0)
+                .withSkipRefine(0)
+                .withStream(0)
+                .withVoice(ChatTtsAudioApi.SpeechRequest.Voice.VOICE_SEED_1983_RESTORED_EMB.getValue())
                 .build());
     }
 
@@ -35,11 +43,17 @@ public class SpeechPrompt implements ModelRequest<SpeechMessage> {
 
     public SpeechPrompt(SpeechMessage speechMessage) {
         this(speechMessage, ChatTtsAudioSpeechOptions.builder()
-                .withSpeed(1)
-                .withTemperature(0.7F)
-                .withTopP(0.7F)
-                .withTopK(20)
-                .withTextSeed(42F)
+                .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
+                .withTopP(ApiUtils.DEFAULT_TOP_P)
+                .withTopK(ApiUtils.DEFAULT_TOP_K)
+                .withMaxInferTokens(ApiUtils.DEFAULT_MAX_INFER_TOKENS)
+                .withMaxRefineTokens(ApiUtils.DEFAULT_MAX_REFINE_TOKENS)
+                .withSpeed(ApiUtils.DEFAULT_SPEED)
+                .withTextSeed(ApiUtils.DEFAULT_TEXT_SEED)
+                .withCustomVoice(0)
+                .withSkipRefine(0)
+                .withStream(0)
+                .withVoice(ChatTtsAudioApi.SpeechRequest.Voice.VOICE_SEED_1983_RESTORED_EMB.getValue())
                 .build());
     }
 
