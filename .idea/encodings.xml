@@ -41,6 +41,10 @@
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-store-qdrant/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-store-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-store-weaviate/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-tts-chattts/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-tts-whisper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-voice-chattts/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-voice-whisper/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-qianfan/src/main/java" charset="UTF-8" />

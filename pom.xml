@@ -53,6 +53,9 @@
         <module>spring-ai-ollama-rag-qdrant</module>
         <module>spring-ai-ollama-rag-redis</module>
         <module>spring-ai-ollama-rag-weaviate</module>
+        <module>spring-ai-ollama-voice-chattts</module>
+        <module>spring-ai-ollama-voice-whisper</module>
+        <module>spring-ai-ollama-voice-assistant</module>
         <module>spring-ai-ollama-langfuse</module>
         <module>spring-ai-ollama-prometheus</module>
         <module>spring-ai-ollama-agents</module>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -21,10 +22,10 @@
         <module name="spring-ai-anthropic" />
         <module name="spring-ai-ollama-agents" />
         <module name="spring-ai-moonshotai" />
+        <module name="spring-ai-ollama-voice-whisper" />
         <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
-        <module name="spring-ai-ollama-functions" />
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
@@ -33,6 +34,7 @@
         <module name="spring-ai-ollama-rag-weaviate" />
         <module name="spring-ai-zhipuai" />
         <module name="spring-ai-ollama-langfuse" />
+        <module name="spring-ai-ollama-voice-chattts" />
         <module name="spring-ai-ollama" />
         <module name="spring-ai-ollama-embedding" />
         <module name="spring-ai-ollama-function-calling" />
@@ -110,7 +112,6 @@
       <module name="spring-ai-ollama-embedding" options="-parameters" />
       <module name="spring-ai-ollama-fine-tuning" options="-parameters" />
       <module name="spring-ai-ollama-function-calling" options="-parameters" />
-      <module name="spring-ai-ollama-functions" options="-parameters" />
       <module name="spring-ai-ollama-langfuse" options="-parameters" />
       <module name="spring-ai-ollama-prometheus" options="-parameters" />
       <module name="spring-ai-ollama-prompt" options="-parameters" />
@@ -137,6 +138,8 @@
       <module name="spring-ai-ollama-store-qdrant" options="-parameters" />
       <module name="spring-ai-ollama-store-redis" options="-parameters" />
       <module name="spring-ai-ollama-store-weaviate" options="-parameters" />
+      <module name="spring-ai-ollama-voice-chattts" options="-parameters" />
+      <module name="spring-ai-ollama-voice-whisper" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-qianfan" options="-parameters" />
       <module name="spring-ai-qwen" options="-parameters" />
