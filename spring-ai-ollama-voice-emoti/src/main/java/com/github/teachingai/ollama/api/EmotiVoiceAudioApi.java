@@ -18,7 +18,14 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public class EmotiVoiceApi {
+/**
+ * Turn audio into text or text into audio. Based on
+ * <a href="https://platform.openai.com/docs/api-reference/audio">OpenAI Audio</a>
+ *
+ * @author Christian Tzolov
+ * @since 0.8.1
+ */
+public class EmotiVoiceAudioApi {
 
     private final RestClient restClient;
 
@@ -26,9 +33,9 @@ public class EmotiVoiceApi {
 
     /**
      * Create an new audio api.
-     * @param openAiToken ChatTTS apiKey.
+     * @param openAiToken OpenAI apiKey.
      */
-    public EmotiVoiceApi(String openAiToken) {
+    public EmotiVoiceAudioApi(String openAiToken) {
         this(ApiUtils.DEFAULT_BASE_URL, openAiToken, RestClient.builder(), WebClient.builder(),
                 RetryUtils.DEFAULT_RESPONSE_ERROR_HANDLER);
     }
@@ -40,8 +47,8 @@ public class EmotiVoiceApi {
      * @param restClientBuilder RestClient builder.
      * @param responseErrorHandler Response error handler.
      */
-    public EmotiVoiceApi(String baseUrl, String openAiToken, RestClient.Builder restClientBuilder,
-                         ResponseErrorHandler responseErrorHandler) {
+    public EmotiVoiceAudioApi(String baseUrl, String openAiToken, RestClient.Builder restClientBuilder,
+                          ResponseErrorHandler responseErrorHandler) {
 
         this.restClient = restClientBuilder.baseUrl(baseUrl).defaultHeaders(headers -> {
             headers.setBearerAuth(openAiToken);
@@ -60,8 +67,8 @@ public class EmotiVoiceApi {
      * @param webClientBuilder WebClient builder.
      * @param responseErrorHandler Response error handler.
      */
-    public EmotiVoiceApi(String baseUrl, String openAiToken, RestClient.Builder restClientBuilder,
-                         WebClient.Builder webClientBuilder, ResponseErrorHandler responseErrorHandler) {
+    public EmotiVoiceAudioApi(String baseUrl, String openAiToken, RestClient.Builder restClientBuilder,
+                          WebClient.Builder webClientBuilder, ResponseErrorHandler responseErrorHandler) {
 
         this.restClient = restClientBuilder.baseUrl(baseUrl).defaultHeaders(headers -> {
             headers.setBearerAuth(openAiToken);
@@ -123,7 +130,7 @@ public class EmotiVoiceApi {
     public record SpeechRequest(
             // @formatter:off
             @JsonProperty("model") String model,
-            @JsonProperty("text") String input,
+            @JsonProperty("input") String input,
             @JsonProperty("voice") Voice voice,
             @JsonProperty("response_format") AudioResponseFormat responseFormat,
             @JsonProperty("speed") Float speed) {
@@ -685,4 +692,5 @@ public class EmotiVoiceApi {
                 .retrieve()
                 .toEntity(responseType);
     }
+
 }

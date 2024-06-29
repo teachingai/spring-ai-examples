@@ -2,13 +2,11 @@ package com.github.teachingai.ollama;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.teachingai.ollama.api.EmotiVoiceApi;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi.SpeechRequest.Voice;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi.SpeechRequest.AudioResponseFormat;
 import org.springframework.ai.model.ModelOptions;
 
-/**
- * Options for ChatTTS text to audio - speech synthesis.
- * @since 2024.06.28
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
 
@@ -30,14 +28,14 @@ public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
      * 'alloy', 'echo', 'fable', 'onyx', 'nova', and 'shimmer'.
      */
     @JsonProperty("voice")
-    private EmotiVoiceApi.SpeechRequest.Voice voice;
+    private Voice voice;
 
     /**
      * The format of the audio output. Supported formats are mp3, opus, aac, and flac.
      * Defaults to mp3. Defaults to mp3
      */
     @JsonProperty("response_format")
-    private EmotiVoiceApi.SpeechRequest.AudioResponseFormat responseFormat;
+    private AudioResponseFormat responseFormat;
 
     /**
      * The speed of the voice synthesis. The acceptable range is from 0.0 (slowest) to 1.0
@@ -64,12 +62,12 @@ public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
             return this;
         }
 
-        public Builder withVoice(EmotiVoiceApi.SpeechRequest.Voice voice) {
+        public Builder withVoice(Voice voice) {
             options.voice = voice;
             return this;
         }
 
-        public Builder withResponseFormat(EmotiVoiceApi.SpeechRequest.AudioResponseFormat responseFormat) {
+        public Builder withResponseFormat(AudioResponseFormat responseFormat) {
             options.responseFormat = responseFormat;
             return this;
         }
@@ -93,11 +91,11 @@ public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
         return input;
     }
 
-    public EmotiVoiceApi.SpeechRequest.Voice getVoice() {
+    public Voice getVoice() {
         return voice;
     }
 
-    public EmotiVoiceApi.SpeechRequest.AudioResponseFormat getResponseFormat() {
+    public AudioResponseFormat getResponseFormat() {
         return responseFormat;
     }
 
@@ -125,11 +123,11 @@ public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
         this.input = input;
     }
 
-    public void setVoice(EmotiVoiceApi.SpeechRequest.Voice voice) {
+    public void setVoice(Voice voice) {
         this.voice = voice;
     }
 
-    public void setResponseFormat(EmotiVoiceApi.SpeechRequest.AudioResponseFormat responseFormat) {
+    public void setResponseFormat(EmotiVoiceAudioApi.SpeechRequest.AudioResponseFormat responseFormat) {
         this.responseFormat = responseFormat;
     }
 
@@ -139,54 +137,42 @@ public class EmotiVoiceAudioSpeechOptions implements ModelOptions {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj)
             return true;
-        }
-        if (obj == null) {
+        if (obj == null)
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
             return false;
-        }
         EmotiVoiceAudioSpeechOptions other = (EmotiVoiceAudioSpeechOptions) obj;
         if (model == null) {
-            if (other.model != null) {
+            if (other.model != null)
                 return false;
-            }
         }
-        else if (!model.equals(other.model)) {
+        else if (!model.equals(other.model))
             return false;
-        }
         if (input == null) {
-            if (other.input != null) {
+            if (other.input != null)
                 return false;
-            }
         }
-        else if (!input.equals(other.input)) {
+        else if (!input.equals(other.input))
             return false;
-        }
         if (voice == null) {
-            if (other.voice != null) {
+            if (other.voice != null)
                 return false;
-            }
         }
-        else if (!voice.equals(other.voice)) {
+        else if (!voice.equals(other.voice))
             return false;
-        }
         if (responseFormat == null) {
-            if (other.responseFormat != null) {
+            if (other.responseFormat != null)
                 return false;
-            }
         }
-        else if (!responseFormat.equals(other.responseFormat)) {
+        else if (!responseFormat.equals(other.responseFormat))
             return false;
-        }
         if (speed == null) {
             return other.speed == null;
         }
-        else {
+        else
             return speed.equals(other.speed);
-        }
     }
 
     @Override

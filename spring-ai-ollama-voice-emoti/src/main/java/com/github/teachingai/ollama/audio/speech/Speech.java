@@ -1,7 +1,7 @@
 package com.github.teachingai.ollama.audio.speech;
 
 
-import com.github.teachingai.ollama.audio.ChatTtsAudioSpeechMetadata;
+import com.github.teachingai.ollama.metadata.audio.EmotiVoiceAudioSpeechMetadata;
 import org.springframework.ai.model.ModelResult;
 import org.springframework.lang.Nullable;
 
@@ -19,7 +19,7 @@ public class Speech implements ModelResult<byte[]> {
 
     private final byte[] audio;
 
-    private ChatTtsAudioSpeechMetadata speechMetadata;
+    private EmotiVoiceAudioSpeechMetadata speechMetadata;
 
     public Speech(byte[] audio) {
         this.audio = audio;
@@ -31,11 +31,11 @@ public class Speech implements ModelResult<byte[]> {
     }
 
     @Override
-    public ChatTtsAudioSpeechMetadata getMetadata() {
-        return speechMetadata != null ? speechMetadata : ChatTtsAudioSpeechMetadata.NULL;
+    public EmotiVoiceAudioSpeechMetadata getMetadata() {
+        return speechMetadata != null ? speechMetadata : EmotiVoiceAudioSpeechMetadata.NULL;
     }
 
-    public Speech withSpeechMetadata(@Nullable ChatTtsAudioSpeechMetadata speechMetadata) {
+    public Speech withSpeechMetadata(@Nullable EmotiVoiceAudioSpeechMetadata speechMetadata) {
         this.speechMetadata = speechMetadata;
         return this;
     }

@@ -1,9 +1,10 @@
 package com.github.teachingai.ollama;
 
-import com.github.teachingai.ollama.api.EmotiVoiceApi;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi.SpeechRequest.AudioResponseFormat;
 import com.github.teachingai.ollama.api.EmotiVoiceResponseHeaderExtractor;
 import com.github.teachingai.ollama.api.common.OllamaApiException;
-import com.github.teachingai.ollama.audio.ChatTtsAudioSpeechResponseMetadata;
+import com.github.teachingai.ollama.metadata.audio.EmotiVoiceAudioSpeechResponseMetadata;
 import com.github.teachingai.ollama.audio.speech.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -30,34 +31,34 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
             .exponentialBackoff(Duration.ofMillis(2000), 5, Duration.ofMillis(3 * 60000))
             .build();
 
-    private final EmotiVoiceApi audioApi;
+    private final EmotiVoiceAudioApi audioApi;
 
     /**
-     * Initializes a new instance of the ChatTtsAudioSpeechClient class with the provided
-     * ChatTtsAudioApi. It uses the model chatTTS, response format mp3, voice alloy, and the
+     * Initializes a new instance of the EmotiVoiceAudioSpeechClient class with the provided
+     * EmotiVoiceAudioApi. It uses the model tts-1, response format mp3, voice alloy, and the
      * default speed of 1.0.
-     * @param audioApi The ChatTtsAudioApi to use for speech synthesis.
+     * @param audioApi The EmotiVoiceAudioApi to use for speech synthesis.
      */
-    public EmotiVoiceAudioSpeechClient(EmotiVoiceApi audioApi) {
+    public EmotiVoiceAudioSpeechClient(EmotiVoiceAudioApi audioApi) {
         this(audioApi,
                 EmotiVoiceAudioSpeechOptions.builder()
-                        .withModel(EmotiVoiceApi.TtsModel.TTS_1.getValue())
-                        .withResponseFormat(EmotiVoiceApi.SpeechRequest.AudioResponseFormat.MP3)
-                        .withVoice(EmotiVoiceApi.SpeechRequest.Voice.ALLOY)
+                        .withModel(EmotiVoiceAudioApi.TtsModel.TTS_1.getValue())
+                        .withResponseFormat(AudioResponseFormat.MP3)
+                        .withVoice(EmotiVoiceAudioApi.SpeechRequest.Voice.ALLOY)
                         .withSpeed(SPEED)
                         .build());
     }
 
     /**
-     * Initializes a new instance of the ChatTtsAudioSpeechClient class with the provided
-     * ChatTtsAudioApi and options.
-     * @param audioApi The ChatTtsAudioApi to use for speech synthesis.
-     * @param options The ChatTtsAudioSpeechOptions containing the speech synthesis
+     * Initializes a new instance of the EmotiVoiceAudioSpeechClient class with the provided
+     * EmotiVoiceAudioApi and options.
+     * @param audioApi The EmotiVoiceAudioApi to use for speech synthesis.
+     * @param options The EmotiVoiceAudioSpeechOptions containing the speech synthesis
      * options.
      */
-    public EmotiVoiceAudioSpeechClient(EmotiVoiceApi audioApi, EmotiVoiceAudioSpeechOptions options) {
-        Assert.notNull(audioApi, "ChatTtsAudioApi must not be null");
-        Assert.notNull(options, "ChatTtsAudioSpeechOptions must not be null");
+    public EmotiVoiceAudioSpeechClient(EmotiVoiceAudioApi audioApi, EmotiVoiceAudioSpeechOptions options) {
+        Assert.notNull(audioApi, "EmotiVoiceAudioApi must not be null");
+        Assert.notNull(options, "EmotiVoiceSpeechOptions must not be null");
         this.audioApi = audioApi;
         this.defaultOptions = options;
     }
@@ -73,7 +74,7 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
 
         return this.retryTemplate.execute(ctx -> {
 
-            EmotiVoiceApi.SpeechRequest speechRequest = createRequestBody(speechPrompt);
+            EmotiVoiceAudioApi.SpeechRequest speechRequest = createRequestBody(speechPrompt);
 
             ResponseEntity<byte[]> speechEntity = this.audioApi.createSpeech(speechRequest);
             var speech = speechEntity.getBody();
@@ -85,7 +86,7 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
 
             RateLimit rateLimits = EmotiVoiceResponseHeaderExtractor.extractAiResponseHeaders(speechEntity);
 
-            return new SpeechResponse(new Speech(speech), new ChatTtsAudioSpeechResponseMetadata(rateLimits));
+            return new SpeechResponse(new Speech(speech), new EmotiVoiceAudioSpeechResponseMetadata(rateLimits));
 
         });
     }
@@ -100,11 +101,11 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
     @Override
     public Flux<SpeechResponse> stream(SpeechPrompt prompt) {
         return this.audioApi.stream(this.createRequestBody(prompt))
-                .map(entity -> new SpeechResponse(new Speech(entity.getBody()), new ChatTtsAudioSpeechResponseMetadata(
-                        )));
+                .map(entity -> new SpeechResponse(new Speech(entity.getBody()), new EmotiVoiceAudioSpeechResponseMetadata(
+                        EmotiVoiceResponseHeaderExtractor.extractAiResponseHeaders(entity))));
     }
 
-    private EmotiVoiceApi.SpeechRequest createRequestBody(SpeechPrompt request) {
+    private EmotiVoiceAudioApi.SpeechRequest createRequestBody(SpeechPrompt request) {
         EmotiVoiceAudioSpeechOptions options = this.defaultOptions;
 
         if (request.getOptions() != null) {
@@ -120,7 +121,7 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
         String input = StringUtils.isNotBlank(options.getInput()) ? options.getInput()
                 : request.getInstructions().getText();
 
-        EmotiVoiceApi.SpeechRequest.Builder requestBuilder = EmotiVoiceApi.SpeechRequest.builder()
+        EmotiVoiceAudioApi.SpeechRequest.Builder requestBuilder = EmotiVoiceAudioApi.SpeechRequest.builder()
                 .withModel(options.getModel())
                 .withInput(input)
                 .withVoice(options.getVoice())
@@ -142,3 +143,5 @@ public class EmotiVoiceAudioSpeechClient implements SpeechClient, StreamingSpeec
 
         return mergedBuilder.build();
     }
+
+}

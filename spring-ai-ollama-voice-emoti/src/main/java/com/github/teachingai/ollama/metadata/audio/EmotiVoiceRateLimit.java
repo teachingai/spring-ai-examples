@@ -1,10 +1,10 @@
-package com.github.teachingai.ollama.audio;
+package com.github.teachingai.ollama.metadata.audio;
 
 import org.springframework.ai.chat.metadata.RateLimit;
 
 import java.time.Duration;
 
-public class ChatTtsRateLimit implements RateLimit {
+public class EmotiVoiceRateLimit implements RateLimit {
 
     private static final String RATE_LIMIT_STRING = "{ @type: %1$s, requestsLimit: %2$s, requestsRemaining: %3$s, requestsReset: %4$s, tokensLimit: %5$s; tokensRemaining: %6$s; tokensReset: %7$s }";
 
@@ -20,8 +20,8 @@ public class ChatTtsRateLimit implements RateLimit {
 
     private final Duration tokensReset;
 
-    public ChatTtsRateLimit(Long requestsLimit, Long requestsRemaining, Duration requestsReset, Long tokensLimit,
-                           Long tokensRemaining, Duration tokensReset) {
+    public EmotiVoiceRateLimit(Long requestsLimit, Long requestsRemaining, Duration requestsReset, Long tokensLimit,
+                               Long tokensRemaining, Duration tokensReset) {
 
         this.requestsLimit = requestsLimit;
         this.requestsRemaining = requestsRemaining;

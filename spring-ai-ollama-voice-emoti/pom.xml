@@ -48,6 +48,11 @@
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-retry</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.17.0</version>
+        </dependency>
         <!-- For springdoc -->
         <dependency>
             <groupId>org.springdoc</groupId>

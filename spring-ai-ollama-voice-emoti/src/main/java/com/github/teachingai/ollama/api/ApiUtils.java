@@ -7,7 +7,9 @@ import java.util.function.Consumer;
 
 public class ApiUtils {
 
-    public static final String DEFAULT_BASE_URL = "https://api.openai.com";
+
+    public static final Float DEFAULT_SPEED = 1F;
+    public static final String DEFAULT_BASE_URL = "http://localhost:8000";
 
     public static Consumer<HttpHeaders> getJsonContentHeaders(String apiKey) {
         return (headers) -> {

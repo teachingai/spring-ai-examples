@@ -25,6 +25,8 @@ public class ApiUtils {
 
     public static final Integer DEFAULT_SPEED = 1;
 
+    public static final Integer DEFAULT_CUSTOM_VOICE = 0;
+
     public static Consumer<HttpHeaders> getJsonContentHeaders(String apiKey) {
         return (headers) -> {
             headers.setBearerAuth(apiKey);
@@ -33,6 +35,7 @@ public class ApiUtils {
     };
 
     public static MultiValueMap toMultiValueMap(ChatTtsAudioApi.SpeechRequest speechRequest) {
+
         MultiValueMap map = new LinkedMultiValueMap();
         map.add("text", speechRequest.text());
         return map;

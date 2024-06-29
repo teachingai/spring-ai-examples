@@ -1,7 +1,7 @@
 package com.github.teachingai.ollama.audio.speech;
 
 
-import com.github.teachingai.ollama.audio.ChatTtsAudioSpeechResponseMetadata;
+import com.github.teachingai.ollama.metadata.audio.EmotiVoiceAudioSpeechResponseMetadata;
 import org.springframework.ai.model.ModelResponse;
 
 import java.util.Collections;
@@ -17,7 +17,7 @@ public class SpeechResponse implements ModelResponse<Speech> {
 
     private final Speech speech;
 
-    private final ChatTtsAudioSpeechResponseMetadata speechResponseMetadata;
+    private final EmotiVoiceAudioSpeechResponseMetadata speechResponseMetadata;
 
     /**
      * Creates a new instance of SpeechResponse with the given speech result.
@@ -25,7 +25,7 @@ public class SpeechResponse implements ModelResponse<Speech> {
      * @see Speech
      */
     public SpeechResponse(Speech speech) {
-        this(speech, ChatTtsAudioSpeechResponseMetadata.NULL);
+        this(speech, EmotiVoiceAudioSpeechResponseMetadata.NULL);
     }
 
     /**
@@ -35,9 +35,9 @@ public class SpeechResponse implements ModelResponse<Speech> {
      * @param speechResponseMetadata the speech response metadata to be set in the
      * SpeechResponse
      * @see Speech
-     * @see ChatTtsAudioSpeechResponseMetadata
+     * @see EmotiVoiceAudioSpeechResponseMetadata
      */
-    public SpeechResponse(Speech speech, ChatTtsAudioSpeechResponseMetadata speechResponseMetadata) {
+    public SpeechResponse(Speech speech, EmotiVoiceAudioSpeechResponseMetadata speechResponseMetadata) {
         this.speech = speech;
         this.speechResponseMetadata = speechResponseMetadata;
     }
@@ -53,7 +53,7 @@ public class SpeechResponse implements ModelResponse<Speech> {
     }
 
     @Override
-    public ChatTtsAudioSpeechResponseMetadata getMetadata() {
+    public EmotiVoiceAudioSpeechResponseMetadata getMetadata() {
         return speechResponseMetadata;
     }
 

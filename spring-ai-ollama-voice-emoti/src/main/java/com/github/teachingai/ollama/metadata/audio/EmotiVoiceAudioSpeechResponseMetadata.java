@@ -1,7 +1,7 @@
-package com.github.teachingai.ollama.audio;
+package com.github.teachingai.ollama.metadata.audio;
 
 
-import com.github.teachingai.ollama.api.EmotiVoiceApi;
+import com.github.teachingai.ollama.api.EmotiVoiceAudioApi;
 import org.springframework.ai.chat.metadata.EmptyRateLimit;
 import org.springframework.ai.chat.metadata.RateLimit;
 import org.springframework.ai.model.ResponseMetadata;
@@ -14,33 +14,33 @@ import org.springframework.util.Assert;
  * @author Ahmed Yousri
  * @see RateLimit
  */
-public class ChatTtsAudioSpeechResponseMetadata implements ResponseMetadata {
+public class EmotiVoiceAudioSpeechResponseMetadata implements ResponseMetadata {
 
     protected static final String AI_METADATA_STRING = "{ @type: %1$s, requestsLimit: %2$s }";
 
-    public static final ChatTtsAudioSpeechResponseMetadata NULL = new ChatTtsAudioSpeechResponseMetadata() {
+    public static final EmotiVoiceAudioSpeechResponseMetadata NULL = new EmotiVoiceAudioSpeechResponseMetadata() {
     };
 
-    public static ChatTtsAudioSpeechResponseMetadata from(EmotiVoiceApi.StructuredResponse result) {
+    public static EmotiVoiceAudioSpeechResponseMetadata from(EmotiVoiceAudioApi.StructuredResponse result) {
         Assert.notNull(result, "ChatTTS speech must not be null");
-        ChatTtsAudioSpeechResponseMetadata speechResponseMetadata = new ChatTtsAudioSpeechResponseMetadata();
+        EmotiVoiceAudioSpeechResponseMetadata speechResponseMetadata = new EmotiVoiceAudioSpeechResponseMetadata();
         return speechResponseMetadata;
     }
 
-    public static ChatTtsAudioSpeechResponseMetadata from(String result) {
+    public static EmotiVoiceAudioSpeechResponseMetadata from(String result) {
         Assert.notNull(result, "ChatTTS speech must not be null");
-        ChatTtsAudioSpeechResponseMetadata speechResponseMetadata = new ChatTtsAudioSpeechResponseMetadata();
+        EmotiVoiceAudioSpeechResponseMetadata speechResponseMetadata = new EmotiVoiceAudioSpeechResponseMetadata();
         return speechResponseMetadata;
     }
 
     @Nullable
     private RateLimit rateLimit;
 
-    public ChatTtsAudioSpeechResponseMetadata() {
+    public EmotiVoiceAudioSpeechResponseMetadata() {
         this(null);
     }
 
-    public ChatTtsAudioSpeechResponseMetadata(@Nullable RateLimit rateLimit) {
+    public EmotiVoiceAudioSpeechResponseMetadata(@Nullable RateLimit rateLimit) {
         this.rateLimit = rateLimit;
     }
 
@@ -50,7 +50,7 @@ public class ChatTtsAudioSpeechResponseMetadata implements ResponseMetadata {
         return rateLimit != null ? rateLimit : new EmptyRateLimit();
     }
 
-    public ChatTtsAudioSpeechResponseMetadata withRateLimit(RateLimit rateLimit) {
+    public EmotiVoiceAudioSpeechResponseMetadata withRateLimit(RateLimit rateLimit) {
         this.rateLimit = rateLimit;
         return this;
     }
