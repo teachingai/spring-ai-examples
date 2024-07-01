@@ -29,6 +29,7 @@
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
         <module>spring-ai-bedrockai</module>
+        <module>spring-ai-coze</module>
         <module>spring-ai-huaweiai-gallery</module>
         <module>spring-ai-huaweiai-pangu</module>
         <module>spring-ai-huggingface</module>
