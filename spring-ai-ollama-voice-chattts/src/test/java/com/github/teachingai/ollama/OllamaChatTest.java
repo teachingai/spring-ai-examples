@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.concurrent.CompletableFuture;
 
 public class OllamaChatTest {
 
@@ -30,7 +31,7 @@ public class OllamaChatTest {
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen:7b")
+                .withModel("qwen2:1.5b")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new ChatTtsAudioApi();
@@ -64,11 +65,12 @@ public class OllamaChatTest {
             String resp = chatResponse.getResult().getOutput().getContent();
             System.out.println("<<< " + resp);
             try {
-                System.out.print(">>> 开始生成音频...");
+                System.out.println(">>> 生成音频中...");
                 InputStream stream = chatTtsClient.call(MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp)));
-                System.out.println("音频生成完成");
                 if(Objects.nonNull(stream)){
+                    System.out.println("<<< 音频开始播放...");
                     playWav(stream);
+                    System.out.println(">>> 音频播放完");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
