@@ -31,7 +31,7 @@ public class OllamaEmbeddingTest4 {
          */
         var ollamaApi = new OllamaApi();
         var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("gemma:7b"));
+                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
         /**
          * 1、简单的文本嵌入
          */
