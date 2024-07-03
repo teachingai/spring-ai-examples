@@ -31,6 +31,7 @@
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
         <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-ollama-voice-edgetts" />
         <module name="spring-ai-ollama-rag-qdrant" />
         <module name="spring-ai-ollama-voice-assistant" />
         <module name="spring-ai-ollama-rag-weaviate" />
@@ -144,6 +145,7 @@
       <module name="spring-ai-ollama-store-weaviate" options="-parameters" />
       <module name="spring-ai-ollama-voice-assistant" options="-parameters" />
       <module name="spring-ai-ollama-voice-chattts" options="-parameters" />
+      <module name="spring-ai-ollama-voice-edgetts" options="-parameters" />
       <module name="spring-ai-ollama-voice-emoti" options="-parameters" />
       <module name="spring-ai-ollama-voice-whisper" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />

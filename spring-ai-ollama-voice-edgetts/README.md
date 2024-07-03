@@ -1,19 +1,19 @@
-## spring-ai-ollama-voice-chattts
+## spring-ai-ollama-voice-edgetts
 
-> 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html)、[Ollama](https://ollama.com/) 和 [ChatTTS](https://chattts.com/) 的 Text-To-Speech (TTS) 功能示例。
+> 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html)、[Ollama](https://ollama.com/) 和 [Edge-TTS](https://github.com/rany2/edge-tts) 的 Text-To-Speech (TTS) 功能示例。
 
-整合 ChatTTS 与 本地 Ollama 服务器并输出 Text-To-Speech (TTS) 音频响应
+整合 Edge-TTS 与 本地 Ollama 服务器并输出 Text-To-Speech (TTS) 音频响应
 
 下面是离线模式下2种工具的简单组合：
 
 - 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
-- 文本转语音：在离线模式下运行 [ChatTTS](https://github.com/2noise/ChatTTS) 本地模型
+- 文本转语音：在离线模式下运行 [Edge-TTS](https://github.com/rany2/edge-tts) 本地模型
 
 ### 先决条件
 
 您首先需要在本地计算机上运行 Ollama。请参阅官方 [Ollama 项目自述文件](https://github.com/ollama/ollama "Ollama 项目自述文件")，开始在本地计算机上运行模型。
 
-ChatTTS 不提供API功能，还需要再本地计算机上运行 ChatTTS-ui，请参阅官方 [ChatTTS-ui](https://github.com/jianchang512/ChatTTS-ui) 项目进行调用。
+Edge-TTS 不提供API功能，需要安装 Python 环境 和 Edge-TTS 模块，请参阅官方 [Edge-TTS](https://github.com/rany2/edge-tts) 项目进行调用。
 
 #### 添加存储库和 BOM
 
@@ -91,30 +91,66 @@ ollama run llama3:70b-text
 
 ### Text-To-Speech (TTS)
 
-#### ChatTTS
+#### Edge-TTS
 
-> ChatTTS 是专为对话场景设计的语音生成模型，专门用于大型语言模型 (LLM) 助手的对话任务，以及对话式音频和视频介绍等应用。它支持中英文，通过使用约 10 万小时的中英文数据进行训练，ChatTTS 在语音合成方面表现出很高的质量和自然度。
+> **Edge-TTS** 是由微软推出的文本转语音Python库，通过微软 `Azure Cognitive Services` 转化文本为自然语音。适合需要语音功能的开发者，GitHub上超3000星。作为国内付费TTS服务的替代品，Edge-TTS支持40多种语言和300种声音，提供优质的语音输出，满足不同开发需求。
 
-- Hugging Face：https://huggingface.co/2Noise/ChatTTS
-- GitHub：https://github.com/2noise/ChatTTS
+- GitHub：https://github.com/rany2/edge-tts
 
-#### ChatTTS webUI & API
+##### 安装部署
 
-> 一个简单的本地网页界面，在网页使用 ChatTTS 将文字合成为语音，支持中英文、数字混杂，并提供API接口。
+首先，安装 Edge-TTS 库：
 
-界面预览
+```shell
+pip install edge-tts
+```
 
-![](./ChatTTS-ui.png)
+使用 `edge-tts -h` 命令查看使用帮助：
 
-- GitHub：https://github.com/jianchang512/ChatTTS-ui
+```shell
+PS C:\Windows\system32> edge-tts -h
+usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE] [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA] [--write-subtitles WRITE_SUBTITLES]
+                [--proxy PROXY]
 
-请参考 [ChatTTS](https://github.com/2noise/ChatTTS) 项目的 `README.md` 文件，在本地计算机上运行文本转语音模型。
+Microsoft Edge TTS
 
-### Spring AI + ChatTTS Audio Speech 功能扩展
+options:
+  -h, --help            show this help message and exit
+  -t TEXT, --text TEXT  what TTS will say
+  -f FILE, --file FILE  same as --text but read from file
+  -v VOICE, --voice VOICE
+                        voice for TTS. Default: en-US-AriaNeural
+  -l, --list-voices     lists available voices and exits
+  --rate RATE           set TTS rate. Default +0%.
+  --volume VOLUME       set TTS volume. Default +0%.
+  --pitch PITCH         set TTS pitch. Default +0Hz.
+  --words-in-cue WORDS_IN_CUE
+                        number of words in a subtitle cue. Default: 10.
+  --write-media WRITE_MEDIA
+                        send media output to file instead of stdout
+  --write-subtitles WRITE_SUBTITLES
+                        send subtitle output to provided file instead of stderr
+  --proxy PROXY         use a proxy for TTS and voice list.
+```
 
-> Spring AI 并未提供 `Ollama` 整合 `ChatTTS` 文本转语音模型实现将对话内容转语音的能力，为了实验这块的能力，这里扩展了 Spring AI 对 [ChatTTS](https://github.com/2noise/ChatTTS) 的支持，以实现后面的边对话边转语音的功能 。
+然后，进行简单的测试：
 
-- ChatTtsAudioApi 实现了 `ChatTTS` 的 `API` 接口，用于将对话内容转为语音。
+```shell
+edge-tts --text "hello world" --write-media  E:/hello.mp3
+```
+
+添加参数后再次测试，使用 `zh-CN-XiaoyiNeural` 语音：
+
+```shell
+edge-tts --voice "zh-CN-XiaoyiNeural" --text "你好，有什么可以帮助你的吗?" --write-media E:/hello2.mp3
+```
+
+### Spring AI + Edge-TTS Audio Speech 功能扩展
+
+> Spring AI 并未提供 `Ollama` 整合 `Edge-TTS` 文本转语音模型实现将对话内容转语音的能力，为了实验这块的能力，这里扩展了 Spring AI 对  [Edge-TTS](https://github.com/rany2/edge-tts) 的支持，以实现后面的边对话边转语音的功能 。
+
+- EdgeTtsNativeAudioApi 实现了 通过 Java 调用 `Edge-TTS` 命令的方式，将对话内容转为语音。
 
 ```java
 public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) {
@@ -131,16 +167,28 @@ public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) 
     }
 ```
 
+- EdgeTtsAudioApi 实现了 `Edge-TTS` 的 `API` 接口，用于将对话内容转为语音。
 
+```java
+public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) {
 
-### 参考项目：
+        Assert.notNull(speechRequest, "The request body can not be null.");
+        Assert.isTrue(speechRequest.stream() == 0, "Request must set the steam property to 0.");
+        MultiValueMap body = ApiUtils.toMultiValueMap(speechRequest);
+        return this.restClient.post()
+                .uri("/tts")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(body)
+                .retrieve()
+                .toEntity(SpeechResponse.class);
+    }
+```
 
-- https://github.com/hkgood/Ollama_ChatTTS 
-- https://github.com/maudoin/ollama-voice
-- https://github.com/coqui-ai/tts
-- https://github.com/lucataco/cog-xtts-v2
+### 相关项目：
 
-
+- https://github.com/lyz1810/edge-tts
+- https://github.com/WhiteMagic2014/tts-edge-java
+- https://github.com/bravekingzhang/text2video
 - Java Audio Stack: https://github.com/bowbahdoe/java-audio-stack
 
 ```xml

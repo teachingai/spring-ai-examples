@@ -1,27 +1,22 @@
 package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.ApiUtils;
-import com.github.teachingai.ollama.api.ChatTtsAudioApi;
-import javazoom.jl.player.Player;
+import com.github.teachingai.ollama.api.EdgeTtsNativeAudioApi;
 import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatClient;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
-import javax.sound.sampled.*;
-import java.io.*;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.concurrent.CompletableFuture;
 
-public class OllamaChatTest {
+public class OllamaChatNativeTest {
 
     public static void main(String[] args) {
 
@@ -34,20 +29,9 @@ public class OllamaChatTest {
                 .withModel("qwen2:1.5b")
                 .withTemperature(0.9f));
 
-        var chatTtsApi = new ChatTtsAudioApi();
-        var chatTtsClient = new ChatTtsAudioSpeechClient(chatTtsApi, ChatTtsAudioSpeechOptions.builder()
-                .withPrompt("[oral_2][laugh_0][break_6]")
-                .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
-                .withTopP(ApiUtils.DEFAULT_TOP_P)
-                .withTopK(ApiUtils.DEFAULT_TOP_K)
-                .withMaxInferTokens(ApiUtils.DEFAULT_MAX_INFER_TOKENS)
-                .withMaxRefineTokens(ApiUtils.DEFAULT_MAX_REFINE_TOKENS)
-                .withSpeed(ApiUtils.DEFAULT_SPEED)
-                .withTextSeed(ApiUtils.DEFAULT_TEXT_SEED)
-                .withCustomVoice(0)
-                .withSkipRefine(0)
-                .withStream(0)
-                .withVoice(ChatTtsAudioApi.SpeechRequest.Voice.VOICE_SEED_1983_RESTORED_EMB.getValue())
+        var chatTtsApi = new EdgeTtsNativeAudioApi();
+        var chatTtsClient = new EdgeTtsNativeAudioSpeechClient(chatTtsApi, EdgeTtsAudioSpeechOptions.builder()
+                .withVoice(ApiUtils.DEFAULT_VOICE)
                 .build());
 
         Scanner scanner = new Scanner(System.in);
