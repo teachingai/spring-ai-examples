@@ -169,6 +169,10 @@ public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) 
 
 - EdgeTtsAudioApi 实现了 `Edge-TTS` 的 `API` 接口，用于将对话内容转为语音。
 
+https://www.bilibili.com/read/cv34776791/
+https://azure.microsoft.com/zh-cn/products/ai-services/text-to-speech/
+
+
 ```java
 public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) {
 

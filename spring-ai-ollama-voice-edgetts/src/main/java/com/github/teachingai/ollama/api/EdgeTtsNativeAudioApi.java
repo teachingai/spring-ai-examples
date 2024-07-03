@@ -1,22 +1,21 @@
 package com.github.teachingai.ollama.api;
 
-import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.github.whitemagic2014.tts.TTS;
+import io.github.whitemagic2014.tts.TTSVoice;
+import io.github.whitemagic2014.tts.bean.Voice;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.ExecuteResultHandler;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
-import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class EdgeTtsNativeAudioApi {
@@ -74,6 +73,21 @@ public class EdgeTtsNativeAudioApi {
         Assert.notNull(speechRequest, "The request body can not be null.");
         Assert.notNull(speechRequest.text(), "The request.text can not be null.");
         Assert.notNull(speechRequest.output(), "The request.output can not be null.");
+
+        // Voice can be found in file "voicesList.json"
+        Voice voice = TTSVoice.provides().stream().filter(v -> v.getShortName().equals("zh-CN-XiaoyiNeural")).collect(Collectors.toList()).get(0);
+        String content = "你好，有什么可以帮助你的吗";
+        String fileName = new TTS(voice, content).storage()
+                .fileName("file name")// You can customize the file name; if omitted, a random file name will be generated.
+//                .formatMp3()  // default mp3.
+//                .formatOpus() // or opus
+//                .voicePitch()
+//                .voiceRate()
+//                .voiceVolume()
+//                .storage()  // the output file storage ,default is ./storage
+                .trans();
+        // you can find the voice file in storage folder
+
 
         /*
         usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
