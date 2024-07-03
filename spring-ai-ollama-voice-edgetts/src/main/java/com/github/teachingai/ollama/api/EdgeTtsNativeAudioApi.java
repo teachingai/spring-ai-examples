@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.ExecuteException;
-import org.apache.commons.exec.ExecuteResultHandler;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -17,17 +15,6 @@ import java.util.UUID;
 public class EdgeTtsNativeAudioApi {
 
     protected static DefaultExecutor executor = new DefaultExecutor();
-    protected static ExecuteResultHandler DEFAULT_RESULT_HANDLER = new ExecuteResultHandler() {
-        @Override
-        public void onProcessComplete(int exitValue) {
-            System.out.println("音频转换成功!");
-        }
-
-        @Override
-        public void onProcessFailed(ExecuteException e) {
-
-        }
-    };
 
     /**
      * Request to generates audio from the input text.
@@ -110,8 +97,7 @@ public class EdgeTtsNativeAudioApi {
         String cmd = cmdLine.getExecutable() + " " + String.join(" ", cmdLine.getArguments());
         SpeechResponse speechResponse;
         try {
-            // 执行命令
-            executor.execute(cmdLine, DEFAULT_RESULT_HANDLER);
+            executor.execute(cmdLine);
             speechResponse = new SpeechResponse(0, "Success", filename);
         } catch (Exception e) {
             speechResponse = new SpeechResponse(1, "Failed", null);

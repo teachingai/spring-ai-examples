@@ -2,7 +2,6 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.ApiUtils;
 import com.github.teachingai.ollama.api.ChatTtsAudioApi;
-import javazoom.jl.player.Player;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
@@ -14,12 +13,12 @@ import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
 import javax.sound.sampled.*;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.concurrent.CompletableFuture;
 
 public class OllamaChatTest {
 
@@ -27,13 +26,11 @@ public class OllamaChatTest {
 
         /**
          * qwen2:7b ：https://ollama.com/library/qwen2
-         * gemma2 ：https://ollama.com/library/gemma2
-         * llama3 ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:1.5b")
+                .withModel("qwen:7b")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new ChatTtsAudioApi();
@@ -67,12 +64,11 @@ public class OllamaChatTest {
             String resp = chatResponse.getResult().getOutput().getContent();
             System.out.println("<<< " + resp);
             try {
-                System.out.println(">>> 生成音频中...");
+                System.out.print(">>> 开始生成音频...");
                 InputStream stream = chatTtsClient.call(MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp)));
+                System.out.println("音频生成完成");
                 if(Objects.nonNull(stream)){
-                    System.out.println("<<< 音频开始播放...");
-                    AudioPlayer.playWav(stream);
-                    System.out.println(">>> 音频播放完");
+                    playWav(stream);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -80,5 +76,31 @@ public class OllamaChatTest {
         }
     }
 
+    public static void playWav(InputStream wavStream) {
+        try {
+            Clip clip = AudioSystem.getClip();
+            AudioFormat format = clip.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, format);
+            // Wrap the InputStream in a BufferedInputStream
+            try (BufferedInputStream bufferedStream = new BufferedInputStream(wavStream);
+                 AudioInputStream ais = AudioSystem.getAudioInputStream(bufferedStream)){
+
+                bufferedStream.mark(wavStream.available());
+
+                clip = (Clip) AudioSystem.getLine(info);
+                clip.open(ais);
+
+                clip.start();
+                Thread.sleep(clip.getMicrosecondLength()/1808);
+                clip.drain();
+                clip.stop();
+            } finally {
+                clip.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

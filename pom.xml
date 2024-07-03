@@ -57,6 +57,7 @@
         <module>spring-ai-ollama-voice-chattts</module>
         <module>spring-ai-ollama-voice-edgetts</module>
         <module>spring-ai-ollama-voice-emoti</module>
+        <module>spring-ai-ollama-voice-mars5tts</module>
         <module>spring-ai-ollama-voice-whisper</module>
         <module>spring-ai-ollama-voice-assistant</module>
         <module>spring-ai-ollama-langfuse</module>

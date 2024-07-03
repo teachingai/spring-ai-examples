@@ -30,6 +30,7 @@
         <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-rag-mongodb" />
+        <module name="spring-ai-ollama-voice-mars5tts" />
         <module name="spring-ai-vertexai-gemini" />
         <module name="spring-ai-ollama-voice-edgetts" />
         <module name="spring-ai-ollama-rag-qdrant" />
@@ -147,6 +148,7 @@
       <module name="spring-ai-ollama-voice-chattts" options="-parameters" />
       <module name="spring-ai-ollama-voice-edgetts" options="-parameters" />
       <module name="spring-ai-ollama-voice-emoti" options="-parameters" />
+      <module name="spring-ai-ollama-voice-mars5tts" options="-parameters" />
       <module name="spring-ai-ollama-voice-whisper" options="-parameters" />
       <module name="spring-ai-openai" options="-parameters" />
       <module name="spring-ai-qianfan" options="-parameters" />

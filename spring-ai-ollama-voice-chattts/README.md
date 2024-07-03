@@ -89,6 +89,23 @@ ollama run llama3:70b-text
 
 - 文档地址：https://ollama.com/library/llama3
 
+
+#### Google Gemma 2
+
+> Google 的 Gemma 2 型号有两种尺寸：9B 和 27B，采用全新的架构设计，可实现一流的性能和效率。
+
+##### 一流的性能
+
+Gemma 2 拥有 270 亿个参数，其性能在基准测试中超越了比其规模大两倍的模型。这一突破性的效率为开放模型领域树立了新标准。
+
+##### 两种尺寸：9B 和 27B 参数
+
+- 9B 参数：`ollama run gemma2`
+- 27B 参数：`ollama run gemma2:27b`
+
+- 文档地址：https://ollama.com/library/gemma2
+
+
 ### Text-To-Speech (TTS)
 
 #### ChatTTS

@@ -22,16 +22,19 @@ public class OllamaChatNativeTest {
 
         /**
          * qwen2:7b ：https://ollama.com/library/qwen2
+         * gemma2 ：https://ollama.com/library/gemma2
+         * llama3 ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:1.5b")
+                .withModel("gemma2")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new EdgeTtsNativeAudioApi();
         var chatTtsClient = new EdgeTtsNativeAudioSpeechClient(chatTtsApi, EdgeTtsAudioSpeechOptions.builder()
                 .withVoice(ApiUtils.DEFAULT_VOICE)
+                .withOutput("E://edge-tts")
                 .build());
 
         Scanner scanner = new Scanner(System.in);
@@ -53,7 +56,7 @@ public class OllamaChatNativeTest {
                 InputStream stream = chatTtsClient.call(MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp)));
                 if(Objects.nonNull(stream)){
                     System.out.println("<<< 音频开始播放...");
-                    AudioPlayer.playWav(stream);
+                    AudioPlayer.playMP3(stream);
                     System.out.println(">>> 音频播放完");
                 }
             } catch (Exception e) {

@@ -20,6 +20,16 @@ public class AudioPlayer {
         }
     }
 
+    public static void playMP3(InputStream stream) {
+        try (InputStream fis = stream) {
+            Player player = new Player(fis);
+            player.play();
+        } catch (IOException | JavaLayerException e) {
+            System.out.println("Error ：" + e.getMessage());
+        }
+    }
+
+
     public static void playWav(InputStream wavStream) {
         try {
             Clip clip = AudioSystem.getClip();

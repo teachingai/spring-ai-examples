@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/spring-ai-ollama-function-calling/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-ai-ollama-voice-mars5tts/pom.xml" />
       </list>
     </option>
   </component>
