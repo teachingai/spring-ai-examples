@@ -34,7 +34,7 @@ public class ApiUtils {
         };
     };
 
-    public static MultiValueMap toMultiValueMap(EdgeTtsNativeAudioApi.SpeechRequest speechRequest) {
+    public static MultiValueMap toMultiValueMap(EdgeTtsAudioApi.SpeechRequest speechRequest) {
 
         MultiValueMap map = new LinkedMultiValueMap();
         map.add("text", speechRequest.text());
