@@ -64,23 +64,21 @@ public class EdgeTtsNativeAudioApi {
                 [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
          */
         CommandLine cmdLine = new CommandLine("edge-tts");
-        // 使用 --voice 参数指定选择的语音
-        if (StringUtils.hasText(speechRequest.voice())) {
-            cmdLine.addArgument("--voice").addArgument(speechRequest.voice());
-        }
         // 使用 --rate 参数指定语速
         if (StringUtils.hasText(speechRequest.rate())) {
-            cmdLine.addArgument("--rate").addArgument(speechRequest.rate());
+            cmdLine.addArgument("--rate=" + speechRequest.rate());
         }
         // 使用 --volume 参数指定音量
         if (StringUtils.hasText(speechRequest.volume())) {
-            cmdLine.addArgument("--volume");
-            cmdLine.addArgument(String.format("\"%s\"", speechRequest.volume()));
+            cmdLine.addArgument("--volume=" + speechRequest.volume());
         }
         // 使用 --pitch 参数指定频率
         if (StringUtils.hasText(speechRequest.pitch())) {
-            cmdLine.addArgument("--pitch");
-            cmdLine.addArgument(speechRequest.pitch());
+            cmdLine.addArgument("--pitch=" + speechRequest.pitch());
+        }
+        // 使用 --voice 参数指定选择的语音
+        if (StringUtils.hasText(speechRequest.voice())) {
+            cmdLine.addArgument("--voice").addArgument(speechRequest.voice());
         }
         // 使用 --text 参数指定需要转换的文本
         cmdLine.addArgument("--text").addArgument(speechRequest.text());

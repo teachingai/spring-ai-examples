@@ -28,12 +28,19 @@ public class OllamaChatNativeTest {
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:7b")
+                .withModel("qwen2:1.5b")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new EdgeTtsNativeAudioApi();
         var chatTtsClient = new EdgeTtsNativeAudioSpeechClient(chatTtsApi, EdgeTtsAudioSpeechOptions.builder()
-                .withVoice(ApiUtils.DEFAULT_VOICE)
+                // `edge-tts -l` 查看可用的声音，
+                // 普通话-男：zh-CN-YunyangNeural
+                // 普通话-女：zh-CN-XiaoxiaoNeural、zh-CN-XiaoyiNeural
+                // 辽宁方言-女：zh-CN-liaoning-XiaobeiNeural
+                // 陕西方言-女：zh-CN-shaanxi-XiaoniNeural
+                .withVoice("zh-CN-YunyangNeural")
+                .withRate("-10%")
+                .withVolume("+50%")
                 .withOutput("E://edge-tts")
                 .build());
 
