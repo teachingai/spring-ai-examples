@@ -28,7 +28,7 @@ public class OllamaChatNativeTest {
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:7b")
+                .withModel("llama3-13b-chinese:12b")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new EdgeTtsNativeAudioApi();

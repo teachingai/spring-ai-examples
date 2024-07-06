@@ -39,12 +39,17 @@ spring-ai-ollama-embedding
 
 > Qwen2 是阿里巴巴集团推出的全新系列大型语言模型。<br/>
 Qwen2基于29 种语言的数据进行训练，包括英语和中文。
+
 它有 4 种参数大小：0.5B、1.5B、7B、72B。
 在 7B 和 72B 模型中，上下文长度已扩展至128k 个 token。
 
-![](/models.png)
-
-通过文档，我们可以可知 `qwen2:0.5b` 和 `qwen2:1.5b` 模型支持 Embedding 。
+| Models       | Qwen2-0.5B | Qwen2-1.5B | Qwen2-7B | Qwen2-72B |
+|--------------|------------|------------|----------|-----------|
+| Params       | 0.49B      | 1.54B      | 7.07B    | 72.71B    |
+| Non-Emb Params | 0.35B    | 1.31B      | 5.98B    | 70.21B    |
+| GQA          | True       | True       | True     | True      |
+| Tie Embedding | True      | True       | False    | False     |
+| Context Length | 32K      | 32K        | 128K     | 128K      |
 
 文档地址：https://ollama.com/library/qwen2
 
@@ -83,6 +88,7 @@ ollama pull mxbai-embed-large
 ```shell
 ollama pull nomic-embed-text
 ```
+
 #### snowflake-arctic-embed
 
 > snowflake-arctic-embed 是一套文本嵌入模型，专注于创建针对性能优化的高质量检索模型。
@@ -101,6 +107,29 @@ ollama pull nomic-embed-text
 
 ```shell
 ollama pull snowflake-arctic-embed
+```
+
+#### shaw/dmeta-embedding-zh
+
+> Dmeta-embedding 是一款跨领域、跨任务、开箱即用的中文 Embedding 模型，适用于搜索、问答、智能客服、LLM+RAG 等各种业务场景，支持使用 Transformers/Sentence-Transformers/Langchain 等工具加载推理。
+
+- Huggingface：https://huggingface.co/DMetaSoul/Dmeta-embedding-zh
+- 文档地址：https://ollama.com/shaw/dmeta-embedding-zh
+
+优势特点如下：
+
+- 多任务、场景泛化性能优异，目前已取得 MTEB 中文榜单第二成绩（2024.01.25）
+- 模型参数大小仅 400MB，对比参数量超过 GB 级模型，可以极大降低推理成本
+- 支持上下文窗口长度达到 1024，对于长文本检索、RAG 等场景更适配
+该模型有 4 个不通的版本：
+
+- [dmeta-embedding-zh](https://ollama.com/shaw/dmeta-embedding-zh)：`shaw/dmeta-embedding-zh` 是一个参数量只有400M、适用于多种场景的中文Embedding模型，在MTEB基准上取得了优异成绩，尤其适合语义检索、RAG等LLM应用。
+- [dmeta-embedding-zh-q4](https://ollama.com/shaw/dmeta-embedding-zh-q4)：`shaw/dmeta-embedding-zh` 的 Q4_K_M 量化版本
+- [dmeta-embedding-zh-small](https://ollama.com/shaw/dmeta-embedding-zh-small)：`shaw/dmeta-embedding-zh-small` 是比 `shaw/dmeta-embedding-zh` 更轻量化的模型，参数不足300M，推理速度提升30%。
+- [dmeta-embedding-zh-small-q4](https://ollama.com/shaw/dmeta-embedding-zh-small-q4)：`shaw/dmeta-embedding-zh-small` 的 Q4_K_M 量化版本
+
+```shell 
+ollama pull shaw/dmeta-embedding-zh
 ```
 
 ### Embedding 示例 1：PDF 解析
