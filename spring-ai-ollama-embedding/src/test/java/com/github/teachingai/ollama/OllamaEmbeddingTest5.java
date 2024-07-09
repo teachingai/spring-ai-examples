@@ -26,16 +26,14 @@ public class OllamaEmbeddingTest5 {
     public static void main(String[] args) {
 
         /**
-         * qwen2:7b ：https://ollama.com/library/qwen2
-         * gemma2:9b ：https://ollama.com/library/gemma2
-         * llama3:8b ：https://ollama.com/library/llama3
          * mxbai-embed-large ：https://ollama.com/library/mxbai-embed-large
          * nomic-embed-text ：https://ollama.com/library/nomic-embed-text
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
+         * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
         var ollamaApi = new OllamaApi();
         var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("gemma2"));
+                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
 
         /**
          * 1、解析 llama2.pdf

@@ -12,6 +12,9 @@ public class OllamaChatTest {
 
         /**
          * qwen2:7b ：https://ollama.com/library/qwen2
+         * gemma2:9b ：https://ollama.com/library/gemma2
+         * glm4:9b ：https://ollama.com/library/glm4
+         * llama3:8b ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();

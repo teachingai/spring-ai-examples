@@ -23,8 +23,6 @@ public class OllamaEmbeddingTest4 {
     public static void main(String[] args) {
 
         /**
-         * qwen2:7b ：https://ollama.com/library/qwen2
-         * gemma:7b ：https://ollama.com/library/gemma
          * mxbai-embed-large ：https://ollama.com/library/mxbai-embed-large
          * nomic-embed-text ：https://ollama.com/library/nomic-embed-text
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed

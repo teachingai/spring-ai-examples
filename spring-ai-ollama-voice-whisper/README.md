@@ -11,10 +11,6 @@
 - 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
 - 语音识别：在离线模式下运行 [Whisper](https://github.com/openai/whisper) 本地模型
 
-xtts_v2(include voice cloning)
-Or EmotiVoice(rom NetEase)
-
-
 ### 先决条件
 
 您首先需要在本地计算机上运行 Ollama。请参阅官方 [Ollama 项目自述文件](https://github.com/ollama/ollama "Ollama 项目自述文件")，开始在本地计算机上运行模型。
