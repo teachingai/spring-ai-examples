@@ -39,6 +39,7 @@
         <module>spring-ai-moonshotai</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama</module>
+        <module>spring-ai-ollama-local-model</module>
         <module>spring-ai-ollama-prompt</module>
         <module>spring-ai-ollama-function-calling</module>
         <module>spring-ai-ollama-embedding</module>

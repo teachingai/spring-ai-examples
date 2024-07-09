@@ -28,10 +28,11 @@ public class OllamaEmbeddingTest4 {
          * mxbai-embed-large ：https://ollama.com/library/mxbai-embed-large
          * nomic-embed-text ：https://ollama.com/library/nomic-embed-text
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
+         * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
         var ollamaApi = new OllamaApi();
         var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
+                .withDefaultOptions(OllamaOptions.create().withModel("shaw/dmeta-embedding-zh"));
         /**
          * 1、简单的文本嵌入
          */
@@ -55,11 +56,12 @@ public class OllamaEmbeddingTest4 {
             }
             System.out.print("Embedding Query: " + embeddingClient.embed(query));
             // Retrieve embeddings
-            SearchRequest request = SearchRequest.query(query).withTopK(1).withSimilarityThreshold(0.6);
+            SearchRequest request = SearchRequest.query(query).withTopK(4).withSimilarityThreshold(0.4);
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);
             System.out.println("查询结果: ");
             for (Document document : similarDocuments ) {
-                System.out.println( JSONObject.of( "id", document.getId(), "content", document.getContent(), "embedding", document.getEmbedding(),"metadata", document.getMetadata()));
+                document.getMetadata().put("similarity", document.getMetadata().get("similarity"));
+                System.out.println( JSONObject.of( "id", document.getId(), "content", document.getContent(),"metadata", document.getMetadata(), "embedding", document.getEmbedding()));
             }
         }
     }

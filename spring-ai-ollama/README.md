@@ -233,11 +233,16 @@ Flux<ChatResponse> streamingResponse = ollamaApi.streamingChat(request2);
 
 > Qwen2 是阿里巴巴集团推出的全新系列大型语言模型。<br/>
 Qwen2基于29 种语言的数据进行训练，包括英语和中文。
+
+**注意**: 安装 `ollama run qwen2` 将下载一个 4.4GB 的 docker 镜像。
+
 它有 4 种参数大小：0.5B、1.5B、7B、72B。
 在 7B 和 72B 模型中，上下文长度已扩展至128k 个 token。
 
-- 文档地址：https://ollama.com/library/qwen2
-
-![](/models.png)
-
-通过文档，我们可以可知 `qwen2:0.5b` 和 `qwen2:1.5b` 模型支持 Embedding 。
+| Models       | Qwen2-0.5B | Qwen2-1.5B | Qwen2-7B | Qwen2-72B |
+|--------------|------------|------------|----------|-----------|
+| Params       | 0.49B      | 1.54B      | 7.07B    | 72.71B    |
+| Non-Emb Params | 0.35B    | 1.31B      | 5.98B    | 70.21B    |
+| GQA          | True       | True       | True     | True      |
+| Tie Embedding | True      | True       | False    | False     |
+| Context Length | 32K      | 32K        | 128K     | 128K      |
