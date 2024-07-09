@@ -315,3 +315,18 @@ Gemma 2 拥有 270 亿个参数，其性能在基准测试中超越了比其规�
 ```shell
 ollama run glm4
 ```
+
+#### Google Gemma
+
+> Gemma 是 Google 及其 DeepMind 团队开发的一种新开放模型。其灵感来自 Google 的 Gemini 模型。
+
+Gemma 有两种2b尺寸7b：
+
+- `ollama run gemma:2b`
+- `ollama run gemma:7b`（默认）
+
+文档地址：https://ollama.com/library/gemma
+
+```shell
+ollama run gemma:2b
+```
