@@ -4,30 +4,44 @@
 
 > 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html) 和 [Ollama](https://ollama.com/) 的 Function calling 功能示例。
 
-### 知识点
+### 先决条件
 
-- Function Calling 原理
-- Ollama 支持的 Function Calling 模型
+您首先需要在本地计算机上运行 Ollama。请参阅官方 [Ollama 项目自述文件](https://github.com/ollama/ollama "Ollama 项目自述文件")，开始在本地计算机上运行模型。
 
-### 项目结构
+#### 添加存储库和 BOM
 
+Spring AI 工件发布在 `Spring Milestone` 和 `Snapshot` 存储库中。请参阅存储库部分将这些存储库添加到您的构建系统中。
+
+为了帮助进行依赖管理，Spring AI 提供了 BOM（物料清单），以确保在整个项目中使用一致的 Spring AI 版本。请参阅[依赖管理](https://docs.spring.io/spring-ai/reference/getting-started.html#dependency-management "依赖管理")部分将 Spring AI BOM 添加到您的构建系统。
+
+#### 自动配置
+
+Spring AI 为 Ollama 聊天客户端提供 Spring Boot 自动配置。要启用它，请将以下依赖项添加到项目的 Maven `pom.xml` 文件中：
+
+```xml
+<dependency>
+   <groupId>io.springboot.ai</groupId>
+   <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+</dependency>
 ```
-spring-ai-ollama-function-calling
-├── src/main/java/com/github/teachingai/ollama
-│   ├── controller
-│   │   └── ChatController.java
-│   ├── model
-│   │   └── ChatRequest.java
-│   └── service
-│       └── ChatService.java
-├── src/main/resources
-│   ├── application.properties
-│   └── static
-│       └── index.html
-├── .gitignore
-├── pom.xml
-└── README.md
+
+或者，在你的 Gradle 构建文件 `build.gradle` 中添加：
+
+```groovy
+dependencies {
+    implementation 'io.springboot.ai:spring-ai-ollama-spring-boot-starter'
+}
 ```
+
+### Function Calling 原理
+
+#### 什么是函数调用？
+
+函数调用是 OpenAI 的 GPT-4-0613 和 GPT-3.5 Turbo-0613 模型中的一项新功能。这些 AI 模型经过训练，可以根据用户的提示检测函数调用的需求，并以结构化的调用请求（而不是常规文本）进行响应。
+
+函数调用允许大语言模型与其他系统交互，从而使 LLMs 能够回答它们原本无法回答的问题，例如需要实时信息或训练集中未包含的数据的问题。换句话说，函数调用提供了另一种方法来教 AI 模型如何与外部世界交互。
+
+##### Spring AI 函数调用流程
 
 ![](/function_calling.png)
  
@@ -43,7 +57,7 @@ Spring AI 目前支持以下 AI 模型的函数调用
 
 ### Function Calling 模型
 
-Ollama Chat 模型是一个基于大型语言模型的对话系统，支持对话问答、文本生成等功能。
+Ollama 已有的 Chat 模型中，部分模型对`Function Calling` 的支持较好，以下是我挑选几个用来测试的模型：
 
 #### Qwen2
 

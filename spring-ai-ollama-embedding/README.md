@@ -4,29 +4,33 @@
 
 > 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html) 和 [Ollama](https://ollama.com/) 的 Embedding 功能示例。
 
-### 知识点
+### 先决条件
 
-- Embedding 模型
-- Ollama 本地模型
+您首先需要在本地计算机上运行 Ollama。请参阅官方 [Ollama 项目自述文件](https://github.com/ollama/ollama "Ollama 项目自述文件")，开始在本地计算机上运行模型。
 
-### 项目结构
+#### 添加存储库和 BOM
 
+Spring AI 工件发布在 `Spring Milestone` 和 `Snapshot` 存储库中。请参阅存储库部分将这些存储库添加到您的构建系统中。
+
+为了帮助进行依赖管理，Spring AI 提供了 BOM（物料清单），以确保在整个项目中使用一致的 Spring AI 版本。请参阅[依赖管理](https://docs.spring.io/spring-ai/reference/getting-started.html#dependency-management "依赖管理")部分将 Spring AI BOM 添加到您的构建系统。
+
+#### 自动配置
+
+Spring AI 为 Ollama 聊天客户端提供 Spring Boot 自动配置。要启用它，请将以下依赖项添加到项目的 Maven `pom.xml` 文件中：
+
+```xml
+<dependency>
+   <groupId>io.springboot.ai</groupId>
+   <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+</dependency>
 ```
-spring-ai-ollama-embedding
-├── src/main/java/com/github/teachingai/ollama
-│   ├── controller
-│   │   └── ChatController.java
-│   ├── model
-│   │   └── ChatRequest.java
-│   └── service
-│       └── ChatService.java
-├── src/main/resources
-│   ├── application.properties
-│   └── static
-│       └── index.html
-├── .gitignore
-├── pom.xml
-└── README.md
+
+或者，在你的 Gradle 构建文件 `build.gradle` 中添加：
+
+```groovy
+dependencies {
+    implementation 'io.springboot.ai:spring-ai-ollama-spring-boot-starter'
+}
 ```
 
 ### Ollama Embedding 模型
