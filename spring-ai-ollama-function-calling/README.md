@@ -61,7 +61,7 @@ Ollama 已有的 Chat 模型中，部分模型对`Function Calling` 的支持较
 
 #### Qwen2
 
-> Qwen2 是阿里巴巴集团推出的全新系列大型语言模型。<br/>
+> Qwen2 是阿里巴巴集团推出的全新系列大型语言模型。
 Qwen2基于29 种语言的数据进行训练，包括英语和中文。
 
 - 文档地址：https://ollama.com/library/qwen2
