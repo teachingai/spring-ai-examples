@@ -1,8 +1,9 @@
 package com.github.teachingai.ollama;
 
+import com.github.teachingai.ollama.api.EdgeTtsNativeAudioApi;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
-import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -10,15 +11,15 @@ import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Ollama_Prompt_Test11 {
 
@@ -99,10 +100,36 @@ public class Ollama_Prompt_Test11 {
                 .withModel("qwen2")
                 .withTemperature(0f));
 
-        ChatResponse resp = chatClient.call(prompt);
+        ChatResponse chatResponse = chatClient.call(prompt);
 
-        for (Generation generation : resp.getResults()) {
-            System.out.println(generation.getOutput().getContent());
+        String resp = chatResponse.getResult().getOutput().getContent();
+        System.out.println("<<< " + resp);
+
+        var chatTtsApi = new EdgeTtsNativeAudioApi();
+        var chatTtsClient = new EdgeTtsNativeAudioSpeechClient(chatTtsApi, EdgeTtsAudioSpeechOptions.builder()
+                // `edge-tts -l` 查看可用的声音，
+                // 普通话-男：zh-CN-YunyangNeural
+                // 普通话-女：zh-CN-XiaoxiaoNeural、zh-CN-XiaoyiNeural
+                // 辽宁方言-女：zh-CN-liaoning-XiaobeiNeural
+                // 陕西方言-女：zh-CN-shaanxi-XiaoniNeural
+                .withVoice("zh-CN-YunyangNeural")
+                .withRate("-10%")
+                .withVolume("+50%")
+                .withOutput("E://edge-tts")
+                .build());
+        try {
+            System.out.println(">>> 生成音频中...");
+            String text = MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp));
+            text = StringUtils.replace(text, "\"", "");
+            text = StringUtils.replace(text, "'", "");
+            InputStream stream = chatTtsClient.call(text);
+            if(Objects.nonNull(stream)){
+                System.out.println("<<< 音频开始播放...");
+                AudioPlayer.playMP3(stream);
+                System.out.println(">>> 音频播放完");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

@@ -2,6 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.ApiUtils;
 import com.github.teachingai.ollama.api.EdgeTtsNativeAudioApi;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -23,12 +24,13 @@ public class OllamaChatNativeTest {
         /**
          * qwen2:7b ：https://ollama.com/library/qwen2
          * gemma2:9b ：https://ollama.com/library/gemma2
+         * glm4:9b ：https://ollama.com/library/glm4
          * llama3:8b ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:1.5b")
+                .withModel("glm4")
                 .withTemperature(0.9f));
 
         var chatTtsApi = new EdgeTtsNativeAudioApi();
@@ -60,7 +62,10 @@ public class OllamaChatNativeTest {
             System.out.println("<<< " + resp);
             try {
                 System.out.println(">>> 生成音频中...");
-                InputStream stream = chatTtsClient.call(MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp)));
+                String text = MarkdownUtils.removeMarkdownTags(MarkdownUtils.convertChinesePunctuationToEnglish(resp));
+                       text = StringUtils.replace(text, "\"", "");
+                       text = StringUtils.replace(text, "'", "");
+                InputStream stream = chatTtsClient.call(text);
                 if(Objects.nonNull(stream)){
                     System.out.println("<<< 音频开始播放...");
                     AudioPlayer.playMP3(stream);

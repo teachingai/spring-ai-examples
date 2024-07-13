@@ -93,6 +93,7 @@ public class EdgeTtsNativeAudioApi {
         String filename = speechRequest.output() + File.separator + UUID.randomUUID() + ".mp3";
         cmdLine.addArgument(filename);
         String cmd = cmdLine.getExecutable() + " " + String.join(" ", cmdLine.getArguments());
+        System.out.println("Executing command: " + cmd);
         SpeechResponse speechResponse;
         try {
             executor.execute(cmdLine);
