@@ -9,7 +9,7 @@
 下面是离线模式下2种工具的简单组合：
 
 - 大型语言模型：在离线模式下运行 [Ollama](https://ollama.com/) 本地模型
-- 文本转语音：在离线模式下运行 [EmotiVoice](https://github.com/netease-youdao/EmotiVoice) 本地模型
+- 文本转语音：在离线模式下运行 [EmotiVoice](https://github.com/netease-youdao/EmotiVoice) 本地服务
 
 ### 先决条件
 
@@ -95,7 +95,7 @@ ollama run llama3:70b-text
 
 #### EmotiVoice
 
-> EmotiVoice 是一个强大的开源 TTS 引擎，完全免费，支持中英文双语，包含2000多种不同的音色，以及特色的情感合成功能，支持合成包含快乐、兴奋、悲伤、愤怒等广泛情感的语音。
+> **EmotiVoice**是一个强大的开源TTS引擎，**完全免费**，支持中英文双语，包含2000多种不同的音色，以及特色的**情感合成**功能，支持合成包含快乐、兴奋、悲伤、愤怒等广泛情感的语音。
 
 - Github：https://github.com/netease-youdao/EmotiVoice
  
@@ -120,9 +120,9 @@ docker run -dp 127.0.0.1:8501:8501 -p 127.0.0.1:8000:8000 syq163/emoti-voice:lat
 
 更多信息请参考 [EmotiVoice](https://github.com/netease-youdao/EmotiVoice) 项目的 `README.md` 文件。
 
-### Spring AI + ChatTTS Audio Speech 功能扩展
+### Spring AI + EmotiVoice Audio Speech 功能扩展
 
-> Spring AI 并未提供 `Ollama` 整合 `ChatTTS` 文本转语音模型实现将对话内容转语音的能力，为了实验这块的能力，这里扩展了 Spring AI 对 [ChatTTS](https://github.com/2noise/ChatTTS) 的支持，以实现后面的边对话边转语音的功能 。
+> Spring AI 并未提供 `Ollama` 整合 `EmotiVoice` 文本转语音模型实现将对话内容转语音的能力，为了实验这块的能力，这里扩展了 Spring AI 对 [ChatTTS](https://github.com/2noise/ChatTTS) 的支持，以实现后面的边对话边转语音的功能 。
 
 - ChatTtsAudioApi 实现了 `ChatTTS` 的 `API` 接口，用于将对话内容转为语音。
 

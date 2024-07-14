@@ -1,5 +1,7 @@
 # spring-ai-ollama
 
+> 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html)、[Ollama](https://ollama.com/) 的 `文本生成` 和 `多轮对话` 功能示例。
+
 > 通过 Ollama，我们可以在本地运行各种大型语言模型 (LLM) 并从中生成文本。 Spring AI 通过 `OllamaChatClient` 支持 文本生成。
 
 ### 先决条件
@@ -229,6 +231,7 @@ var request2 = ChatRequest.builder("orca-mini")
 Flux<ChatResponse> streamingResponse = ollamaApi.streamingChat(request2);
 ```
 
+
 ### Ollama Chat 模型
 
 Ollama Chat 模型是一个基于大型语言模型的对话系统，支持对话问答、文本生成等功能。
@@ -262,7 +265,7 @@ Llama 3 指令调整模型针对对话/聊天用例进行了微调和优化，�
 
 ##### 模型变体
 
-Instruct 是针对`聊天/对话场景`进行了fine-tuned。
+Instruct 是针对`聊天/对话场景`进行了`fine-tuned`。
 
 ```shell
 ollama run llama3

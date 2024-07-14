@@ -39,6 +39,7 @@ public class Ollama_Prompt_Test2 {
 
         Prompt prompt = new Prompt(messages, OllamaOptions.create()
                 .withModel("qwen2:7b")
+                .withFormat("json")
                 .withTemperature(0f));
 
         ChatResponse resp = chatClient.call(prompt);
