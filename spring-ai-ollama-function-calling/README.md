@@ -33,6 +33,14 @@ dependencies {
 }
 ```
 
+### Function Calling 知识点
+
+- Ollama 自定义模型
+- Function Calling 原理
+- ChatGLM-4-9B 模型
+- LoRA、QLoRA 微调
+  https://blog.csdn.net/spiderwower/article/details/138755776
+
 ### Function Calling 原理
 
 #### 什么是函数调用？

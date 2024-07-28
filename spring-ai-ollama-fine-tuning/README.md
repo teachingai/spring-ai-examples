@@ -5,6 +5,14 @@
 > 基于 Spring Boot 3.x 、Spring AI 和 [Ollama](https://ollama.com/) 整合使用 LORA 微调后的本地 ChatGLM-4-9B 大语言模型提供的智能对话能力，支持对话问答、文本生成等功能示例。
 
 
+### Fine-Tuning 知识点
+
+- Ollama 自定义模型
+- Function Calling 原理
+- ChatGLM-4-9B 模型
+- LoRA、QLoRA 微调
+  https://blog.csdn.net/spiderwower/article/details/138755776
+
 ### 知识点 
 
 - ChatGLM-4-9B 模型
