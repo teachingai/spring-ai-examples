@@ -20,9 +20,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <fastjson2.version>2.0.47</fastjson2.version>
+        <fastjson2.version>2.0.52</fastjson2.version>
 		<java.version>17</java.version>
         <spring-ai.version>1.0.3</spring-ai.version>
+        <testcontainers.version>1.20.1</testcontainers.version>
     </properties>
 
     <modules>
@@ -95,10 +96,19 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom -->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
-                <version>4.27.0</version>
+                <version>4.27.3</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos -->
             <dependency>
