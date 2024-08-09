@@ -1,5 +1,6 @@
 package com.github.teachingai.ollama;
 
+import com.github.teachingai.ollama.api.EdgeTtsAudioApi;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
@@ -35,7 +36,7 @@ public class Ollama_夸夸机_Test {
 
         List<Message> messages  = List.of(systemMessage);
 
-
+        EdgeTtsAudioSpeechClient chatTtsClient = new EdgeTtsAudioSpeechClient(new EdgeTtsAudioApi());
 
         Scanner scanner = new Scanner(System.in);
         List<Message> historyList = new ArrayList<>();
@@ -65,15 +66,6 @@ public class Ollama_夸夸机_Test {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-
-        for (Generation generation : resp.getResults()) {
-
-            messages.add(new UserMessage(generation.getOutput().getContent()));
-
-            System.out.println(generation.getOutput().getContent());
         }
 
     }
