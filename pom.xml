@@ -108,7 +108,7 @@
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
-                <version>4.27.3</version>
+                <version>4.27.5</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos -->
             <dependency>
