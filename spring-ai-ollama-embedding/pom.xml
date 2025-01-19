@@ -109,11 +109,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.hiwepy</groupId>
-            <artifactId>zxing-spring-boot-starter</artifactId>
-            <version>3.3.x.20240823.RELEASE</version>
-        </dependency>
+
     </dependencies>
 
     <build>

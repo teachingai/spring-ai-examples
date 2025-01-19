@@ -48,6 +48,12 @@
         <dependency>
             <groupId>io.springboot.ai</groupId>
             <artifactId>spring-ai-zhipu-ai-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>cn.bigmodel.openapi</groupId>
