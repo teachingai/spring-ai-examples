@@ -103,8 +103,8 @@ public class ApiRequest {
             @JsonProperty("messages") List<ChatCompletionMessage> messages,
             @JsonProperty("do_sample") Boolean doSample,
             @JsonProperty("stream") Boolean stream,
-            @JsonProperty("temperature") Float temperature,
-            @JsonProperty("top_p") Float topP,
+            @JsonProperty("temperature") Double temperature,
+            @JsonProperty("top_p") Double topP,
             @JsonProperty("max_tokens") Integer maxTokens,
             @JsonProperty("stop") List<String> stop,
             @JsonProperty("tools") List<FunctionTool> tools,
@@ -119,7 +119,7 @@ public class ApiRequest {
          * @param messages    A list of messages comprising the conversation so far.
          * @param temperature What sampling temperature to use, between 0 and 1.
          */
-        public ChatCompletionRequest(String requestId, String model, List<ChatCompletionMessage> messages, Float temperature) {
+        public ChatCompletionRequest(String requestId, String model, List<ChatCompletionMessage> messages, Double temperature) {
             this(requestId, model, messages, null, null, temperature, null,
                     null, null, null, null, null);
         }
@@ -134,7 +134,7 @@ public class ApiRequest {
          * @param stream      If set, partial message deltas will be sent.Tokens will be sent as data-only server-sent events
          *                    as they become available, with the stream terminated by a data: [DONE] message.
          */
-        public ChatCompletionRequest(String requestId, String model, List<ChatCompletionMessage> messages, Float temperature, boolean stream) {
+        public ChatCompletionRequest(String requestId, String model, List<ChatCompletionMessage> messages, Double temperature, boolean stream) {
             this(requestId, model, messages, null,  stream, temperature, null, null, null, null, null, null);
         }
 
@@ -153,7 +153,7 @@ public class ApiRequest {
                                      List<ChatCompletionMessage> messages,
                                      List<FunctionTool> tools,
                                      String toolChoice) {
-            this(requestId, model, messages, null, false, 0.95f, null, null, null, tools, toolChoice, null);
+            this(requestId, model, messages, null, false, 0.95d, null, null, null, tools, toolChoice, null);
         }
 
         /**
