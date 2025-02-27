@@ -12,7 +12,7 @@
 .classpath
 .factorypath
 .gradle
-.idea
+.vscode
 .metadata
 .project
 .recommenders
@@ -38,3 +38,4 @@ target
 transaction-logs
 .flattened-pom.xml
 secrets.yml
+.
