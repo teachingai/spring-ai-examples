@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$USER_HOME$/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.3.0/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.3.3/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-anthropic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-azure-openai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-bedrockai/src/main/java" charset="UTF-8" />
@@ -13,9 +15,11 @@
     <file url="file://$PROJECT_DIR$/spring-ai-mistralai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-moonshotai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-agents/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-chat/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-embedding/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-fine-tuning/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-function-calling/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-generation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-langfuse/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-local-model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-prometheus/src/main/java" charset="UTF-8" />
@@ -23,13 +27,19 @@
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-cassandra/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-chroma/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-es/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-gemfire/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-hanadb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-mariadb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-milvus/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-neo4j/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-opensearch/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-oracle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-pgvector/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-pinecone/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-qdrant/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-typesense/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag-weaviate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-rag/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-store-cassandra/src/main/java" charset="UTF-8" />
@@ -45,6 +55,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-store-weaviate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-tts-chattts/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-tts-whisper/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-ollama-vision/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-voice-assistant/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-voice-chattts/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-ollama-voice-edgetts/src/main/java" charset="UTF-8" />
@@ -57,6 +68,7 @@
     <file url="file://$PROJECT_DIR$/spring-ai-qwen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-sql/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-stabilityai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-ai-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-gemini/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-vertexai-palm2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-ai-watsonxai/src/main/java" charset="UTF-8" />
@@ -81,7 +93,6 @@
     <file url="file://$PROJECT_DIR$/spring-ai-zhipuai/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
-    <file url="file://E:/Java/.m2/repository/org/springframework/boot/spring-boot-starter-parent/3.3.0/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

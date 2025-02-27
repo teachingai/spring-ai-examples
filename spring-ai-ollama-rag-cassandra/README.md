@@ -21,7 +21,7 @@ Spring AI 为 Ollama 聊天客户端提供 Spring Boot 自动配置。要启用�
 
 ```xml
 <dependency>
-   <groupId>io.springboot.ai</groupId>
+   <groupId>org.springframework.ai</groupId>
    <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
 </dependency>
 ```
@@ -30,7 +30,7 @@ Spring AI 为 Ollama 聊天客户端提供 Spring Boot 自动配置。要启用�
 
 ```groovy
 dependencies {
-    implementation 'io.springboot.ai:spring-ai-ollama-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
 }
 ```
 
@@ -50,7 +50,7 @@ Testcontainers 为 Cassandra 提供了 Java 依赖。要启用它，请将以下
 
 ```groovy
 dependencies {
-    implementation 'io.springboot.ai:spring-ai-ollama-spring-boot-starter'
+    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
 }
 ```
 

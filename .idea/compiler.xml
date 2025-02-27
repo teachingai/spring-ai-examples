@@ -1,104 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-ai-ollama-rag-opensearch" />
         <module name="spring-ai-sql" />
         <module name="spring-ai-ollama-rag-redis" />
         <module name="spring-ai-ollama-prometheus" />
         <module name="spring-ai-ollama-rag-chroma" />
         <module name="spring-ai-ollama-rag-pgvector" />
-        <module name="spring-ai-coze" />
-        <module name="spring-ai-vertexai-palm2" />
         <module name="spring-ai-ollama-rag-cassandra" />
-        <module name="spring-ai-qianfan" />
+        <module name="spring-ai-ollama-rag-mariadb" />
         <module name="spring-ai-ollama-rag-pinecone" />
-        <module name="spring-ai-ollama-fine-tuning" />
+        <module name="spring-ai-ollama-rag-gemfire" />
         <module name="spring-ai-ollama-rag-neo4j" />
-        <module name="spring-ai-bedrockai" />
         <module name="spring-ai-anthropic" />
-        <module name="spring-ai-ollama-agents" />
-        <module name="spring-ai-moonshotai" />
         <module name="spring-ai-ollama-voice-whisper" />
-        <module name="spring-ai-llmsfreeapi" />
         <module name="spring-ai-huggingface" />
         <module name="spring-ai-azure-openai" />
-        <module name="spring-ai-huaweiai-pangu" />
         <module name="spring-ai-ollama-prompt" />
         <module name="spring-ai-ollama-local-model" />
         <module name="spring-ai-ollama-rag-mongodb" />
-        <module name="spring-ai-ollama-voice-mars5tts" />
-        <module name="spring-ai-vertexai-gemini" />
-        <module name="spring-ai-ollama-voice-edgetts" />
         <module name="spring-ai-ollama-rag-qdrant" />
-        <module name="spring-ai-ollama-voice-assistant" />
-        <module name="spring-ai-ollama-rag-weaviate" />
-        <module name="spring-ai-zhipuai" />
-        <module name="spring-ai-ollama-voice-emoti" />
         <module name="spring-ai-ollama-langfuse" />
         <module name="spring-ai-ollama-voice-chattts" />
-        <module name="spring-ai-ollama" />
-        <module name="spring-ai-ollama-embedding" />
-        <module name="spring-ai-ollama-function-calling" />
+        <module name="spring-ai-ollama-generation" />
         <module name="spring-ai-qwen" />
         <module name="spring-ai-openai" />
         <module name="spring-ai-mistralai" />
-        <module name="spring-ai-stabilityai" />
-        <module name="spring-ai-watsonxai" />
         <module name="spring-ai-huaweiai-gallery" />
         <module name="spring-ai-ollama-rag-es" />
-        <module name="spring-ai-minimax" />
         <module name="spring-ai-ollama-rag-milvus" />
+        <module name="spring-ai-ollama-chat" />
+        <module name="spring-ai-coze" />
+        <module name="spring-ai-vertexai-palm2" />
+        <module name="spring-ai-qianfan" />
+        <module name="spring-ai-ollama-fine-tuning" />
+        <module name="spring-ai-bedrockai" />
+        <module name="spring-ai-ollama-agents" />
+        <module name="spring-ai-moonshotai" />
+        <module name="spring-ai-llmsfreeapi" />
+        <module name="spring-ai-ollama-rag-weaviate (1)" />
+        <module name="spring-ai-huaweiai-pangu" />
+        <module name="spring-ai-ollama-voice-mars5tts" />
+        <module name="spring-ai-ollama-vision" />
+        <module name="spring-ai-vertexai-gemini" />
+        <module name="spring-ai-ollama-voice-edgetts" />
+        <module name="spring-ai-ollama-voice-assistant" />
+        <module name="spring-ai-ollama-rag-weaviate" />
+        <module name="spring-ai-ollama-rag-hanadb" />
+        <module name="spring-ai-zhipuai" />
+        <module name="spring-ai-ollama-voice-emoti" />
+        <module name="spring-ai-ollama-embedding" />
+        <module name="spring-ai-ollama-function-calling" />
+        <module name="spring-ai-stabilityai" />
+        <module name="spring-ai-watsonxai" />
+        <module name="spring-ai-minimax" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-ai-baidu-qianfan" target="17" />
-      <module name="spring-ai-baiduai-qianfan" target="17" />
-      <module name="spring-ai-ollama-rag" target="17" />
-      <module name="spring-ai-ollama-store-cassandra" target="17" />
-      <module name="spring-ai-ollama-store-chroma" target="17" />
-      <module name="spring-ai-ollama-store-es" target="17" />
-      <module name="spring-ai-ollama-store-milvus" target="17" />
-      <module name="spring-ai-ollama-store-mongodb" target="17" />
-      <module name="spring-ai-ollama-store-neo4j" target="17" />
-      <module name="spring-ai-ollama-store-pgvector" target="17" />
-      <module name="spring-ai-ollama-store-pinecone" target="17" />
-      <module name="spring-ai-ollama-store-qdrant" target="17" />
-      <module name="spring-ai-ollama-store-redis" target="17" />
-      <module name="spring-ai-ollama-store-weaviate" target="17" />
-      <module name="spring-ai-zhipuai-agents" target="17" />
-      <module name="spring-ai-zhipuai-cassandra-store" target="17" />
-      <module name="spring-ai-zhipuai-chroma-store" target="17" />
-      <module name="spring-ai-zhipuai-chroma-store (1)" target="1.5" />
-      <module name="spring-ai-zhipuai-chroma-store (2)" target="17" />
-      <module name="spring-ai-zhipuai-embedding" target="17" />
-      <module name="spring-ai-zhipuai-functions" target="17" />
-      <module name="spring-ai-zhipuai-langfuse" target="17" />
-      <module name="spring-ai-zhipuai-milvus-store" target="17" />
-      <module name="spring-ai-zhipuai-neo4j-store" target="17" />
-      <module name="spring-ai-zhipuai-pgvector-store" target="17" />
-      <module name="spring-ai-zhipuai-pinecone-store" target="17" />
-      <module name="spring-ai-zhipuai-prometheus" target="17" />
-      <module name="spring-ai-zhipuai-prompt" target="17" />
-      <module name="spring-ai-zhipuai-qdrant-store" target="17" />
-      <module name="spring-ai-zhipuai-rag" target="17" />
-      <module name="spring-ai-zhipuai-redis-store" target="17" />
-      <module name="spring-ai-zhipuai-store-cassandra" target="17" />
-      <module name="spring-ai-zhipuai-store-chroma" target="17" />
-      <module name="spring-ai-zhipuai-store-es" target="17" />
-      <module name="spring-ai-zhipuai-store-milvus" target="17" />
-      <module name="spring-ai-zhipuai-store-mongodb" target="17" />
-      <module name="spring-ai-zhipuai-store-neo4j" target="17" />
-      <module name="spring-ai-zhipuai-store-pgvector" target="17" />
-      <module name="spring-ai-zhipuai-store-pinecone" target="17" />
-      <module name="spring-ai-zhipuai-store-qdrant" target="17" />
-      <module name="spring-ai-zhipuai-store-redis" target="17" />
-      <module name="spring-ai-zhipuai-store-weaviate" target="17" />
-      <module name="spring-ai-zhipuai-weaviate-store" target="17" />
+      <module name="spring-ai-ollama" target="17" />
+      <module name="spring-ai-ollama-rag-oracle" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -116,36 +83,33 @@
       <module name="spring-ai-moonshotai" options="-parameters" />
       <module name="spring-ai-ollama" options="-parameters" />
       <module name="spring-ai-ollama-agents" options="-parameters" />
+      <module name="spring-ai-ollama-chat" options="-parameters" />
       <module name="spring-ai-ollama-embedding" options="-parameters" />
       <module name="spring-ai-ollama-fine-tuning" options="-parameters" />
       <module name="spring-ai-ollama-function-calling" options="-parameters" />
+      <module name="spring-ai-ollama-generation" options="-parameters" />
       <module name="spring-ai-ollama-langfuse" options="-parameters" />
       <module name="spring-ai-ollama-local-model" options="-parameters" />
       <module name="spring-ai-ollama-prometheus" options="-parameters" />
       <module name="spring-ai-ollama-prompt" options="-parameters" />
-      <module name="spring-ai-ollama-rag" options="-parameters" />
       <module name="spring-ai-ollama-rag-cassandra" options="-parameters" />
       <module name="spring-ai-ollama-rag-chroma" options="-parameters" />
       <module name="spring-ai-ollama-rag-es" options="-parameters" />
+      <module name="spring-ai-ollama-rag-gemfire" options="-parameters" />
+      <module name="spring-ai-ollama-rag-hanadb" options="-parameters" />
+      <module name="spring-ai-ollama-rag-mariadb" options="-parameters" />
       <module name="spring-ai-ollama-rag-milvus" options="-parameters" />
       <module name="spring-ai-ollama-rag-mongodb" options="-parameters" />
       <module name="spring-ai-ollama-rag-neo4j" options="-parameters" />
+      <module name="spring-ai-ollama-rag-opensearch" options="-parameters" />
+      <module name="spring-ai-ollama-rag-oracle" options="-parameters" />
       <module name="spring-ai-ollama-rag-pgvector" options="-parameters" />
       <module name="spring-ai-ollama-rag-pinecone" options="-parameters" />
       <module name="spring-ai-ollama-rag-qdrant" options="-parameters" />
       <module name="spring-ai-ollama-rag-redis" options="-parameters" />
       <module name="spring-ai-ollama-rag-weaviate" options="-parameters" />
-      <module name="spring-ai-ollama-store-cassandra" options="-parameters" />
-      <module name="spring-ai-ollama-store-chroma" options="-parameters" />
-      <module name="spring-ai-ollama-store-es" options="-parameters" />
-      <module name="spring-ai-ollama-store-milvus" options="-parameters" />
-      <module name="spring-ai-ollama-store-mongodb" options="-parameters" />
-      <module name="spring-ai-ollama-store-neo4j" options="-parameters" />
-      <module name="spring-ai-ollama-store-pgvector" options="-parameters" />
-      <module name="spring-ai-ollama-store-pinecone" options="-parameters" />
-      <module name="spring-ai-ollama-store-qdrant" options="-parameters" />
-      <module name="spring-ai-ollama-store-redis" options="-parameters" />
-      <module name="spring-ai-ollama-store-weaviate" options="-parameters" />
+      <module name="spring-ai-ollama-rag-weaviate (1)" options="-parameters" />
+      <module name="spring-ai-ollama-vision" options="-parameters" />
       <module name="spring-ai-ollama-voice-assistant" options="-parameters" />
       <module name="spring-ai-ollama-voice-chattts" options="-parameters" />
       <module name="spring-ai-ollama-voice-edgetts" options="-parameters" />
@@ -161,29 +125,6 @@
       <module name="spring-ai-vertexai-palm2" options="-parameters" />
       <module name="spring-ai-watsonxai" options="-parameters" />
       <module name="spring-ai-zhipuai" options="-parameters" />
-      <module name="spring-ai-zhipuai-agents" options="-parameters" />
-      <module name="spring-ai-zhipuai-cassandra-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-chroma-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-chroma-store (2)" options="-parameters" />
-      <module name="spring-ai-zhipuai-embedding" options="-parameters" />
-      <module name="spring-ai-zhipuai-functions" options="-parameters" />
-      <module name="spring-ai-zhipuai-langfuse" options="-parameters" />
-      <module name="spring-ai-zhipuai-milvus-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-pgvector-store" options="-parameters" />
-      <module name="spring-ai-zhipuai-prometheus" options="-parameters" />
-      <module name="spring-ai-zhipuai-prompt" options="-parameters" />
-      <module name="spring-ai-zhipuai-rag" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-cassandra" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-chroma" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-es" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-milvus" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-mongodb" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-neo4j" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-pgvector" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-pinecone" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-qdrant" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-redis" options="-parameters" />
-      <module name="spring-ai-zhipuai-store-weaviate" options="-parameters" />
     </option>
   </component>
 </project>

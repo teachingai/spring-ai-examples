@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<Configuration status="WARN" monitorInterval="30">
+
+    <Properties>
+        <!--
+              %m   输出代码中指定的消息
+        　　	%p   输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL
+        　　	%r   输出自应用启动到输出该log信息耗费的毫秒数
+        　　	%c   输出所属的类目，通常就是所在类的全名
+        　　	%t   输出产生该日志事件的线程名
+        　　	%n   输出一个回车换行符，Windows平台为“/r/n”，Unix平台为“/n”
+        　　	%d   输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss ,SSS}，输出类似：2002年10月18日  22 ： 10 ： 28 ， 921
+        　　	%l   输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java: 10 )
+        -->
+        <!-- 定义应用名称 -->
+        <property name="APP_NAME">spring-ai-ollama</property>
+        <!-- 日志输出格式:什么时间（日志时间）?什么应用（应用标记）?什么位置（线程、类、方法）?发送了什么（日志内容）? -->
+        <Property name="LOG_CONSOLE_LAYOUT">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[${APP_NAME}]}{red} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+		<Property name="LOG_CONSOLE_LAYOUT">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{[${APP_NAME}]}{red} [%clr{%p} %clr{${sys:PID}}{magenta}] %clr{---}{faint} %clr{[%t]}{faint} %clr{[%C:%M:%L]}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+    </Properties>
+
+    <!--先定义所有的appender-->
+    <Appenders>
+
+        <!-- 控制台日志输出配置 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_CONSOLE_LAYOUT}"/>
+        </Console>
+
+    </Appenders>
+
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <Loggers>
+
+        <!-- 剩余其他的日志级别 -->
+        <Root level="DEBUG" includeLocation="true">
+            <AppenderRef ref="Console"/>
+        </Root>
+
+        <!-- 框架、依赖组件日志过滤 -->
+		<Logger name="com.alibaba.druid" level="ERROR" additivity="true"/>
+		<Logger name="com.alibaba.nacos" level="ERROR" additivity="true"/>
+		<Logger name="com.baomidou.mybatisplus" level="WARN" additivity="true"/>
+        <Logger name="com.github.dozermapper" level="ERROR" additivity="true"/>
+		<Logger name="com.mongodb" level="WARN" additivity="true"/>
+        <Logger name="com.netflix" level="WARN" additivity="true"/>
+		<Logger name="com.opensymphony.xwork2" level="WARN" additivity="true"/>
+        <Logger name="com.xxl.job" level="INFO" additivity="true"/>
+		<Logger name="com.zaxxer.hikari" level="WARN" additivity="true"/>
+		<Logger name="de.codecentric.boot" level="WARN" additivity="true"/>
+		<Logger name="io.lettuce" level="WARN" additivity="true"/>
+		<Logger name="io.undertow" level="WARN" additivity="true"/>
+        <Logger name="io.netty" level="WARN" additivity="true"/>
+		<Logger name="net.sf.ehcache" level="WARN" additivity="true"/>
+		<Logger name="java.sql" level="DEBUG" additivity="true"/>
+		<Logger name="java.sql.Connection" level="WARN" additivity="true"/>
+        <Logger name="java.sql.Statement" level="WARN" additivity="true"/>
+		<Logger name="java.sql.PreparedStatement" level="WARN" additivity="true"/>
+		<Logger name="java.sql.ResultSet" level="WARN" additivity="true"/>
+        <Logger name="org.apache.commons" level="ERROR" additivity="true"/>
+        <Logger name="org.apache.catalina.startup.DigesterFactory" level="ERROR" additivity="true"/>
+        <Logger name="org.apache.catalina.util.LifecycleBase" level="ERROR" additivity="true"/>
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN" additivity="true"/>
+        <Logger name="org.apache.http" level="WARN" additivity="true" />
+        <Logger name="org.apache.shiro" level="WARN" additivity="true" />
+        <Logger name="org.apache.ibatis" level="DEBUG" additivity="true"/>
+		<Logger name="org.apache.ibatis.jdbc.ScriptRunner" level="DEBUG" additivity="true"/>
+		<Logger name="org.apache.rocketmq" level="WARN" additivity="true"/>
+        <logger name="org.apache.sshd.common.util.SecurityUtils" level="WARN"/>
+		<Logger name="org.apache.struts2" level="WARN" additivity="true"/>
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="WARN" additivity="true"/>
+        <Logger name="org.apache.zookeeper" level="WARN" additivity="true"/>
+        <Logger name="org.dozer" level="WARN" additivity="true"/>
+        <Logger name="org.crsh.plugin" level="WARN" additivity="true" />
+        <logger name="org.crsh.ssh" level="WARN" additivity="true"/>
+        <Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="ERROR" additivity="true" />
+        <Logger name="org.flywaydb" level="WARN" additivity="true"/>
+        <Logger name="org.hibernate.validator" level="WARN" additivity="true" />
+		<Logger name="org.mybatis" level="WARN" additivity="true"/>
+		<Logger name="org.pac4j" level="WARN" additivity="true"/>
+		<Logger name="org.quartz" level="WARN" additivity="true"/>
+		<Logger name="org.redisson" level="WARN" additivity="true"/>
+		<Logger name="org.springframework" level="WARN" additivity="true"/>
+		<Logger name="org.springframework.data.redis" level="WARN" additivity="true"/>
+		<Logger name="org.springframework.security" level="WARN" additivity="true"/>
+        <Logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="WARN" additivity="true"/>
+        <Logger name="org.springframework.boot.actuate.endpoint.jmx" level="WARN" additivity="true"/>
+        <Logger name="org.thymeleaf" level="WARN" additivity="true"/>
+        <Logger name="org.xnio" level="WARN" additivity="true"/>
+        <Logger name="net.bull.javamelody" level="WARN" additivity="true"/>
+        <Logger name="net.oschina" level="WARN" additivity="true"/>
+        <Logger name="reactor" level="WARN" additivity="true"/>
+        <Logger name="RocketmqClient" level="WARN" additivity="true"/>
+        <Logger name="springfox" level="WARN" additivity="true"/>
+        <Logger name="sun.util.logging" level="WARN" additivity="true"/>
+
+        <!--log4j2 自带过滤日志-->
+
+		<!-- 应用系统日志过滤 -->
+		<Logger name="com.github.hiwepy" level="DEBUG" additivity="true"/>
+
+    </Loggers>
+
+</Configuration>

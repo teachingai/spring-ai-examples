@@ -46,8 +46,14 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>-->
         <dependency>
-            <groupId>io.springboot.ai</groupId>
-            <artifactId>spring-ai-zhipu-ai-spring-boot-starter</artifactId>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-zhipuai-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>cn.bigmodel.openapi</groupId>

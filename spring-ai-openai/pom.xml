@@ -41,7 +41,7 @@
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>io.springboot.ai</groupId>
+            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>

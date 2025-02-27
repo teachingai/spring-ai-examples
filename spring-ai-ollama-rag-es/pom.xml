@@ -35,17 +35,17 @@
         </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
-            <groupId>io.springboot.ai</groupId>
+            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
         </dependency> -->
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>io.springboot.ai</groupId>
+            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
         </dependency>
         <!-- For Vector Store  -->
         <dependency>
-            <groupId>io.springboot.ai</groupId>
+            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-elasticsearch-store-spring-boot-starter</artifactId>
         </dependency>
         <!-- For springdoc -->
