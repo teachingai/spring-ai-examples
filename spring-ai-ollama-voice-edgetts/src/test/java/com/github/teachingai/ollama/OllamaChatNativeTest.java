@@ -10,6 +10,7 @@ import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,12 @@ public class OllamaChatNativeTest {
          */
         var ollamaApi = new OllamaApi();
         var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
-                .withModel("glm4")
+                .withModel("qwen:7b")
                 .withTemperature(0.9f));
-
+        var dir = new File("E://edge-tts");
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         var chatTtsApi = new EdgeTtsNativeAudioApi();
         var chatTtsClient = new EdgeTtsNativeAudioSpeechClient(chatTtsApi, EdgeTtsAudioSpeechOptions.builder()
                 // `edge-tts -l` 查看可用的声音，
