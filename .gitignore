@@ -12,6 +12,7 @@
 .classpath
 .factorypath
 .gradle
+.idea
 .vscode
 .metadata
 .project
