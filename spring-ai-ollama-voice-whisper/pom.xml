@@ -12,6 +12,11 @@
     <name>spring-ai-ollama-voice-whisper</name>
     <description>spring-ai-ollama-voice-whisper</description>
 
+    <properties>
+        <commonmark.version>0.17.0</commonmark.version>
+        <whispercpp.version>1.4.0</whispercpp.version>
+    </properties>
+
     <dependencies>
 
         <!-- For Lombok -->
@@ -51,13 +56,13 @@
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark</artifactId>
-            <version>0.17.0</version>
+            <version>${commonmark.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.ggerganov/whispercpp -->
         <dependency>
             <groupId>io.github.ggerganov</groupId>
             <artifactId>whispercpp</artifactId>
-            <version>1.4.0</version>
+            <version>${whispercpp.version}</version>
         </dependency>
         <!-- For springdoc -->
         <dependency>
