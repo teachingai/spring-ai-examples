@@ -1,6 +1,7 @@
 package com.github.teachingai.ollama.controller;
 
 import com.github.teachingai.ollama.request.ApiRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Slf4j
 public class ChatController {
 
     private final OllamaChatModel chatModel;
@@ -32,7 +34,7 @@ public class ChatController {
     @PostMapping("/v1/chat/completions")
     public Flux<ChatResponse> chatCompletions(@RequestBody ApiRequest.ChatCompletionRequest chatRequest) {
         // 打印请求消息
-        chatRequest.messages().forEach(System.out::println);
+        chatRequest.messages().forEach(item > log.info("{}", item));
         // 构建模型选项
         ChatOptions modelOptions = new OllamaOptions.Builder()
                 .model(chatRequest.model())

@@ -36,7 +36,7 @@
         <!-- For Chat Completion -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-huggingface</artifactId>
+            <artifactId>spring-ai-starter-model-huggingface</artifactId>
         </dependency>
         <!-- For Web Server -->
         <dependency>
