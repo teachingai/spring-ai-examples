@@ -49,8 +49,9 @@
         <module>spring-ai-ollama-prompt</module>
         <module>spring-ai-ollama-vision</module>
         <module>spring-ai-ollama-local-model</module>
-        <module>spring-ai-ollama-mvp-client</module>
-        <module>spring-ai-ollama-mvp-server</module>
+        <module>spring-ai-ollama-mcp-client</module>
+        <module>spring-ai-ollama-mcp-webmvc-server</module>
+        <module>spring-ai-ollama-mcp-webflux-server</module>
         <module>spring-ai-ollama-function-calling</module>
         <module>spring-ai-ollama-embedding</module>
         <module>spring-ai-ollama-fine-tuning</module>
