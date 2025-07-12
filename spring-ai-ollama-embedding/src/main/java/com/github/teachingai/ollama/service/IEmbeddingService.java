@@ -18,7 +18,7 @@ public interface IEmbeddingService {
      * @param text text to embed
      * @return embeddings
      */
-    Map embedding(String text);
+    Map<String, Object> embedding(String text);
 
     /**
      * Embed Document File
@@ -26,7 +26,7 @@ public interface IEmbeddingService {
      * @param file file to embed
      * @return embeddings
      */
-    List<Map> embedding(MultipartFile file) throws IOException;
+    List<Map<String, Object>> embedding(MultipartFile file) throws IOException;
 
     /**
      * Embed Document File
@@ -34,6 +34,6 @@ public interface IEmbeddingService {
      * @param file file to embed
      * @return embeddings
      */
-    List<Map> embedding(Part file) throws IOException;
+    List<Map<String, Object>> embedding(Part file) throws IOException;
 
 }

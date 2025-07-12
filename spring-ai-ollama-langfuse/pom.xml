@@ -35,14 +35,26 @@
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>io.springboot.ai</groupId>
-            <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-ollama</artifactId>
         </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
-            <groupId>io.springboot.ai</groupId>
+            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
         </dependency> -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-autoconfigure-model-chat-observation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-autoconfigure-model-embedding-observation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-autoconfigure-model-image-observation</artifactId>
+        </dependency>
         <!-- For springdoc -->
         <dependency>
             <groupId>org.springdoc</groupId>

@@ -23,12 +23,12 @@ public class EmbeddingController {
     }
 
     @GetMapping("/v1/embedding")
-    public Map embedding(@RequestParam(value = "text") String text) {
+    public Map<String, Object> embedding(@RequestParam(value = "text") String text) {
         return embeddingService.embedding(text);
     }
 
     @PostMapping("/v1/embedding")
-    public List<Map> embedding(@RequestParam(value = "file") MultipartFile file) throws IOException {
+    public List<Map<String, Object>> embedding(@RequestParam(value = "file") MultipartFile file) throws IOException {
         return embeddingService.embedding(file);
     }
 
