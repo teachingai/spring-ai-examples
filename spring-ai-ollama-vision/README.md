@@ -2,7 +2,7 @@
 
 > 基于 [Spring Boot 3.x](https://docs.spring.io/spring-boot/index.html) 、[Spring AI](https://docs.spring.io/spring-ai/reference/index.html)、[Ollama](https://ollama.com/) 的 `图像识别` 功能示例。
 
-> 通过 Ollama，我们可以在本地运行各种大型语言模型 (LLM) 并从中生成文本。 Spring AI 通过 `OllamaChatClient` 支持 图像识别。
+> 通过 Ollama，我们可以在本地运行各种大型语言模型 (LLM) 并从中生成文本。 Spring AI 通过 `OllamaChatModel` 支持 图像识别。
 
 ### 先决条件
 
@@ -90,12 +90,12 @@ dependencies {
 
 [OllamaOptions.java](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-ollama/src/main/java/org/springframework/ai/ollama/api/OllamaOptions.java "OllamaOptions.java") 提供模型配置，例如：要使用的模型、温度等。
 
-启动时，可以使用 `OllamaChatClient(api, options)` 构造函数 或 `spring.ai.ollama.chat.options.*` 属性配置默认选项。
+启动时，可以使用 `OllamaChatModel(api, options)` 构造函数 或 `spring.ai.ollama.chat.options.*` 属性配置默认选项。
 
 在运行时，您可以通过向调用添加新的、特定于请求的选项来覆盖默认选项Prompt。例如，要覆盖特定请求的默认型号和温度：
 
 ```java
-ChatResponse response = chatClient.call(
+ChatResponse response = chatModel.call(
     new Prompt(
         "Generate the names of 5 famous pirates.",
         OllamaOptions.create()
@@ -120,7 +120,7 @@ spring.ai.ollama.chat.options.temperature=0.7
 
 **提示**: 将 `base-url` 替换为您的 Ollama 服务器 URL。
 
-这将创建一个可以注入到您的类中的 `OllamaChatClient` 实现。下面是一个`@Controller`使用聊天客户端生成文本的简单类的示例。
+这将创建一个可以注入到您的类中的 `OllamaChatModel` 实现。下面是一个`@Controller`使用聊天客户端生成文本的简单类的示例。
 
 ```java
 @RestController
@@ -135,13 +135,13 @@ public class VisionController {
 
     @GetMapping("/ai/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
     @GetMapping("/ai/generateStream")
 	public Flux<ChatResponse> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
-        return chatClient.stream(prompt);
+        return chatModel.stream(prompt);
     }
 
 }
@@ -149,7 +149,7 @@ public class VisionController {
 
 #### 手动配置
 
-如果你不想使用 Spring Boot 自动装配，你可以在你的应用里手动初始化 `OllamaChatClient`，[OllamaChatClient](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-ollama/src/main/java/org/springframework/ai/ollama/OllamaChatClient.java "OllamaChatClient") 实现 `ChatClient` 和 `StreamingChatClient`， 并使用低级 OpenAi Api 客户端连接到 Ollama 服务。
+如果你不想使用 Spring Boot 自动装配，你可以在你的应用里手动初始化 `OllamaChatModel`，[OllamaChatModel](https://github.com/spring-projects/spring-ai/blob/main/models/spring-ai-ollama/src/main/java/org/springframework/ai/ollama/OllamaChatModel.java "OllamaChatModel") 实现 `ChatClient` 和 `StreamingChatClient`， 并使用低级 OpenAi Api 客户端连接到 Ollama 服务。
 
 添加 `spring-ai-ollama` 依赖到你的项目 Maven `pom.xml` 文件:
 
@@ -168,21 +168,21 @@ dependencies {
 }
 ```
 
-接下来，创建一个 `OllamaChatClient` 实例并将其用于文本生成请求：
+接下来，创建一个 `OllamaChatModel` 实例并将其用于文本生成请求：
 
 ```java
 var ollamaApi = new OllamaApi();
 
-var chatClient = new OllamaChatClient(ollamaApi).withModel(MODEL)
+var chatModel = new OllamaChatModel(ollamaApi).withModel(MODEL)
         .withDefaultOptions(OllamaOptions.create()
                 .withModel(OllamaOptions.DEFAULT_MODEL)
                 .withTemperature(0.9f));
 
-ChatResponse response = chatClient.call(
+ChatResponse response = chatModel.call(
     new Prompt("Generate the names of 5 famous pirates."));
 
 // Or with streaming responses
-Flux<ChatResponse> response = chatClient.stream(
+Flux<ChatResponse> response = chatModel.stream(
     new Prompt("Generate the names of 5 famous pirates."));
 ```
 

@@ -1,6 +1,6 @@
 package com.github.teachingai.ollama;
 
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -11,7 +11,7 @@ public class OllamaChatTest {
     public static void main(String[] args) {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi)
+        var chatModel = new OllamaChatModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create()
                         .withModel("qwen:7b")
                         .withTemperature(0.9f));
@@ -23,7 +23,7 @@ public class OllamaChatTest {
             if (message.equals("exit")) {
                 break;
             }
-            String resp = chatClient.call(message);
+            String resp = chatModel.call(message);
             System.out.println("<<< " + resp);
         }
     }

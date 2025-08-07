@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.util.Assert;
@@ -18,6 +20,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.net.URI;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
@@ -49,7 +52,7 @@ public class MyOllamaApi {
         }
 
         @Override
-        public void handleError(ClientHttpResponse response) throws IOException {
+        public void handleError(@NotNull URI url, @NotNull HttpMethod method, ClientHttpResponse response) throws IOException {
             if (response.getStatusCode().isError()) {
                 int statusCode = response.getStatusCode().value();
                 String statusText = response.getStatusText();

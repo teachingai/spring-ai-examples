@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ChatController {
 
-    private final StabilityAiImageClient chatClient;
+    private final StabilityAiImageClient chatModel;
 
     @Autowired
-    public ChatController(StabilityAiImageClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(StabilityAiImageClient chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public ImageResponse generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         ImagePrompt imagePrompt = new ImagePrompt(message);
-        return chatClient.call(imagePrompt);
+        return chatModel.call(imagePrompt);
     }
 
 }

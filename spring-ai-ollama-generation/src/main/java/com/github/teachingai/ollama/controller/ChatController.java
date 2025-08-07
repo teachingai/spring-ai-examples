@@ -1,27 +1,34 @@
 package com.github.teachingai.ollama.controller;
 
-import org.springframework.ai.ollama.OllamaChatClient;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.model.StreamingChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.util.Map;
 
 @RestController
 public class ChatController {
 
-    private final OllamaChatClient chatClient;
+    private final ChatModel chatModel;
+    private final StreamingChatModel streamingChatModel;
 
     @Autowired
-    public ChatController(OllamaChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(OllamaChatModel chatModel, StreamingChatModel streamingChatModel) {
+        this.chatModel = chatModel;
+        this.streamingChatModel = streamingChatModel;
     }
 
-    @GetMapping("/v1/generate")
-    public Map<String, Object> generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+    @GetMapping("/ai/generate")
+    @Operation(summary = "文本生成")
+    public Map<String, Object> generate(@RequestParam(value = "message", defaultValue = "你好！") String message) {
         try {
-            String response = chatClient.call(message);
+            String response = chatModel.call(message);
             return Map.of(
                 "success", true,
                 "generation", response,
@@ -34,6 +41,11 @@ public class ChatController {
                 "message", "Generation failed"
             );
         }
+    }
+
+    @GetMapping("/ai/generateStream")
+    public Flux<String> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+        return this.streamingChatModel.stream(message).contextCapture();
     }
 
 }

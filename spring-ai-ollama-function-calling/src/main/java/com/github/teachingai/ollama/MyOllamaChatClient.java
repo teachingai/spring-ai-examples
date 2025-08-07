@@ -1,12 +1,14 @@
 package com.github.teachingai.ollama;
 
-import org.springframework.ai.chat.ChatClient;
+import org.springframework.ai.chat.ChatM;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.Generation;
 import org.springframework.ai.chat.StreamingChatClient;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.MessageType;
 import org.springframework.ai.chat.metadata.ChatGenerationMetadata;
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.model.StreamingChatModel;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.model.ModelOptionsUtils;
@@ -24,7 +26,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
-public class MyOllamaChatClient extends AbstractFunctionCallSupport<MyOllamaApi.Message, MyOllamaApi.ChatRequest, ResponseEntity<MyOllamaApi.ChatResponse>> implements ChatClient, StreamingChatClient {
+public class MyOllamaChatClient extends AbstractFunctionCallSupport<MyOllamaApi.Message, MyOllamaApi.ChatRequest, ResponseEntity<MyOllamaApi.ChatResponse>> implements ChatModel, StreamingChatModel {
 
     /**
      * Low-level Ollama API library.

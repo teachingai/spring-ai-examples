@@ -7,7 +7,7 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,7 +32,7 @@ public class Ollama_Prompt_Test11 {
     public static void main(String[] args) throws IOException {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
         Resource systemResource = new ClassPathResource("prompts/system-message.st");
         String systemPrompt =  systemResource.getContentAsString(StandardCharsets.UTF_8);
@@ -99,7 +99,7 @@ public class Ollama_Prompt_Test11 {
                 .withModel("qwen2")
                 .withTemperature(0f));
 
-        ChatResponse resp = chatClient.call(prompt);
+        ChatResponse resp = chatModel.call(prompt);
 
         for (Generation generation : resp.getResults()) {
             System.out.println(generation.getOutput().getContent());

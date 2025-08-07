@@ -1,0 +1,13 @@
+############## SpringDoc 配置 (文档: https://springdoc.org/) ##############
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  packages-to-scan:
+    - com.tianyin.edu.third.web.mvc
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+knife4j:
+  enable: true

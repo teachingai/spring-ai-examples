@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 
 @RestController
 class RAGController {
-    private final ChatClient chatClient;
+    private final ChatClient chatModel;
     private final VectorStore vectorStore;
 
-    RAGController(ChatClient chatClient, VectorStore vectorStore) {
-        this.chatClient = chatClient;
+    RAGController(ChatClient chatModel, VectorStore vectorStore) {
+        this.chatModel = chatModel;
         this.vectorStore = vectorStore;
     }
 
@@ -67,7 +67,7 @@ class RAGController {
 
         var prompt = new Prompt(List.of(systemMessage, userMessage));
 
-        var response = chatClient.call(prompt).getResult().getOutput().getContent();
+        var response = chatModel.call(prompt).getResult().getOutput().getContent();
 
         return outputParser.parse(response);
     }

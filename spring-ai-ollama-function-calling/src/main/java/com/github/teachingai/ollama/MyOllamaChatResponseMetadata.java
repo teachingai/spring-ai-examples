@@ -2,9 +2,6 @@ package com.github.teachingai.ollama;
 
 import org.springframework.ai.chat.metadata.ChatResponseMetadata;
 import org.springframework.ai.chat.metadata.Usage;
-import org.springframework.ai.ollama.api.OllamaApi;
-import org.springframework.ai.ollama.metadata.OllamaChatResponseMetadata;
-import org.springframework.ai.ollama.metadata.OllamaUsage;
 import org.springframework.util.Assert;
 
 public class MyOllamaChatResponseMetadata  implements ChatResponseMetadata {

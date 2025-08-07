@@ -1,8 +1,8 @@
 package com.github.teachingai.ollama;
 
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaChatClient;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
@@ -17,10 +17,10 @@ public class OllamaEmbeddingTest {
 
         var ollamaApi = new OllamaApi();
         //指定使用的模型
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("gemma"));
         //测试数据
-        VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
+        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
         vectorStore.add(List.of(
                 new Document("白日依山尽，黄河入海流。欲穷千里目，更上一层楼。"),
                 new Document("青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。"),

@@ -11,7 +11,7 @@ public class OllamaFunctionCallingTest1 {
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new MyOllamaApi();
-        var chatClient = new MyOllamaChatClient(ollamaApi, OllamaChatOptions.builder()
+        var chatModel = new MyOllamaChatClient(ollamaApi, OllamaChatOptions.builder()
                 .withModel("qwen:7b")
                 .withFormat("json")
                 .withFunction("CurrentWeather")
@@ -25,7 +25,7 @@ public class OllamaFunctionCallingTest1 {
             if (message.equals("exit")) {
                 break;
             }
-            String resp = chatClient.call(message);
+            String resp = chatModel.call(message);
             System.out.println("<<< " + resp);
         }
     }

@@ -1,6 +1,6 @@
 package com.github.teachingai.ollama;
 
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -15,7 +15,7 @@ public class OllamaChatTest {
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
+        var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
                 .withModel("qwen:7b")
                 .withFormat("json")
                 .withTemperature(0.9f));
@@ -27,7 +27,7 @@ public class OllamaChatTest {
             if (message.equals("exit")) {
                 break;
             }
-            String resp = chatClient.call(message);
+            String resp = chatModel.call(message);
             System.out.println("<<< " + resp);
         }
     }

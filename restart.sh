@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 #source /etc/profile
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
+# AWS Bedrock 认证配置 - 请设置您的 AWS 凭证
+# 方式1: 直接设置环境变量（不推荐用于生产环境）
+export AWS_ACCESS_KEY_ID=YOUR_AWS_ACCESS_KEY_HERE
+export AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET_KEY_HERE
+
+# 方式2: 使用 AWS CLI 配置文件 (~/.aws/credentials)
+# 方式3: 使用 IAM 角色（推荐用于 EC2 实例）
 
 User=uzx
 cur_dir=$(pwd)

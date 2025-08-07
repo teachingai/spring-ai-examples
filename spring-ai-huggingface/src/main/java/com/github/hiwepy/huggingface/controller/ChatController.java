@@ -16,16 +16,16 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final HuggingfaceChatClient chatClient;
+    private final HuggingfaceChatClient chatModel;
 
     @Autowired
-    public ChatController(HuggingfaceChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(HuggingfaceChatClient chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
 }

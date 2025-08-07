@@ -28,15 +28,15 @@
 		<java.version>17</java.version>
         <mcp-bom.version>0.10.0</mcp-bom.version>
         <knife4j.version>4.5.0</knife4j.version>
+        <sa-token.version>1.44.0</sa-token.version>
         <springdoc.version>2.7.0</springdoc.version>
-        <spring-ai.version>1.0.0</spring-ai.version>
+        <spring-ai.version>1.0.1</spring-ai.version>
         <testcontainers.version>1.21.0</testcontainers.version>
     </properties>
 
     <modules>
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
-        <module>spring-ai-bedrockai</module>
         <module>spring-ai-coze</module>
         <module>spring-ai-deepseek</module>
         <module>spring-ai-huaweiai-gallery</module>
@@ -92,6 +92,7 @@
         <module>spring-ai-vertexai-gemini</module>
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
+        <module>spring-ai-common</module>
     </modules>
 
     <dependencyManagement>
@@ -189,6 +190,14 @@
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/cn.dev33/sa-token-bom -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-bom</artifactId>
+                <version>${sa-token.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
             <dependency>

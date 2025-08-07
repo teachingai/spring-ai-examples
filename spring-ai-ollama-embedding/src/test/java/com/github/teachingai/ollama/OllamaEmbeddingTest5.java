@@ -2,7 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.reader.ExtractedTextFormatter;
@@ -32,7 +32,7 @@ public class OllamaEmbeddingTest5 {
          * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
         var ollamaApi = new OllamaApi();
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
 
         /**
@@ -51,13 +51,13 @@ public class OllamaEmbeddingTest5 {
          */
         List<Document> documents = pdfReader.get();
         for (Document document : documents) {
-            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingClient.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
+            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
         }
 
         /**
          * 3、简单的相似度搜索
          */
-        VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
+        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
         vectorStore.add(documents);
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -66,7 +66,7 @@ public class OllamaEmbeddingTest5 {
             if (query.equals("exit")) {
                 break;
             }
-            System.out.print("Embedding Query: " + embeddingClient.embed(query));
+            System.out.print("Embedding Query: " + embeddingModel.embed(query));
             // Retrieve embeddings
             SearchRequest request = SearchRequest.query(query).withTopK(2).withSimilarityThreshold(0.5);
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);

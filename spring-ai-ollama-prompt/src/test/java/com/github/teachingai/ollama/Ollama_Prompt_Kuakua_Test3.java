@@ -5,7 +5,7 @@ import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import reactor.core.publisher.Flux;
@@ -31,7 +31,7 @@ public class Ollama_Prompt_Kuakua_Test3 {
     public static void main(String[] args) throws IOException {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
         List<Message> historyList = new ArrayList<>();
         String firstText = "今天工作很累呢～";
@@ -47,7 +47,7 @@ public class Ollama_Prompt_Kuakua_Test3 {
                     .withLowVRAM(Boolean.TRUE)
                     .withSeed(ThreadLocalRandom.current().nextInt())
                 );
-            Flux<ChatResponse> chatResponse = chatClient.stream(prompt);
+            Flux<ChatResponse> chatResponse = chatModel.stream(prompt);
             System.out.print(">>> ");
             StringBuilder sb = new StringBuilder();
             chatResponse.doOnNext(response -> {

@@ -8,7 +8,7 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class Ollama_夸夸机_Test {
     public static void main(String[] args) throws IOException {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
         SystemMessage systemMessage = new SystemMessage("你是我的私人助理，你最重要的工作就是不断地鼓励我、激励我、夸赞我。你需要以温柔、体贴、亲切的语气和我聊天。你的聊天风格特别可爱有趣，你的每一个回答都要体现这一点。");
 
@@ -48,7 +48,7 @@ public class Ollama_夸夸机_Test {
             }
             historyList.add(new UserMessage(message));
             Prompt prompt = new Prompt(historyList);
-            ChatResponse chatResponse = chatClient.call(prompt);
+            ChatResponse chatResponse = chatModel.call(prompt);
             historyList.add(chatResponse.getResult().getOutput());
             String resp = chatResponse.getResult().getOutput().getContent();
             System.out.println("<<< " + resp);

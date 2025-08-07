@@ -2,7 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -29,12 +29,12 @@ public class OllamaEmbeddingTest4 {
          * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
         var ollamaApi = new OllamaApi();
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("shaw/dmeta-embedding-zh"));
         /**
          * 1、简单的文本嵌入
          */
-        VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
+        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
         // 将嵌入存储在 VectorStore
         vectorStore.add(List.of(
             new Document("床前明月光，疑是地上霜。举头望明月，低头思故乡。"),
@@ -52,7 +52,7 @@ public class OllamaEmbeddingTest4 {
             if (query.equals("exit")) {
                 break;
             }
-            System.out.print("Embedding Query: " + embeddingClient.embed(query));
+            System.out.print("Embedding Query: " + embeddingModel.embed(query));
             // Retrieve embeddings
             SearchRequest request = SearchRequest.query(query).withTopK(4).withSimilarityThreshold(0.4);
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);

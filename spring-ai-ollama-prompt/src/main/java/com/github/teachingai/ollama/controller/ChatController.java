@@ -1,9 +1,9 @@
 package com.github.teachingai.ollama.controller;
 
-import org.springframework.ai.chat.Generation;
+import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,18 +15,18 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final OllamaChatClient chatClient;
+    private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(OllamaChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/prompt")
     public List<Generation> prompt(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
         Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
-        return chatClient.call(prompt).getResults();
+        return chatModel.call(prompt).getResults();
     }
 
 }

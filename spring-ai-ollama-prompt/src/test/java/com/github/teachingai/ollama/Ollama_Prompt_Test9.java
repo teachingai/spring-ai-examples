@@ -6,7 +6,7 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -39,7 +39,7 @@ public class Ollama_Prompt_Test9 {
                 "校园套餐，月费150元，200G流量，仅限在校生。"));
     }*/
 
-    private static String getCompletion(OllamaChatClient chatClient, String promptStr, String model){
+    private static String getCompletion(OllamaChatModel chatModel, String promptStr, String model){
 
         messages.add(new UserMessage(promptStr));
 
@@ -48,7 +48,7 @@ public class Ollama_Prompt_Test9 {
                 .withTemperature(0f)
                 .withNumGPU(3));
 
-        ChatResponse response = chatClient.call(prompt);
+        ChatResponse response = chatModel.call(prompt);
 
         String content = response.getResult().getOutput().getContent();
 
@@ -60,7 +60,7 @@ public class Ollama_Prompt_Test9 {
     public static void main(String[] args) {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
         String output_format = "如果信息准确，输出：Y\n" +
                 "如果信息不准确，输出：N\n";
@@ -77,7 +77,7 @@ public class Ollama_Prompt_Test9 {
         // 连续调用 5 次
         for (int i = 0; i < 5; i++) {
             System.out.println("------第" + (i + 1) + "次------");
-            getCompletion(chatClient, promptStr, "qwen2:7b");
+            getCompletion(chatModel, promptStr, "qwen2:7b");
         }
 
         for (Message message : messages) {

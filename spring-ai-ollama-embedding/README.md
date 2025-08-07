@@ -206,7 +206,7 @@ public class OllamaEmbeddingTest2 {
 ```java
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.reader.ExtractedTextFormatter;
@@ -232,7 +232,7 @@ public class OllamaEmbeddingTest3 {
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
          */
         var ollamaApi = new OllamaApi();
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("nomic-embed-text"));
 
         /**
@@ -251,7 +251,7 @@ public class OllamaEmbeddingTest3 {
          */
         List<Document> documents = pdfReader.get();
         for (Document document : documents) {
-            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingClient.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
+            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
         }
     }
 
@@ -265,7 +265,7 @@ public class OllamaEmbeddingTest3 {
 ```java
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -292,12 +292,12 @@ public class OllamaEmbeddingTest4 {
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
          */
         var ollamaApi = new OllamaApi();
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("nomic-embed-text"));
         /**
          * 1、简单的文本嵌入
          */
-        VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
+        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
         // 将嵌入存储在 VectorStore
         vectorStore.add(List.of(
                 new Document("床前明月光，疑是地上霜。举头望明月，低头思故乡。"),
@@ -315,7 +315,7 @@ public class OllamaEmbeddingTest4 {
             if (query.equals("exit")) {
                 break;
             }
-            System.out.print("Embedding Query: " + embeddingClient.embed(query));
+            System.out.print("Embedding Query: " + embeddingModel.embed(query));
             // Retrieve embeddings
             SearchRequest request = SearchRequest.query(query).withTopK(1).withSimilarityThreshold(0.6);
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);
@@ -335,7 +335,7 @@ public class OllamaEmbeddingTest4 {
 ```java
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.ollama.OllamaEmbeddingClient;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.vectorstore.SearchRequest;
@@ -363,12 +363,12 @@ public class OllamaEmbeddingTest4 {
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
          */
         var ollamaApi = new OllamaApi();
-        var embeddingClient = new OllamaEmbeddingClient(ollamaApi)
+        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("gemma:7b"));
         /**
          * 1、简单的文本嵌入
          */
-        VectorStore vectorStore = new SimpleVectorStore(embeddingClient);
+        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
         // 将嵌入存储在 VectorStore
         vectorStore.add(List.of(
                 new Document("床前明月光，疑是地上霜。举头望明月，低头思故乡。"),
@@ -386,7 +386,7 @@ public class OllamaEmbeddingTest4 {
             if (query.equals("exit")) {
                 break;
             }
-            System.out.print("Embedding Query: " + embeddingClient.embed(query));
+            System.out.print("Embedding Query: " + embeddingModel.embed(query));
             // Retrieve embeddings
             SearchRequest request = SearchRequest.query(query).withTopK(1).withSimilarityThreshold(0.6);
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);

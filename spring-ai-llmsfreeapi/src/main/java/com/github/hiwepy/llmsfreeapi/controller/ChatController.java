@@ -28,36 +28,36 @@ import java.util.Map;
 public class ChatController {
 
     private final String systemPromptTemplate;
-    private final LLMsFreeApiChatClient chatClient;
+    private final LLMsFreeApiChatClient chatModel;
 
     @Autowired
     public ChatController( @Value("classpath:/prompt.st") Resource sqlPromptTemplateResource,
-                           LLMsFreeApiChatClient chatClient) {
+                           LLMsFreeApiChatClient chatModel) {
         try (InputStream inputStream = sqlPromptTemplateResource.getInputStream()) {
             this.systemPromptTemplate = StreamUtils.copyToString(inputStream, Charset.defaultCharset());
         }
         catch (IOException ex) {
             throw new RuntimeException("Failed to read resource", ex);
         }
-        this.chatClient = chatClient;
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
     @GetMapping("/v1/prompt")
     public List<Generation> prompt() {
         Message systemMessage = new SystemMessage(systemPromptTemplate);
         Prompt prompt = new Prompt(List.of(systemMessage));
-        return chatClient.call(prompt).getResults();
+        return chatModel.call(prompt).getResults();
     }
 
     @PostMapping("/v1/chat/completions")
     public Flux<ChatResponse> chatCompletions(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
-        return chatClient.stream(prompt);
+        return chatModel.stream(prompt);
     }
 
 }

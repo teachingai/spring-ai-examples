@@ -19,29 +19,29 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final QWenAiChatClient chatClient;
+    private final QWenAiChatClient chatModel;
 
     @Autowired
-    public ChatController(QWenAiChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(QWenAiChatClient chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
     @GetMapping("/v1/prompt")
     public List<Generation> prompt(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
         Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
-        return chatClient.call(prompt).getResults();
+        return chatModel.call(prompt).getResults();
     }
 
     @PostMapping("/v1/chat/completions")
     public Flux<ChatResponse> chatCompletions(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
-        return chatClient.stream(prompt);
+        return chatModel.stream(prompt);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.github.teachingai.ollama.controller;
 
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,17 +11,17 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final OllamaChatClient chatClient;
+    private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(OllamaChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map<String, Object> generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         try {
-            String response = chatClient.call(message);
+            String response = chatModel.call(message);
             return Map.of(
                 "success", true,
                 "generation", response,

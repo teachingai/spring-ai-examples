@@ -11,11 +11,11 @@ import org.springframework.web.servlet.function.ServerResponse;
 public class RouterFunctionConfig {
 
     @Bean
-    RouterFunction<ServerResponse> routes(ZhipuAiChatClient chatClient) {
+    RouterFunction<ServerResponse> routes(ZhipuAiChatClient chatModel) {
         return RouterFunctions.route()
                 .GET("/ask", req ->
                         ServerResponse.ok().body(
-                                chatClient.call(req.param("question")
+                                chatModel.call(req.param("question")
                                         .orElse("tell me a joke"))))
                 .build();
     }

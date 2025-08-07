@@ -11,19 +11,19 @@ import org.springframework.web.servlet.function.ServerResponse;
 public class RouterFunctionConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> routes(QWenAiChatClient chatClient) {
+    public RouterFunction<ServerResponse> routes(QWenAiChatClient chatModel) {
         return RouterFunctions.route()
                 .GET("/route/v1/generate", req ->
                         ServerResponse.ok().body(
-                                chatClient.call(req.param("message")
+                                chatModel.call(req.param("message")
                                         .orElse("tell me a joke"))))
                 .GET("/route/v1/prompt", req ->
                         ServerResponse.ok().body(
-                                chatClient.call(req.param("message")
+                                chatModel.call(req.param("message")
                                         .orElse("tell me a joke"))))
                 .GET("/route/v1/chat/completions", req ->
                         ServerResponse.ok().body(
-                                chatClient.call(req.param("message")
+                                chatModel.call(req.param("message")
                                         .orElse("tell me a joke"))))
                 .build();
     }

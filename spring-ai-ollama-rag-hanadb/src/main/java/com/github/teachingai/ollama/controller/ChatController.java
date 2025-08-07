@@ -10,7 +10,7 @@ import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,23 +23,23 @@ import java.util.stream.Collectors;
 @RestController
 public class ChatController {
 
-    private final OllamaChatClient chatClient;
+    private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(OllamaChatModel chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
     @GetMapping("/v1/prompt")
     public List<Generation> prompt(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         PromptTemplate promptTemplate = new PromptTemplate("Tell me a {adjective} joke about {topic}");
         Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
-        return chatClient.call(prompt).getResults();
+        return chatModel.call(prompt).getResults();
     }
 
     @PostMapping("/v1/chat/completions")
@@ -64,7 +64,7 @@ public class ChatController {
         }).collect(Collectors.toList());
 
         Prompt prompt = new Prompt(messages, modelOptions);
-        return chatClient.stream(prompt);
+        return chatModel.stream(prompt);
     }
 
 }

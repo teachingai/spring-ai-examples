@@ -6,7 +6,7 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -23,7 +23,7 @@ public class Ollama_Prompt_Test1 {
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
         List<Message> messages  = List.of(
                 new SystemMessage("你的任务是识别用户对手机流量套餐产品的选择条件。\n" +
@@ -35,7 +35,7 @@ public class Ollama_Prompt_Test1 {
                 .withModel("qwen2:7b")
                 .withTemperature(0f));
 
-        ChatResponse resp = chatClient.call(prompt);
+        ChatResponse resp = chatModel.call(prompt);
 
         for (Generation generation : resp.getResults()) {
             System.out.println(generation.getOutput().getContent());

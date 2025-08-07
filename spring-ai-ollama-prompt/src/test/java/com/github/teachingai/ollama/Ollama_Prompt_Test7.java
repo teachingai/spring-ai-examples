@@ -7,7 +7,7 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -26,7 +26,7 @@ public class Ollama_Prompt_Test7 {
                 "校园套餐，月费150元，200G流量，仅限在校生。"));
     }
 
-    private static String getCompletion(OllamaChatClient chatClient, String promptStr, String model){
+    private static String getCompletion(OllamaChatModel chatModel, String promptStr, String model){
 
         messages.add(new UserMessage(promptStr));
 
@@ -35,7 +35,7 @@ public class Ollama_Prompt_Test7 {
                 .withTemperature(0f)
                 .withNumGPU(3));
 
-        ChatResponse response = chatClient.call(prompt);
+        ChatResponse response = chatModel.call(prompt);
 
         String content = response.getResult().getOutput().getContent();
 
@@ -47,11 +47,11 @@ public class Ollama_Prompt_Test7 {
     public static void main(String[] args) {
 
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi);
+        var chatModel = new OllamaChatModel(ollamaApi);
 
-        getCompletion(chatClient, "流量最大的套餐是什么？", "qwen2:7b");
-        getCompletion(chatClient, "多少钱？", "qwen2:7b");
-        getCompletion(chatClient, "给我办一个", "qwen2:7b");
+        getCompletion(chatModel, "流量最大的套餐是什么？", "qwen2:7b");
+        getCompletion(chatModel, "多少钱？", "qwen2:7b");
+        getCompletion(chatModel, "给我办一个", "qwen2:7b");
 
         for (Message message : messages) {
             System.out.println(message.getContent());

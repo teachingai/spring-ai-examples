@@ -13,15 +13,6 @@
     <description>spring-ai-azure-openai</description>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
             <groupId>org.springframework.ai</groupId>

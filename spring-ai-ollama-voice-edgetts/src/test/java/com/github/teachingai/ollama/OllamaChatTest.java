@@ -6,7 +6,7 @@ import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
@@ -27,7 +27,7 @@ public class OllamaChatTest {
          * mistral ：https://ollama.com/library/mistral
          */
         var ollamaApi = new OllamaApi();
-        var chatClient = new OllamaChatClient(ollamaApi, OllamaOptions.create()
+        var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
                 .withModel("qwen2:1.5b")
                 .withTemperature(0.9f));
 
@@ -46,7 +46,7 @@ public class OllamaChatTest {
             }
             historyList.add(new UserMessage(message));
             Prompt prompt = new Prompt(historyList);
-            ChatResponse chatResponse = chatClient.call(prompt);
+            ChatResponse chatResponse = chatModel.call(prompt);
             historyList.add(chatResponse.getResult().getOutput());
             String resp = chatResponse.getResult().getOutput().getContent();
             System.out.println("<<< " + resp);

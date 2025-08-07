@@ -16,22 +16,22 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final MistralAiChatClient chatClient;
+    private final MistralAiChatClient chatModel;
 
     @Autowired
-    public ChatController(MistralAiChatClient chatClient) {
-        this.chatClient = chatClient;
+    public ChatController(MistralAiChatClient chatModel) {
+        this.chatModel = chatModel;
     }
 
     @GetMapping("/v1/generate")
     public Map generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return Map.of("generation", chatClient.call(message));
+        return Map.of("generation", chatModel.call(message));
     }
 
     @PostMapping("/v1/chat/completions")
     public Flux<ChatResponse> chatCompletions(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         Prompt prompt = new Prompt(new UserMessage(message));
-        return chatClient.stream(prompt);
+        return chatModel.stream(prompt);
     }
 
 }
