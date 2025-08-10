@@ -88,7 +88,6 @@
         <module>spring-ai-qwen</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
-        <module>spring-ai-vertexai-palm2</module>
         <module>spring-ai-vertexai-gemini</module>
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
