@@ -1,10 +1,10 @@
-package com.github.hiwepy.huggingface.controller;
+package com.github.teachingai.nvidia.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.huggingface.HuggingfaceChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,22 +13,21 @@ import reactor.core.publisher.Flux;
 
 import java.util.Map;
 
+
 @RestController
 public class ChatController {
 
-    private final HuggingfaceChatModel chatModel;
+    private final OpenAiChatModel chatModel;
 
     @Autowired
-    public ChatController(HuggingfaceChatModel chatModel) {
+    public ChatController(OpenAiChatModel chatModel) {
         this.chatModel = chatModel;
     }
 
-
     /**
      * 文本生成
-     * eg. http://localhost:8080/ai/generate?message=你好
-     * @param message
-     * @return
+     * @param message 提示词
+     * @return 响应结果
      */
     @GetMapping("/ai/generate")
     @Operation(summary = "文本生成")

@@ -37,6 +37,7 @@
     <modules>
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
+        <module>spring-ai-common</module>
         <module>spring-ai-coze</module>
         <module>spring-ai-deepseek</module>
         <module>spring-ai-huaweiai-gallery</module>
@@ -46,6 +47,7 @@
         <module>spring-ai-minimax</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
+        <module>spring-ai-nvidia</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama-generation</module>
         <module>spring-ai-ollama-chat</module>
@@ -91,7 +93,6 @@
         <module>spring-ai-vertexai-gemini</module>
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
-        <module>spring-ai-common</module>
     </modules>
 
     <dependencyManagement>

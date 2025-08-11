@@ -1,6 +1,6 @@
-package com.github.teachingai.anthropic.router;
+package com.github.teachingai.nvidia.router;
 
-import org.springframework.ai.anthropic.AnthropicChatModel;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.function.RouterFunction;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.function.ServerResponse;
 public class RouterFunctionConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> routes(AnthropicChatModel chatModel) {
+    public RouterFunction<ServerResponse> routes(OpenAiChatModel chatModel) {
         return RouterFunctions.route()
                 .GET("/route/v1/generate", req ->
                         ServerResponse.ok().body(
