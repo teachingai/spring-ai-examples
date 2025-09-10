@@ -13,6 +13,12 @@
     <description>spring-ai-azure-openai</description>
 
     <dependencies>
+        <!-- For Spring AI Common -->
+        <dependency>
+            <groupId>com.github.teachingai</groupId>
+            <artifactId>spring-ai-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -20,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-retry</artifactId>
+            <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
         <!-- For Chat Memory -->
         <dependency>

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.5</version>
+        <version>3.5.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,17 +24,20 @@
         <protobuf-java.version>4.31.0</protobuf-java.version>
         <google-protos.version>2.57.0</google-protos.version>
         <guava.version>33.4.8-jre</guava.version>
-        <fastjson2.version>2.0.57</fastjson2.version>
+        <fastjson2.version>2.0.58</fastjson2.version>
 		<java.version>17</java.version>
         <mcp-bom.version>0.10.0</mcp-bom.version>
         <knife4j.version>4.5.0</knife4j.version>
+        <pdfbox.version>3.0.5</pdfbox.version>
         <sa-token.version>1.44.0</sa-token.version>
         <springdoc.version>2.7.0</springdoc.version>
         <spring-ai.version>1.0.1</spring-ai.version>
-        <testcontainers.version>1.21.0</testcontainers.version>
+        <tika.version>3.2.2</tika.version>
+        <testcontainers.version>1.21.3</testcontainers.version>
     </properties>
 
     <modules>
+        <module>spring-ai-amazon-bedrock</module>
         <module>spring-ai-anthropic</module>
         <module>spring-ai-azure-openai</module>
         <module>spring-ai-common</module>
@@ -48,18 +51,20 @@
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
         <module>spring-ai-nvidia</module>
+        <module>spring-ai-oci-genai-cohere</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama-generation</module>
         <module>spring-ai-ollama-chat</module>
         <module>spring-ai-ollama-prompt</module>
         <module>spring-ai-ollama-vision</module>
-        <module>spring-ai-ollama-local-model</module>
-        <module>spring-ai-ollama-mcp-client</module>
+        <module>spring-ai-ollama-mcp-webmvc-client</module>
         <module>spring-ai-ollama-mcp-webmvc-server</module>
+        <module>spring-ai-ollama-mcp-webflux-client</module>
         <module>spring-ai-ollama-mcp-webflux-server</module>
-        <module>spring-ai-ollama-function-calling</module>
         <module>spring-ai-ollama-embedding</module>
+        <module>spring-ai-ollama-tools</module>
         <module>spring-ai-ollama-fine-tuning</module>
+        <module>spring-ai-ollama-agents</module>
         <module>spring-ai-ollama-rag-cassandra</module>
         <module>spring-ai-ollama-rag-chroma</module>
         <module>spring-ai-ollama-rag-es</module>
@@ -82,10 +87,10 @@
         <module>spring-ai-ollama-voice-mars5tts</module>
         <module>spring-ai-ollama-voice-whisper</module>
         <module>spring-ai-ollama-voice-assistant</module>
-        <module>spring-ai-ollama-langfuse</module>
-        <module>spring-ai-ollama-prometheus</module>
-        <module>spring-ai-ollama-agents</module>
+        <module>spring-ai-ollama-observation-langfuse</module>
+        <module>spring-ai-ollama-observation-prometheus</module>
         <module>spring-ai-openai</module>
+        <module>spring-ai-postgresml</module>
         <module>spring-ai-qianfan</module>
         <module>spring-ai-qwen</module>
         <module>spring-ai-sql</module>
@@ -93,10 +98,16 @@
         <module>spring-ai-vertexai-gemini</module>
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
+        <module>spring-ai-project-hotel-recommend</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>26.0.2-1</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/io.modelcontextprotocol.sdk/mcp-bom -->
             <dependency>
                 <groupId>io.modelcontextprotocol.sdk</groupId>
@@ -191,6 +202,30 @@
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox-tools -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox-tools</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox-io -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox-io</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/fontbox -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>fontbox</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/cn.dev33/sa-token-bom -->
             <dependency>
                 <groupId>cn.dev33</groupId>
@@ -222,6 +257,14 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
                 <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-bom -->
+            <dependency>
+                <groupId>org.apache.tika</groupId>
+                <artifactId>tika-bom</artifactId>
+                <version>${tika.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

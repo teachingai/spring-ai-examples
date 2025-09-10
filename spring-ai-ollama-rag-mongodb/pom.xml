@@ -46,7 +46,7 @@
         <!-- For Vector Store -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-mongodb-atlas-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>

@@ -23,12 +23,6 @@ public class ChatController {
         this.chatModel = chatModel;
     }
 
-    /**
-     * 文本生成
-     * eg. http://localhost:8080/ai/generate?message=你好
-     * @param message
-     * @return
-     */
     @GetMapping("/ai/generate")
     @Operation(summary = "文本生成")
     public Map<String, Object> generate(@RequestParam(value = "message", defaultValue = "你好！") String message) {

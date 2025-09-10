@@ -1,8 +1,6 @@
 package com.github.teachingai.ollama.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.chat.model.StreamingChatModel;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +13,11 @@ import java.util.Map;
 @RestController
 public class ChatController {
 
-    private final ChatModel chatModel;
-    private final StreamingChatModel streamingChatModel;
+    private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatModel chatModel, StreamingChatModel streamingChatModel) {
+    public ChatController(OllamaChatModel chatModel) {
         this.chatModel = chatModel;
-        this.streamingChatModel = streamingChatModel;
     }
 
     @GetMapping("/ai/generate")
@@ -45,7 +41,7 @@ public class ChatController {
 
     @GetMapping("/ai/generateStream")
     public Flux<String> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return this.streamingChatModel.stream(message).contextCapture();
+        return this.chatModel.stream(message).contextCapture();
     }
 
 }

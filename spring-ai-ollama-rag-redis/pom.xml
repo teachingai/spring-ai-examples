@@ -46,7 +46,7 @@
         <!-- For Vector Store  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-redis-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-redis</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>

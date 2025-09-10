@@ -46,7 +46,7 @@
         <!-- For Vector Store  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-elasticsearch-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-elasticsearch</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>

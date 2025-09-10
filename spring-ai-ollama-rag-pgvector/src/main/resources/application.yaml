@@ -1,0 +1,27 @@
+############## SpringDoc 配置 (文档: https://springdoc.org/) ##############
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  packages-to-scan:
+    - com.tianyin.edu.third.web.mvc
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+knife4j:
+  enable: true
+
+############## Spring AI 配置 ##############
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  ai:
+    vectorstore:
+      pgvector:
+      index-type: HNSW
+      distance-type: COSINE_DISTANCE
+      dimensions: 1536
+      max-document-batch-size: 10000 # Optional: Maximum number of documents per batch

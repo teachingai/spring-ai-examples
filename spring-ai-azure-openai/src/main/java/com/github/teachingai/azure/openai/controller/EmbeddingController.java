@@ -19,7 +19,7 @@ public class EmbeddingController {
     }
 
     @GetMapping("/v1/embedding")
-    public Map embedding(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+    public Map<String, Object> embedding(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         return Map.of("embeddings", embeddingModel.embed(message));
     }
 

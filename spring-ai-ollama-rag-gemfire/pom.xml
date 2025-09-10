@@ -44,7 +44,7 @@
         <!-- For Vector Store  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-gemfire-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-gemfire</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>

@@ -41,19 +41,19 @@
         <!-- For Vector Store  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-cassandra-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-cassandra</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-chroma</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-elasticsearch-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-elasticsearch</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-gemfire-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-gemfire</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -65,15 +65,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-milvus-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-milvus</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-mongodb-atlas-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-neo4j-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-neo4j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -81,31 +81,31 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-oracle-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-oracle</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-pinecone-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-pinecone</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-qdrant-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-qdrant</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-redis-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-redis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-typesense-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-typesense</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-weaviate-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-weaviate</artifactId>
         </dependency>
         <!-- For Web Server -->
         <dependency>
