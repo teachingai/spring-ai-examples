@@ -11,12 +11,12 @@ import reactor.core.publisher.Flux;
 import java.util.Map;
 
 @RestController
-public class ChatController {
+public class GenerationController {
 
     private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatModel chatModel) {
+    public GenerationController(OllamaChatModel chatModel) {
         this.chatModel = chatModel;
     }
 

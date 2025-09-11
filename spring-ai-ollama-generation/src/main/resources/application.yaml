@@ -4,7 +4,7 @@ springdoc:
     enabled: true
     path: /v3/api-docs
   packages-to-scan:
-    - com.tianyin.edu.third.web.mvc
+    - com.github.teachingai.ollama
   swagger-ui:
     path: /swagger-ui.html
     tags-sorter: alpha
