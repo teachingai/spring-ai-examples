@@ -25,17 +25,18 @@ public class OllamaEmbeddingTest5 {
      */
     public static void main(String[] args) {
 
-        /**
+        /*
          * mxbai-embed-large ：https://ollama.com/library/mxbai-embed-large
          * nomic-embed-text ：https://ollama.com/library/nomic-embed-text
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
          * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
-        var ollamaApi = new OllamaApi();
-        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder().model("mxbai-embed-large").topK(3).build();
+        var embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
-        /**
+        /*
          * 1、解析 llama2.pdf
          */
         ParagraphPdfDocumentReader pdfReader = new ParagraphPdfDocumentReader("classpath:/llama2.pdf",
@@ -46,18 +47,18 @@ public class OllamaEmbeddingTest5 {
                                 .build())
                         .withPagesPerDocument(1)
                         .build());
-        /**
+        /*
          * 2、读取并处理PDF文档以提取段落。
          */
         List<Document> documents = pdfReader.get();
         for (Document document : documents) {
-            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
+            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getText(), "metadata", document.getMetadata()));
         }
 
-        /**
+        /*
          * 3、简单的相似度搜索
          */
-        VectorStore vectorStore = new SimpleVectorStore(embeddingModel);
+        VectorStore vectorStore = SimpleVectorStore.builder(embeddingModel).build();
         vectorStore.add(documents);
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -68,11 +69,11 @@ public class OllamaEmbeddingTest5 {
             }
             System.out.print("Embedding Query: " + embeddingModel.embed(query));
             // Retrieve embeddings
-            SearchRequest request = SearchRequest.query(query).withTopK(2).withSimilarityThreshold(0.5);
+            SearchRequest request = SearchRequest.builder().query(query).topK(2).similarityThreshold(0.5).build();
             List<Document> similarDocuments  = vectorStore.similaritySearch(request);
             System.out.println("查询结果: ");
             for (Document document : similarDocuments ) {
-                System.out.println( JSONObject.of( "id", document.getId(), "embedding", document.getEmbedding(),"content", document.getContent(), "metadata", document.getMetadata()));
+                System.out.println( JSONObject.of( "id", document.getId(), "embedding", document.getScore(),"content", document.getText(), "metadata", document.getMetadata()));
             }
         }
     }

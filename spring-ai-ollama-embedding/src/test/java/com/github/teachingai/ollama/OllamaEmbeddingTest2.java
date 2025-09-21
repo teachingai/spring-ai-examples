@@ -35,7 +35,7 @@ public class OllamaEmbeddingTest2 {
          */
         List<Document> documents = documentReader.get();
         for (Document document : documents) {
-            String content = document.getContent();
+            String content = document.getFormattedContent();
             // 尝试使用正则表达式将内容分割成段落
             String[] paragraphs = content.split("\\n\\s*\\n");
             for (String paragraph : paragraphs) {

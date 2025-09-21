@@ -17,7 +17,7 @@ public class OllamaChatTest {
          * llama3:8b ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
                 .withModel("qwen:7b")
                 .withFormat("json")

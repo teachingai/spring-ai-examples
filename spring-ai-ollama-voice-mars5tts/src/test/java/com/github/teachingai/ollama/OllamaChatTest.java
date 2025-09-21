@@ -2,7 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.ApiUtils;
 import com.github.teachingai.ollama.api.ChatTtsAudioApi;
-import org.springframework.ai.chat.ChatResponse;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -28,7 +28,7 @@ public class OllamaChatTest {
          * qwen2:7b ：https://ollama.com/library/qwen2
          * mistral ：https://ollama.com/library/mistral
          */
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
                 .withModel("qwen:7b")
                 .withTemperature(0.9f));

@@ -34,7 +34,7 @@ public class OllamaEmbeddingTest1 {
          */
         List<Document> documents = pdfReader.get();
         for (Document document : documents) {
-            System.out.println( JSONObject.of( "id", document.getId(),"content", document.getContent(), "metadata", document.getMetadata()));
+            System.out.println( JSONObject.of( "id", document.getId(),"content", document.getFormattedContent(), "metadata", document.getMetadata()));
         }
     }
 

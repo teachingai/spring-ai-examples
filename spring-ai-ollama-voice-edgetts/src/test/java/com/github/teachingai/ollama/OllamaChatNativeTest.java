@@ -2,7 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.EdgeTtsNativeAudioApi;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.ai.chat.ChatResponse;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -28,7 +28,7 @@ public class OllamaChatNativeTest {
          * llama3:8b ：https://ollama.com/library/llama3
          * mistral ：https://ollama.com/library/mistral
          */
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
                 .withModel("qwen:7b")
                 .withTemperature(0.9f));

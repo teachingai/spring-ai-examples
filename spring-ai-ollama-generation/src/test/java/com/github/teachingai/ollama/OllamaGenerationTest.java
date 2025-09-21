@@ -4,9 +4,7 @@ import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
-import java.util.Scanner;
-
-public class OllamaChatTest {
+public class OllamaGenerationTest {
 
     public static void main(String[] args) {
 
@@ -17,23 +15,15 @@ public class OllamaChatTest {
          */
         var ollamaApi = OllamaApi.builder().build();
         var ollamaOptions = OllamaOptions.builder()
-                .model("qwen:7b")
+                .model("gemma3:4b")
                 .format("json")
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
                 .defaultOptions(ollamaOptions).build();
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.print(">>> ");
-            String message = scanner.nextLine();
-            if (message.equals("exit")) {
-                break;
-            }
-            String resp = chatModel.call(message);
-            System.out.println("<<< " + resp);
-        }
+        String resp = chatModel.call("写一段笑话");
+        System.out.println("<<< " + resp);
     }
 
 }

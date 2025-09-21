@@ -2,8 +2,8 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.EdgeTtsNativeAudioApi;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.chat.Generation;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -32,7 +32,7 @@ public class Ollama_Prompt_Test11 {
      */
     public static void main(String[] args) throws IOException {
 
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi);
 
         Resource systemResource = new ClassPathResource("prompts/system-message.st");

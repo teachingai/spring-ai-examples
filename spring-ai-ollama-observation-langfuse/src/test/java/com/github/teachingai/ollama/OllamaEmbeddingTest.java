@@ -15,7 +15,7 @@ public class OllamaEmbeddingTest {
 
     public static void main(String[] args) {
 
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         //指定使用的模型
         var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create().withModel("gemma"));

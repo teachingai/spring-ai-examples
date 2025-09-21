@@ -10,11 +10,19 @@ public class OllamaChatTest {
 
     public static void main(String[] args) {
 
-        var ollamaApi = new OllamaApi();
-        var chatModel = new OllamaChatModel(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create()
-                        .withModel("qwen:7b")
-                        .withTemperature(0.9f));
+        /*
+         * deepseek-r1:8b ：https://ollama.com/library/deepseek-r1
+         * qwen3:8b ：https://ollama.com/library/qwen8
+         * gemma3:4b ：https://ollama.com/library/gemma3
+         */
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder()
+                .model("qwen:7b")
+                .format("json")
+                .temperature(0.9d).build();
+        var chatModel = OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {

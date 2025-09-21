@@ -1,12 +1,12 @@
 package com.github.teachingai.ollama;
 
 import com.alibaba.fastjson2.JSONObject;
-import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.chat.Generation;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaApi;
@@ -18,8 +18,19 @@ import java.util.Map;
 
 public class Ollama_Prompt_Test5 {
 
-    private static OllamaApi ollamaApi = new OllamaApi();
-    private static OllamaChatModel chatModel = new OllamaChatModel(ollamaApi);
+    /*
+     * deepseek-r1:8b ：https://ollama.com/library/deepseek-r1
+     * qwen3:8b ：https://ollama.com/library/qwen8
+     * gemma3:4b ：https://ollama.com/library/gemma3
+     */
+    private static OllamaApi ollamaApi = OllamaApi.builder().build();
+    private static OllamaOptions ollamaOptions = OllamaOptions.builder()
+            .model("qwen3:8b")
+            .format("json")
+            .temperature(0.9d).build();
+    private static OllamaChatModel chatModel = OllamaChatModel.builder()
+            .ollamaApi(ollamaApi)
+            .defaultOptions(ollamaOptions).build();
 
     static class NLU {
 
@@ -32,12 +43,12 @@ public class Ollama_Prompt_Test5 {
 
         private String getCompletion(NLU self, String promptStr, String model){
             messages.add(new UserMessage(promptStr));
-            Prompt prompt = new Prompt(messages, OllamaOptions.create()
-                    .withModel("qwen2:7b")
-                    .withTemperature(0f)
-                    .withNumGPU(3));
+            Prompt prompt = new Prompt(messages, OllamaOptions.builder()
+                    .model("qwen3:8b")
+                    .format("json")
+                    .temperature(0d).numGPU(3).build());
             ChatResponse response = chatModel.call(prompt);
-           return response.getResults().get(0).getOutput().getContent();
+           return response.getResults().get(0).getOutput().getText();
         }
 
         private String parse(NLU self, String user_input, String model){
@@ -70,8 +81,19 @@ public class Ollama_Prompt_Test5 {
 
     public static void main(String[] args) {
 
-        var ollamaApi = new OllamaApi();
-        var chatModel = new OllamaChatModel(ollamaApi);
+        /*
+         * deepseek-r1:8b ：https://ollama.com/library/deepseek-r1
+         * qwen3:8b ：https://ollama.com/library/qwen8
+         * gemma3:4b ：https://ollama.com/library/gemma3
+         */
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder()
+                .model("qwen3:8b")
+                .format("json")
+                .temperature(0.9d).build();
+        var chatModel = OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
         // 系统提示消息
         SystemMessage systemMessage = new SystemMessage("你的任务是识别用户对手机流量套餐产品的选择条件。\n" +
@@ -133,15 +155,15 @@ public class Ollama_Prompt_Test5 {
                 new UserMessage("用户：" + input_text),
                 userMessage);
 
-        Prompt prompt = new Prompt(messages, OllamaOptions.create()
-                .withModel("qwen2:7b")
-                .withTemperature(0f)
-                .withNumGPU(3));
+        Prompt prompt = new Prompt(messages, OllamaOptions.builder()
+                .model("qwen3:8b")
+                .format("json")
+                .temperature(0d).build());
 
         ChatResponse resp = chatModel.call(prompt);
 
         for (Generation generation : resp.getResults()) {
-            System.out.println(generation.getOutput().getContent());
+            System.out.println(generation.getOutput().getText());
         }
 
     }

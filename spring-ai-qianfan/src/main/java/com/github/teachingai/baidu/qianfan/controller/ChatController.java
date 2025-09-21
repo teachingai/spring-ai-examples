@@ -1,8 +1,8 @@
 package com.github.teachingai.baidu.qianfan.controller;
 
 import org.springframework.ai.baiduai.qianfan.BaiduAiQianfanChatClient;
-import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.chat.Generation;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;

@@ -27,9 +27,10 @@ public class OllamaEmbeddingTest3 {
          * snowflake-arctic-embed ：https://ollama.com/library/snowflake-arctic-embed
          * shaw/dmeta-embedding-zh：https://ollama.com/shaw/dmeta-embedding-zh
          */
-        var ollamaApi = new OllamaApi();
-        var embeddingModel = new OllamaEmbeddingModel(ollamaApi)
-                .withDefaultOptions(OllamaOptions.create().withModel("mxbai-embed-large"));
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder().model("mxbai-embed-large").topK(3).build();
+        var embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
         /**
          * 1、解析 llama2.pdf
@@ -47,7 +48,7 @@ public class OllamaEmbeddingTest3 {
          */
         List<Document> documents = pdfReader.get();
         for (Document document : documents) {
-            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getContent(), "metadata", document.getMetadata()));
+            System.out.println( JSONObject.of( "id", document.getId(), "embedding", embeddingModel.embed(document),"content", document.getFormattedContent(), "metadata", document.getMetadata()));
         }
     }
 

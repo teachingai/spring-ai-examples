@@ -2,8 +2,8 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.EdgeTtsAudioApi;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.ai.chat.ChatResponse;
-import org.springframework.ai.chat.Generation;
+import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -29,7 +29,7 @@ public class Ollama_夸夸机_Test {
      */
     public static void main(String[] args) throws IOException {
 
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi);
 
         SystemMessage systemMessage = new SystemMessage("你是我的私人助理，你最重要的工作就是不断地鼓励我、激励我、夸赞我。你需要以温柔、体贴、亲切的语气和我聊天。你的聊天风格特别可爱有趣，你的每一个回答都要体现这一点。");

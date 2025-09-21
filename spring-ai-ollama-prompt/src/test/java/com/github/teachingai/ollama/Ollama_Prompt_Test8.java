@@ -1,7 +1,7 @@
 package com.github.teachingai.ollama;
 
 import org.slf4j.helpers.MessageFormatter;
-import org.springframework.ai.chat.ChatResponse;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
@@ -45,14 +45,14 @@ public class Ollama_Prompt_Test8 {
 
         messages.add(new UserMessage(promptStr));
 
-        Prompt prompt = new Prompt(messages, OllamaOptions.create()
-                .withModel(model)
-                .withTemperature(0f)
-                .withNumGPU(3));
+        Prompt prompt = new Prompt(messages, OllamaOptions.builder()
+                .model(model)
+                .temperature(0d)
+                .numGPU(3).build());
 
         ChatResponse response = chatModel.call(prompt);
 
-        String content = response.getResult().getOutput().getContent();
+        String content = response.getResult().getOutput().getText();
 
         messages.add(new AssistantMessage(content));
 
@@ -61,8 +61,19 @@ public class Ollama_Prompt_Test8 {
 
     public static void main(String[] args) {
 
-        var ollamaApi = new OllamaApi();
-        var chatModel = new OllamaChatModel(ollamaApi);
+        /*
+         * deepseek-r1:8b ：https://ollama.com/library/deepseek-r1
+         * qwen3:8b ：https://ollama.com/library/qwen8
+         * gemma3:4b ：https://ollama.com/library/gemma3
+         */
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder()
+                .model("qwen3:8b")
+                .format("json")
+                .temperature(0.9d).build();
+        var chatModel = OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
         String output_format = "如果信息准确，输出：Y\n" +
                 "如果信息不准确，输出：N\n";
@@ -79,7 +90,7 @@ public class Ollama_Prompt_Test8 {
         getCompletion(chatModel, promptStr, "qwen2:7b");
 
         for (Message message : messages) {
-            System.out.println(message.getContent());
+            System.out.println(message.getText());
         }
 
     }

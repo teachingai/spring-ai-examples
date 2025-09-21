@@ -10,7 +10,7 @@ public class OllamaChatTest {
 
     public static void main(String[] args) {
 
-        var ollamaApi = new OllamaApi();
+         var ollamaApi = OllamaApi.builder().build();
         var chatModel = new OllamaChatModel(ollamaApi)
                 .withDefaultOptions(OllamaOptions.create()
                         .withModel("qwen:7b")
