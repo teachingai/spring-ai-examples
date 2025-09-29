@@ -31,7 +31,9 @@
         <pdfbox.version>3.0.5</pdfbox.version>
         <sa-token.version>1.44.0</sa-token.version>
         <springdoc.version>2.7.0</springdoc.version>
-        <spring-ai.version>1.0.1</spring-ai.version>
+        <spring-ai.version>1.0.2</spring-ai.version>
+        <spring-ai-community.version>1.0.0</spring-ai-community.version>
+        <spring-ai-retry.version>1.0.2</spring-ai-retry.version>
         <tika.version>3.2.2</tika.version>
         <testcontainers.version>1.21.3</testcontainers.version>
     </properties>
@@ -67,9 +69,9 @@
         <module>spring-ai-ollama-agents</module>
         <module>spring-ai-ollama-rag-cassandra</module>
         <module>spring-ai-ollama-rag-chroma</module>
+        <module>spring-ai-ollama-rag-couchbase</module>
         <module>spring-ai-ollama-rag-es</module>
         <module>spring-ai-ollama-rag-gemfire</module>
-        <module>spring-ai-ollama-rag-hanadb</module>
         <module>spring-ai-ollama-rag-mariadb</module>
         <module>spring-ai-ollama-rag-milvus</module>
         <module>spring-ai-ollama-rag-mongodb</module>
@@ -260,6 +262,36 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springaicommunity/moonshot-core -->
+            <dependency>
+                <groupId>org.springaicommunity</groupId>
+                <artifactId>moonshot-core</artifactId>
+                <version>${spring-ai-community.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springaicommunity/spring-ai-autoconfigure-model-qianfan -->
+            <dependency>
+                <groupId>org.springaicommunity</groupId>
+                <artifactId>spring-ai-autoconfigure-model-qianfan</artifactId>
+                <version>${spring-ai-community.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springaicommunity/qianfan-core -->
+            <dependency>
+                <groupId>org.springaicommunity</groupId>
+                <artifactId>qianfan-core</artifactId>
+                <version>${spring-ai-community.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springaicommunity/spring-ai-autoconfigure-model-moonshot -->
+            <dependency>
+                <groupId>org.springaicommunity</groupId>
+                <artifactId>spring-ai-autoconfigure-model-moonshot</artifactId>
+                <version>${spring-ai-community.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-retry -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-retry</artifactId>
+                <version>${spring-ai-retry.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-bom -->
             <dependency>
                 <groupId>org.apache.tika</groupId>
@@ -272,14 +304,43 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- For Test -->
+        <!-- For Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <!-- For Spring Boot's Actuator  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- For Spring Boot Test-->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-spring-boot-testcontainers</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

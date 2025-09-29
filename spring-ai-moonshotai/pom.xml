@@ -19,12 +19,11 @@
             <artifactId>spring-ai-common</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- For Chat Completion
+        <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>com.github.teachingai</groupId>
-            <artifactId>spring-ai-moonshotai-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>-->
+            <groupId>org.springaicommunity</groupId>
+            <artifactId>spring-ai-autoconfigure-model-qianfan</artifactId>
+        </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
             <groupId>org.springframework.ai</groupId>

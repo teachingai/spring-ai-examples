@@ -41,14 +41,8 @@
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-qwen-spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springaicommunity</groupId>
+            <artifactId>spring-ai-autoconfigure-model-moonshot</artifactId>
         </dependency>
         <!-- For Web Server -->
         <dependency>

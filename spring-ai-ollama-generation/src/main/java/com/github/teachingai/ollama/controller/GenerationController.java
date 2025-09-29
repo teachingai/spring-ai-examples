@@ -41,7 +41,7 @@ public class GenerationController {
 
     @GetMapping("/ai/generateStream")
     public Flux<String> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
-        return this.chatModel.stream(message).contextCapture();
+        return this.chatModel.stream(message);
     }
 
 }

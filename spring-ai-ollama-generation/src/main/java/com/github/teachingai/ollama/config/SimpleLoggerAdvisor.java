@@ -27,7 +27,7 @@ public class SimpleLoggerAdvisor implements CallAdvisor, StreamAdvisor {
 
 
     @Override
-    public ChatClientResponse adviseCall(ChatClientRequest request, CallAdvisorChain callAdvisorChain) {
+    public @NotNull ChatClientResponse adviseCall(ChatClientRequest request, CallAdvisorChain callAdvisorChain) {
         logRequest(request);
 
         ChatClientResponse chatClientResponse = callAdvisorChain.nextCall(request);

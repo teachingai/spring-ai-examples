@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-rag-hanadb</artifactId>
+    <artifactId>spring-ai-ollama-rag-couchbase</artifactId>
 
     <dependencies>
         <!-- For Lombok -->
@@ -44,7 +44,7 @@
         <!-- For Vector Store  -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-hanadb-store-spring-boot-starter</artifactId>
+            <artifactId>spring-ai-starter-vector-store-couchbase</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>

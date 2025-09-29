@@ -1,4 +1,4 @@
-package com.github.teachingai.ollama;
+package com.github.teachingai.ollama.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -7,13 +7,6 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-/**
- * @Author HHHY
- * @ClassName
- * @Date: 2024/4/2 14:21
- * @Description: Swagger 配置
- */
 
 @Configuration
 public class SwaggerConfig {

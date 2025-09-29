@@ -32,6 +32,17 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
+        <!-- For Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- For Log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
