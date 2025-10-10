@@ -2,7 +2,7 @@ package com.github.teachingai.ollama.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,6 @@ public class GenerationController {
 
     private final OllamaChatModel chatModel;
 
-    @Autowired
     public GenerationController(OllamaChatModel chatModel) {
         this.chatModel = chatModel;
     }
@@ -39,7 +38,7 @@ public class GenerationController {
         }
     }
 
-    @GetMapping("/ai/generateStream")
+    @GetMapping(value = "/ai/generateStream", produces = MediaType.TEXT_PLAIN_VALUE)
     public Flux<String> generateStream(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
         return this.chatModel.stream(message);
     }

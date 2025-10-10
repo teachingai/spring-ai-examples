@@ -11,10 +11,7 @@ management:
       application: ${spring.application.name}
   # 开启shutdown和health端点
   endpoint:
-    shutdown:
-      enabled: true
     health:
-      enabled: true
       probes:
         enabled: true
   endpoints:
