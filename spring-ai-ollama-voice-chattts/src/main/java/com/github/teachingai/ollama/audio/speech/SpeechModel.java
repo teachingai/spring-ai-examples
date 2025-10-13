@@ -1,19 +1,20 @@
 package com.github.teachingai.ollama.audio.speech;
 
 
-import org.springframework.ai.model.ModelClient;
+
+import org.springframework.ai.model.Model;
 
 import java.io.InputStream;
 
 /**
- * The {@link SpeechClient} interface provides a way to interact with the ChatTTS
+ * The {@link SpeechModel} interface provides a way to interact with the ChatTTS
  * Text-to-Speech (TTS) API. It allows you to convert text input into lifelike spoken
  * audio.
  *
  * @since 2026.06.28
  */
 @FunctionalInterface
-public interface SpeechClient extends ModelClient<SpeechPrompt, SpeechResponse> {
+public interface SpeechModel extends Model<SpeechPrompt, SpeechResponse> {
 
     /**
      * Generates spoken audio from the provided text message.

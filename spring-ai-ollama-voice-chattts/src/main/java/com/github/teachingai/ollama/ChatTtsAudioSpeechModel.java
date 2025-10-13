@@ -6,24 +6,20 @@ import com.github.teachingai.ollama.api.ChatTtsResponseHeaderExtractor;
 import com.github.teachingai.ollama.api.common.OllamaApiException;
 import com.github.teachingai.ollama.audio.speech.*;
 import com.github.teachingai.ollama.metadata.audio.ChatTtsAudioSpeechResponseMetadata;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.metadata.RateLimit;
-import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.model.ModelOptions;
 import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
-import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Flux;
 
 import java.io.InputStream;
 import java.time.Duration;
-import java.util.Set;
 
-public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechClient {
+public class ChatTtsAudioSpeechModel implements SpeechModel, StreamingSpeechClient {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -44,7 +40,7 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
      *
      * @param audioApi The ChatTtsAudioApi to use for speech synthesis.
      */
-    public ChatTtsAudioSpeechClient(ChatTtsAudioApi audioApi) {
+    public ChatTtsAudioSpeechModel(ChatTtsAudioApi audioApi) {
         this(audioApi, ChatTtsAudioSpeechOptions.builder()
                         .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
                         .withTopP(ApiUtils.DEFAULT_TOP_P)
@@ -68,7 +64,7 @@ public class ChatTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
      * @param options  The ChatTtsAudioSpeechOptions containing the speech synthesis
      *                 options.
      */
-    public ChatTtsAudioSpeechClient(ChatTtsAudioApi audioApi, ChatTtsAudioSpeechOptions options) {
+    public ChatTtsAudioSpeechModel(ChatTtsAudioApi audioApi, ChatTtsAudioSpeechOptions options) {
         Assert.notNull(audioApi, "ChatTtsAudioApi must not be null");
         Assert.notNull(options, "ChatTtsAudioSpeechOptions must not be null");
         this.audioApi = audioApi;

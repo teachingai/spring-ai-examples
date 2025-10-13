@@ -2,42 +2,41 @@ package com.github.teachingai.ollama;
 
 import com.github.teachingai.ollama.api.ApiUtils;
 import com.github.teachingai.ollama.api.ChatTtsAudioApi;
-import javazoom.jl.player.Player;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaOptions;
 
-import javax.sound.sampled.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.concurrent.CompletableFuture;
 
+@Slf4j
 public class OllamaChatTest {
 
     public static void main(String[] args) {
 
-        /**
-         * qwen2:7b ：https://ollama.com/library/qwen2
-         * gemma2 ：https://ollama.com/library/gemma2
-         * llama3 ：https://ollama.com/library/llama3
-         * mistral ：https://ollama.com/library/mistral
+        /*
+         * deepseek-r1:8b ：https://ollama.com/library/deepseek-r1
+         * qwen3:8b ：https://ollama.com/library/qwen8
+         * gemma3:4b ：https://ollama.com/library/gemma3
          */
-         var ollamaApi = OllamaApi.builder().build();
-        var chatModel = new OllamaChatModel(ollamaApi, OllamaOptions.create()
-                .withModel("qwen2:1.5b")
-                .withTemperature(0.9f));
+        var ollamaApi = OllamaApi.builder().build();
+        var ollamaOptions = OllamaOptions.builder()
+                .model("gemma3:4b")
+                .temperature(0.9d).build();
+        var chatModel = OllamaChatModel.builder()
+                .ollamaApi(ollamaApi)
+                .defaultOptions(ollamaOptions).build();
 
         var chatTtsApi = new ChatTtsAudioApi();
-        var chatTtsClient = new ChatTtsAudioSpeechClient(chatTtsApi, ChatTtsAudioSpeechOptions.builder()
+        var chatTtsClient = new ChatTtsAudioSpeechModel(chatTtsApi, ChatTtsAudioSpeechOptions.builder()
                 .withPrompt("[oral_2][laugh_0][break_6]")
                 .withTemperature(ApiUtils.DEFAULT_TEMPERATURE)
                 .withTopP(ApiUtils.DEFAULT_TOP_P)
@@ -64,7 +63,7 @@ public class OllamaChatTest {
             Prompt prompt = new Prompt(historyList);
             ChatResponse chatResponse = chatModel.call(prompt);
             historyList.add(chatResponse.getResult().getOutput());
-            String resp = chatResponse.getResult().getOutput().getContent();
+            String resp = chatResponse.getResult().getOutput().getText();
             System.out.println("<<< " + resp);
             try {
                 System.out.println(">>> 生成音频中...");
@@ -75,7 +74,7 @@ public class OllamaChatTest {
                     System.out.println(">>> 音频播放完");
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("音频播放异常:{}", e.getMessage());
             }
         }
     }

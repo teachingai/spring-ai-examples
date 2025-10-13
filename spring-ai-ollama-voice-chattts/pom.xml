@@ -119,6 +119,17 @@
             <artifactId>jlayer</artifactId>
             <version>1.0.1</version>
         </dependency>
+        <!-- For Testcontainers : https://testcontainers.com/ -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>ollama</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
