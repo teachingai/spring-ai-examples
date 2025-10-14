@@ -36,7 +36,7 @@
     <Loggers>
 
         <!-- 剩余其他的日志级别 -->
-        <Root level="DEBUG" includeLocation="true">
+        <Root level="INFO" includeLocation="true">
             <AppenderRef ref="Console"/>
         </Root>
 

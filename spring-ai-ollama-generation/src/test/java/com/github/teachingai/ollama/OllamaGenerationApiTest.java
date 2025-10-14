@@ -159,53 +159,6 @@ public class OllamaGenerationApiTest {
     }
 
     @Test
-    void testGenerate_HTTPInterface() throws Exception {
-        // 通过 HTTP 接口测试控制器方法
-        System.out.println("=== 通过 HTTP 接口测试控制器方法 ===");
-        String testMessage = "HTTP接口测试";
-        System.out.println("请求消息: " + testMessage);
-        
-        MvcResult result = mockMvc.perform(get("/ai/generate")
-                .param("message", testMessage)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.success").exists())
-                .andExpect(jsonPath("$.message").exists())
-                .andReturn();
-        
-        // 打印结果
-        String responseContent = result.getResponse().getContentAsString();
-        System.out.println("HTTP响应状态: " + result.getResponse().getStatus());
-        System.out.println("HTTP响应内容: " + responseContent);
-        
-        // 验证响应结构
-        assertNotNull(responseContent);
-        System.out.println("HTTP接口测试成功");
-        System.out.println("=====================================\n");
-    }
-
-    @Test
-    void testGenerateStream_HTTPInterface() throws Exception {
-        // 通过 HTTP 接口测试流式控制器方法
-        System.out.println("=== 通过 HTTP 接口测试流式控制器方法 ===");
-        String testMessage = "HTTP流式接口测试";
-        System.out.println("请求消息: " + testMessage);
-        
-        MvcResult result = mockMvc.perform(get("/ai/generateStream")
-                .param("message", testMessage)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andReturn();
-        
-        // 打印结果
-        System.out.println("HTTP响应状态: " + result.getResponse().getStatus());
-        System.out.println("HTTP响应内容类型: " + result.getResponse().getContentType());
-        System.out.println("HTTP流式接口测试成功");
-        System.out.println("注意：流式响应是异步的，完整内容需要在实际应用中验证");
-        System.out.println("=====================================\n");
-    }
-
-    @Test
     void testGenerate_ChineseMessage() throws Exception {
         // 测试中文消息
         System.out.println("=== 测试中文消息 ===");

@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ChatController {
+public class PromptController {
 
     private final OllamaChatModel chatModel;
 
     @Autowired
-    public ChatController(OllamaChatModel chatModel) {
+    public PromptController(OllamaChatModel chatModel) {
         this.chatModel = chatModel;
     }
 
@@ -28,5 +28,7 @@ public class ChatController {
         Prompt prompt = promptTemplate.create(Map.of("adjective", "funny", "topic", "cats"));
         return chatModel.call(prompt).getResults();
     }
+
+
 
 }

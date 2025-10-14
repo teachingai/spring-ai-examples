@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -31,9 +31,9 @@
         <pdfbox.version>3.0.5</pdfbox.version>
         <sa-token.version>1.44.0</sa-token.version>
         <springdoc.version>2.7.0</springdoc.version>
-        <spring-ai.version>1.0.2</spring-ai.version>
+        <spring-ai.version>1.0.3</spring-ai.version>
         <spring-ai-community.version>1.0.0</spring-ai-community.version>
-        <spring-ai-retry.version>1.0.2</spring-ai-retry.version>
+        <spring-ai-retry.version>${spring-ai.version}</spring-ai-retry.version>
         <tika.version>3.2.2</tika.version>
         <testcontainers.version>1.21.3</testcontainers.version>
     </properties>
