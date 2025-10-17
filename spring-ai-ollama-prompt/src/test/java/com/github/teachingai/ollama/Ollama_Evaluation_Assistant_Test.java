@@ -38,7 +38,7 @@ public class Ollama_Evaluation_Assistant_Test {
                 //.model("gemma3:4b")
                 .model("qwen3:8b")
                 //.format("json")
-                .temperature(0.9d).build();
+                .temperature(0.85d).build();
         chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
                 .defaultOptions(ollamaOptions).build();
@@ -48,7 +48,7 @@ public class Ollama_Evaluation_Assistant_Test {
     public void getWordsOfWishByTeacher() throws IOException {
 
         // 1、系统提示词
-        Resource systemResource = new ClassPathResource("prompts/evaluation/words_of_wish_by_teacher.st");
+        Resource systemResource = new ClassPathResource("prompts/evaluation/words_of_wish_by_teacher_prompt.st");
         String systemPrompt =  systemResource.getContentAsString(StandardCharsets.UTF_8);
 
         SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate("{prompt}");
@@ -109,7 +109,7 @@ public class Ollama_Evaluation_Assistant_Test {
                 "}";
 
         List<Message> messages  = List.of(systemMessage, new UserMessage(input_text),
-                new UserMessage("请帮我写一个给小明的教师寄语，150字以内！"));
+                new UserMessage("请以老师的视角，帮我写一个给小明的教师寄语，150字以内！"));
 
         // 3. 提示词对象
         Prompt prompt = new Prompt(messages, OllamaOptions.builder()
@@ -131,7 +131,7 @@ public class Ollama_Evaluation_Assistant_Test {
     public void getWordsOfWishByFamily() throws IOException {
 
         // 1、系统提示词
-        Resource systemResource = new ClassPathResource("prompts/evaluation/words_of_wish_by_family.st");
+        Resource systemResource = new ClassPathResource("prompts/evaluation/words_of_wish_by_family_prompt.st");
         String systemPrompt =  systemResource.getContentAsString(StandardCharsets.UTF_8);
 
         SystemPromptTemplate systemPromptTemplate = new SystemPromptTemplate("{prompt}");
@@ -192,7 +192,7 @@ public class Ollama_Evaluation_Assistant_Test {
                 "}";
 
         List<Message> messages  = List.of(systemMessage, new UserMessage(input_text),
-                new UserMessage("请帮我写一个小明的家长寄语，150字以内！"));
+                new UserMessage("请以爸爸的视角，请帮我写一个小明的家长寄语，150字以内！"));
 
         // 3. 提示词对象
         Prompt prompt = new Prompt(messages, OllamaOptions.builder()
