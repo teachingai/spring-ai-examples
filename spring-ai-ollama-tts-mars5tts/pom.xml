@@ -8,9 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-rag-chroma</artifactId>
-    <name>spring-ai-ollama-rag-chroma</name>
-    <description>spring-ai-ollama-rag-chroma</description>
+    <artifactId>spring-ai-ollama-tts-mars5tts</artifactId>
 
     <dependencies>
         <!-- For Spring AI Common -->
@@ -19,11 +17,6 @@
             <artifactId>spring-ai-common</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-langfuse-spring-boot-starter</artifactId>
-        </dependency> -->
         <!-- For Chat Completion & Embedding -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -35,10 +28,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- For Vector Store -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-chroma</artifactId>
+            <artifactId>spring-ai-retry</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.17.0</version>
+        </dependency>
+        <!-- For Log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
         <!-- For springdoc -->
         <dependency>
@@ -50,6 +52,27 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- For Embed Tomcat -->
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency> -->
+        <!-- For Embed Jetty -->
+        <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
+        </dependency> -->
+        <!-- For Embed Undertow -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -61,6 +84,17 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- For Testcontainers : https://testcontainers.com/ -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>ollama</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,6 +102,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -67,6 +67,8 @@
         <module>spring-ai-ollama-tools</module>
         <module>spring-ai-ollama-fine-tuning</module>
         <module>spring-ai-ollama-agents</module>
+        <module>spring-ai-ollama-observation-langfuse</module>
+        <module>spring-ai-ollama-observation-prometheus</module>
         <module>spring-ai-ollama-rag-cassandra</module>
         <module>spring-ai-ollama-rag-chroma</module>
         <module>spring-ai-ollama-rag-couchbase</module>
@@ -83,14 +85,11 @@
         <module>spring-ai-ollama-rag-redis</module>
         <module>spring-ai-ollama-rag-typesense</module>
         <module>spring-ai-ollama-rag-weaviate</module>
-        <module>spring-ai-ollama-voice-chattts</module>
-        <module>spring-ai-ollama-voice-edgetts</module>
-        <module>spring-ai-ollama-voice-emoti</module>
-        <module>spring-ai-ollama-voice-mars5tts</module>
-        <module>spring-ai-ollama-voice-whisper</module>
-        <module>spring-ai-ollama-voice-assistant</module>
-        <module>spring-ai-ollama-observation-langfuse</module>
-        <module>spring-ai-ollama-observation-prometheus</module>
+        <module>spring-ai-ollama-tts-chattts</module>
+        <module>spring-ai-ollama-tts-edgetts</module>
+        <module>spring-ai-ollama-tts-emoti</module>
+        <module>spring-ai-ollama-tts-mars5tts</module>
+        <module>spring-ai-ollama-tts-whisper</module>
         <module>spring-ai-openai</module>
         <module>spring-ai-postgresml</module>
         <module>spring-ai-qianfan</module>
@@ -101,6 +100,7 @@
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
         <module>spring-ai-project-hotel-recommend</module>
+        <module>spring-ai-ollama-tts-unifiedtts</module>
     </modules>
 
     <dependencyManagement>

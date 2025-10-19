@@ -11,25 +11,11 @@
     <artifactId>spring-ai-ollama-rag-gemfire</artifactId>
 
     <dependencies>
-        <!-- For Lombok -->
+        <!-- For Spring AI Common -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <!-- For Commons -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <!-- For Caffeine -->
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-        </dependency>
-        <!-- For FastJson2 -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
+            <groupId>com.github.teachingai</groupId>
+            <artifactId>spring-ai-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!-- For LLM Observe: Spring-AI + LangFuse + Byte Buddy + AOP
         <dependency>
