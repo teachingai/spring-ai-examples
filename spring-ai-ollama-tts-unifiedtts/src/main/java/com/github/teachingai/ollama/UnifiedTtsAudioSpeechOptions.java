@@ -2,6 +2,7 @@ package com.github.teachingai.ollama;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.teachingai.ollama.api.UnifiedTtsAudioApi;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.ai.model.ModelOptions;
@@ -16,61 +17,46 @@ import org.springframework.ai.model.ModelOptions;
 public class UnifiedTtsAudioSpeechOptions implements ModelOptions {
 
     /**
-     * The input text to synthesize. Must be at most 4096 tokens long.
+     * TTS模型名称，可通过模型列表接口获取
      */
-    @JsonProperty("text")
-    private String text;
+    @JsonProperty("model")
+    private UnifiedTtsAudioApi.TtsModel model;
 
     /**
-     * The voice to use for synthesis.
+     * 要转换为语音的文本内容（最大支持10,000字符）
+     */
+    @JsonProperty("input")
+    private String input;
+
+    /**
+     * 音色ID，每个模型下的音色唯一标识
      */
     @JsonProperty("voice")
     private String voice;
 
     /**
-     * 填写prompt，如 [oral_2][laugh_0][break_6]
-     */
-    @JsonProperty("prompt")
-    private String prompt;
-
-    /**
-     * The speed of the voice synthesis. The acceptable range is from 1 (slowest) to 9 (fastest). Defaults to 1.
+     * 语速倍率，范围0.5-2.0，默认1.0
      */
     @JsonProperty("speed")
-    private Integer speed = 1;
-
-    @JsonProperty("temperature")
-    private Float temperature = 0.7F;
-
-    @JsonProperty("top_p")
-    private Float topP = 0.7F;
-
-    @JsonProperty("top_k")
-    private Integer topK = 20;
-
-    @JsonProperty("refine_max_new_token")
-    private Integer maxRefineTokens;
-
-    @JsonProperty("infer_max_new_token")
-    private Integer maxInferTokens = 2048;
-
-    @JsonProperty("audio_seed")
-    private Float audioSeed;
-
-    @JsonProperty("text_seed")
-    private Float textSeed;
-
-    @JsonProperty("skip_refine")
-    private Integer skipRefine;
-
-    @JsonProperty("is_stream")
-    private Integer stream;
+    private Float speed = 1.0F;
 
     /**
-     * 填写后将忽略音色选择，以该填写值获取音色,例如 2000，8000等
+     * 音调倍率，范围0.5-2.0，默认1.0
      */
-    @JsonProperty("custom_voice")
-    private Integer customVoice;
+    @JsonProperty("pitch")
+    private Float pitch = 1.0F;
+
+    /**
+     * 音量倍率，范围0.5-2.0，默认1.0
+     */
+    @JsonProperty("volume")
+    private Float volume = 1.0F;
+
+    /**
+     * 输出音频格式，支持mp3、wav等，默认mp3
+     */
+    @JsonProperty("response_format")
+    private UnifiedTtsAudioApi.SpeechRequest.AudioResponseFormat responseFormat;
 
     public static Builder builder() {
         return new Builder();
@@ -80,68 +66,38 @@ public class UnifiedTtsAudioSpeechOptions implements ModelOptions {
 
         private final UnifiedTtsAudioSpeechOptions options = new UnifiedTtsAudioSpeechOptions();
 
-        public Builder withText(String text) {
-            options.text = text;
+        public Builder model(UnifiedTtsAudioApi.TtsModel model) {
+            options.model = model;
             return this;
         }
 
-        public Builder withVoice(String voice) {
+        public Builder input(String input) {
+            options.input = input;
+            return this;
+        }
+
+        public Builder voice(String voice) {
             options.voice = voice;
             return this;
         }
 
-        public Builder withPrompt(String prompt) {
-            options.prompt = prompt;
-            return this;
-        }
-
-        public Builder withSpeed(Integer speed) {
+        public Builder speed(Float speed) {
             options.speed = speed;
             return this;
         }
 
-        public Builder withTemperature(Float temperature) {
-            options.temperature = temperature;
+        public Builder pitch(Float pitch) {
+            options.pitch = pitch;
             return this;
         }
 
-        public Builder withTopP(Float topP) {
-            options.topP = topP;
+        public Builder volume(Float volume) {
+            options.volume = volume;
             return this;
         }
 
-        public Builder withTopK(Integer topK) {
-            options.topK = topK;
-            return this;
-        }
-
-        public Builder withMaxRefineTokens(Integer maxRefineTokens) {
-            options.maxRefineTokens = maxRefineTokens;
-            return this;
-        }
-
-        public Builder withMaxInferTokens(Integer maxInferTokens) {
-            options.maxInferTokens = maxInferTokens;
-            return this;
-        }
-
-        public Builder withTextSeed(Float textSeed) {
-            options.textSeed = textSeed;
-            return this;
-        }
-
-        public Builder withSkipRefine(Integer skipRefine) {
-            options.skipRefine = skipRefine;
-            return this;
-        }
-
-        public Builder withStream(Integer stream) {
-            options.stream = stream;
-            return this;
-        }
-
-        public Builder withCustomVoice(Integer customVoice) {
-            options.customVoice = customVoice;
+        public Builder responseFormat(UnifiedTtsAudioApi.SpeechRequest.AudioResponseFormat format) {
+            options.responseFormat = format;
             return this;
         }
 

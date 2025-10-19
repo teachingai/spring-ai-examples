@@ -1,8 +1,6 @@
-package com.github.teachingai.ollama.speech;
+package com.github.teachingai.ollama.audio.speech;
 
-
-import com.github.teachingai.ollama.audio.speech.Speech;
-import com.github.teachingai.ollama.metadata.audio.EdgeTtsAudioSpeechResponseMetadata;
+import com.github.teachingai.ollama.audio.UnifiedTtsAudioSpeechResponseMetadata;
 import org.springframework.ai.model.ModelResponse;
 
 import java.util.Collections;
@@ -11,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Creates a new instance of SpeechResponse with the given speech result.
- *
- * @since 2024.06.28
  */
 public class SpeechResponse implements ModelResponse<Speech> {
 
     private final Speech speech;
 
-    private final EdgeTtsAudioSpeechResponseMetadata speechResponseMetadata;
+    private final UnifiedTtsAudioSpeechResponseMetadata speechResponseMetadata;
 
     /**
      * Creates a new instance of SpeechResponse with the given speech result.
@@ -26,7 +22,7 @@ public class SpeechResponse implements ModelResponse<Speech> {
      * @see Speech
      */
     public SpeechResponse(Speech speech) {
-        this(speech, EdgeTtsAudioSpeechResponseMetadata.NULL);
+        this(speech, UnifiedTtsAudioSpeechResponseMetadata.NULL);
     }
 
     /**
@@ -36,9 +32,9 @@ public class SpeechResponse implements ModelResponse<Speech> {
      * @param speechResponseMetadata the speech response metadata to be set in the
      * SpeechResponse
      * @see Speech
-     * @see EdgeTtsAudioSpeechResponseMetadata
+     * @see UnifiedTtsAudioSpeechResponseMetadata
      */
-    public SpeechResponse(Speech speech, EdgeTtsAudioSpeechResponseMetadata speechResponseMetadata) {
+    public SpeechResponse(Speech speech, UnifiedTtsAudioSpeechResponseMetadata speechResponseMetadata) {
         this.speech = speech;
         this.speechResponseMetadata = speechResponseMetadata;
     }
@@ -54,7 +50,7 @@ public class SpeechResponse implements ModelResponse<Speech> {
     }
 
     @Override
-    public EdgeTtsAudioSpeechResponseMetadata getMetadata() {
+    public UnifiedTtsAudioSpeechResponseMetadata getMetadata() {
         return speechResponseMetadata;
     }
 

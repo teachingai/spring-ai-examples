@@ -1,10 +1,11 @@
 package com.github.teachingai.ollama.audio;
 
 
-import com.github.teachingai.ollama.api.UnifiedTtsNativeAudioApi;
+import com.github.teachingai.ollama.api.UnifiedTtsAudioApi;
 import org.springframework.ai.chat.metadata.EmptyRateLimit;
 import org.springframework.ai.chat.metadata.RateLimit;
-import org.springframework.ai.model.ResponseMetadata;
+import org.springframework.ai.model.MutableResponseMetadata;
+import org.springframework.ai.moderation.ModerationGenerationMetadata;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
@@ -14,24 +15,13 @@ import org.springframework.util.Assert;
  * @author Ahmed Yousri
  * @see RateLimit
  */
-public class UnifiedTtsAudioSpeechResponseMetadata implements ResponseMetadata {
-
-    protected static final String AI_METADATA_STRING = "{ @type: %1$s, requestsLimit: %2$s }";
+public class UnifiedTtsAudioSpeechResponseMetadata extends MutableResponseMetadata {
 
     public static final UnifiedTtsAudioSpeechResponseMetadata NULL = new UnifiedTtsAudioSpeechResponseMetadata() {
+
     };
 
-    public static UnifiedTtsAudioSpeechResponseMetadata from(UnifiedTtsNativeAudioApi.SpeechResponse result) {
-        Assert.notNull(result, "ChatTTS speech must not be null");
-        UnifiedTtsAudioSpeechResponseMetadata speechResponseMetadata = new UnifiedTtsAudioSpeechResponseMetadata();
-        return speechResponseMetadata;
-    }
-
-    public static UnifiedTtsAudioSpeechResponseMetadata from(String result) {
-        Assert.notNull(result, "ChatTTS speech must not be null");
-        UnifiedTtsAudioSpeechResponseMetadata speechResponseMetadata = new UnifiedTtsAudioSpeechResponseMetadata();
-        return speechResponseMetadata;
-    }
+    protected static final String AI_METADATA_STRING = "{ @type: %1$s, requestsLimit: %2$s }";
 
     @Nullable
     private RateLimit rateLimit;
@@ -42,6 +32,12 @@ public class UnifiedTtsAudioSpeechResponseMetadata implements ResponseMetadata {
 
     public UnifiedTtsAudioSpeechResponseMetadata(@Nullable RateLimit rateLimit) {
         this.rateLimit = rateLimit;
+    }
+
+    public static UnifiedTtsAudioSpeechResponseMetadata from(String result) {
+        Assert.notNull(result, "OpenAI speech must not be null");
+        UnifiedTtsAudioSpeechResponseMetadata speechResponseMetadata = new UnifiedTtsAudioSpeechResponseMetadata();
+        return speechResponseMetadata;
     }
 
     @Nullable

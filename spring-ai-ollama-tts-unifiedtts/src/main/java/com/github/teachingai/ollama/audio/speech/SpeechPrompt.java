@@ -1,43 +1,40 @@
-package com.github.teachingai.ollama.speech;
+package com.github.teachingai.ollama.audio.speech;
 
-import com.github.teachingai.ollama.EdgeTtsAudioSpeechOptions;
-import com.github.teachingai.ollama.api.ApiUtils;
-import com.github.teachingai.ollama.audio.speech.SpeechMessage;
+import com.github.teachingai.ollama.UnifiedTtsAudioSpeechOptions;
+import com.github.teachingai.ollama.api.UnifiedTtsAudioApi;
 import org.springframework.ai.model.ModelOptions;
 import org.springframework.ai.model.ModelRequest;
 
 import java.util.Objects;
 
 /**
- * The {@link SpeechPrompt} class represents a request to the OpenAI Text-to-Speech (TTS)
+ * The {@link SpeechPrompt} class represents a request to the UnifiedTTS Text-to-Speech (TTS)
  * API. It contains a list of {@link SpeechMessage} objects, each representing a piece of
  * text to be converted to speech.
- *
- * @since 2026.06.28
  */
 public class SpeechPrompt implements ModelRequest<SpeechMessage> {
 
-    private EdgeTtsAudioSpeechOptions speechOptions;
+    private UnifiedTtsAudioSpeechOptions speechOptions;
 
     private final SpeechMessage message;
 
     public SpeechPrompt(String instructions) {
-        this(new SpeechMessage(instructions), EdgeTtsAudioSpeechOptions.builder()
-                .withVoice(ApiUtils.DEFAULT_VOICE)
+        this(new SpeechMessage(instructions), UnifiedTtsAudioSpeechOptions.builder()
+                .voice(UnifiedTtsAudioApi.DEFAULT_VOICE)
                 .build());
     }
 
-    public SpeechPrompt(String instructions, EdgeTtsAudioSpeechOptions speechOptions) {
+    public SpeechPrompt(String instructions, UnifiedTtsAudioSpeechOptions speechOptions) {
         this(new SpeechMessage(instructions), speechOptions);
     }
 
     public SpeechPrompt(SpeechMessage speechMessage) {
-        this(speechMessage, EdgeTtsAudioSpeechOptions.builder()
-                .withVoice(ApiUtils.DEFAULT_VOICE)
+        this(speechMessage, UnifiedTtsAudioSpeechOptions.builder()
+                .voice(UnifiedTtsAudioApi.DEFAULT_VOICE)
                 .build());
     }
 
-    public SpeechPrompt(SpeechMessage speechMessage, EdgeTtsAudioSpeechOptions speechOptions) {
+    public SpeechPrompt(SpeechMessage speechMessage, UnifiedTtsAudioSpeechOptions speechOptions) {
         this.message = speechMessage;
         this.speechOptions = speechOptions;
     }

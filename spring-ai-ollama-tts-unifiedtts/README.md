@@ -13,7 +13,7 @@
 
 您首先需要在本地计算机上运行 Ollama。请参阅官方 [Ollama 项目自述文件](https://github.com/ollama/ollama "Ollama 项目自述文件")，开始在本地计算机上运行模型。
 
-ChatTTS 不提供API功能，还需要再本地计算机上运行 ChatTTS-ui，请参阅官方 [ChatTTS-ui](https://github.com/jianchang512/ChatTTS-ui) 项目进行调用。
+ChatTTS 不提供API功能，还需要再本地计算机上运行 ChatTTS-ui，请参阅官方  [UnifiedTTS](https://unifiedtts.com/) 项目进行调用。
 
 #### 添加存储库和 BOM
 

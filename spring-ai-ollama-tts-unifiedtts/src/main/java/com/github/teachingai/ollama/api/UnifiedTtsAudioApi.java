@@ -2,231 +2,181 @@ package com.github.teachingai.ollama.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import com.github.teachingai.ollama.autoconfigure.UnifiedTtsConnectionProperties;
+import org.springframework.ai.model.ApiKey;
+import org.springframework.ai.model.NoopApiKey;
+import org.springframework.ai.model.SimpleApiKey;
 import org.springframework.ai.retry.RetryUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.util.Assert;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class UnifiedTtsAudioApi {
 
-    public static final String DEFAULT_BASE_URL = "https://unifiedtts.com";
+    public static final String DEFAULT_VOICE = "zh-CN-XiaoxiaoNeural";
+    public static final Float DEFAULT_SPEED = 1.1F;
+    public static final Float DEFAULT_PITCH = 1.0F;
+    public static final Float DEFAULT_VOLUME = 0.9F;
+    public static final String DEFAULT_FORMAT = "mp3";
+    public static final String API_KEY = "X-API-Key";
 
     private final RestClient restClient;
-
-    private final WebClient webClient            ;*
-     * Create an new audio api.
-     */
-    public UnifiedTtsAudioApi() {
-        this(DEFAULT_BASE_URL, RestClient.builder(), WebClient.builder(), RetryUtils.DEFAULT_RESPONSE_ERROR_HANDLER);
-    }
+    private final WebClient webClient;
 
     /**
-     * Create an new chat completion api.
+     * Create a new audio api.
      * @param baseUrl api base URL.
-     * @param restClientBuilder RestClient builder.
-     * @param responseErrorHandler Response error handler.
-     */
-    public UnifiedTtsAudioApi(String baseUrl,
-                              RestClient.Builder restClientBuilder,
-                              ResponseErrorHandler responseErrorHandler) {
-        this.restClient = restClientBuilder.baseUrl(baseUrl).messageConverters((x) -> {
-            x.add(new FormHttpMessageConverter());
-        }).defaultStatusHandler(responseErrorHandler).build();
-        this.webClient = WebClient.builder().baseUrl(baseUrl).build();
-    }
-
-    /**
-     * Create an new chat completion api.
-     * @param baseUrl api base URL.
+     * @param apiKey UnifiedTts apiKey.
+     * @param headers the http headers to use.
      * @param restClientBuilder RestClient builder.
      * @param webClientBuilder WebClient builder.
      * @param responseErrorHandler Response error handler.
      */
-    public UnifiedTtsAudioApi(String baseUrl,
-                              RestClient.Builder restClientBuilder,
-                              WebClient.Builder webClientBuilder,
+    public UnifiedTtsAudioApi(String baseUrl, ApiKey apiKey, MultiValueMap<String, String> headers,
+                              RestClient.Builder restClientBuilder, WebClient.Builder webClientBuilder,
                               ResponseErrorHandler responseErrorHandler) {
-        this.restClient = restClientBuilder.baseUrl(baseUrl).messageConverters((x) -> {
-            x.add(new FormHttpMessageConverter());
-        }).defaultStatusHandler(responseErrorHandler).build();
-        this.webClient = webClientBuilder.baseUrl(baseUrl).build();
+
+        Consumer<HttpHeaders> authHeaders = h -> {
+            h.addAll(headers);
+        };
+
+        // @formatter:off
+        this.restClient = restClientBuilder.clone()
+                .baseUrl(baseUrl)
+                .defaultHeaders(authHeaders)
+                .defaultStatusHandler(responseErrorHandler)
+                .defaultRequest(requestHeadersSpec -> {
+                    if (!(apiKey instanceof NoopApiKey)) {
+                        requestHeadersSpec.header(API_KEY, apiKey.getValue());
+                    }
+                })
+                .build();
+
+        this.webClient = webClientBuilder.clone()
+                .baseUrl(baseUrl)
+                .defaultHeaders(authHeaders)
+                .defaultRequest(requestHeadersSpec -> {
+                    if (!(apiKey instanceof NoopApiKey)) {
+                        requestHeadersSpec.header(API_KEY, apiKey.getValue());
+                    }
+                })
+                .build(); // @formatter:on
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     /**
-     * Request to generates audio from the input text.
-     * @param text The input text to convert to speech.
+     * TTS is an AI model that converts text to natural sounding spoken text.
+     * <a href="https://unifiedtts.com/zh/api-docs/models">TTS</a>
      */
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record SpeechRequest(
-            @JsonProperty("text") String model, // TTS模型名称，可通过模型列表接口获取
-            @JsonProperty("text") String text, // 要转换为语音的文本内容（最大支持10,000字符）
-            @JsonProperty("voice") String voice, // 音色ID，每个模型下的音色唯一标识
-            @JsonProperty("speed") float speed, // 语速倍率，范围0.5-2.0，默认1.0
-            @JsonProperty("pitch") float pitch, // 音调倍率，范围0.5-2.0，默认1.0
-            @JsonProperty("volume") float volume, // 音量倍率，范围0.5-2.0，默认1.0
-            @JsonProperty("format") String format // 输出音频格式，支持mp3、wav等，默认mp3
-        ) {
+    public enum TtsModel {
 
-        public SpeechRequest(String model, String text, String voice) {
-            this(model, text, voice, null, null, null, null);
-        }
-
-        public SpeechRequest(String model, String text, String voice, Double speed, Double pitch,
-                             Double volume, String format) {
-            this(model, text, voice, speed, pitch, volume, format);
-        }
-
+        // @formatter:off
         /**
-         * The Model to use for synthesis.
+         * Edge TTS model
          */
-        public enum Model {
+        @JsonProperty("edge-tts")
+        EDGE_TTS("edge-tts"),
+        /**
+         * Azure TTS model
+         */
+        @JsonProperty("azure-tts")
+        AZURE_TTS("azure-tts"),
+        /**
+         * CosyVoice v1 model
+         */
+        @JsonProperty("cosyvoice-v1")
+        COSYVOICE_V1("cosyvoice-v1"),
+        /**
+         * CosyVoice v2 model
+         */
+        @JsonProperty("cosyvoice-v2")
+        COSYVOICE_V2("cosyvoice-v2"),
+        /**
+         * Sambert v1 model
+         */
+        @JsonProperty("sambert-v1")
+        SAMBERT_V1("sambert-v1"),
+        /**
+         * Speech 2.5 HD Preview model
+         */
+        @JsonProperty("speech-2.5-hd-preview")
+        SPEECH_2_5_HD_PREVIEW("speech-2.5-hd-preview"),
+        /**
+         * Speech 2.5 Turbo Preview model
+         */
+        @JsonProperty("speech-2.5-turbo-preview")
+        SPEECH_2_5_TURBO_PREVIEW("speech-2.5-turbo-preview"),
+        /**
+         * Speech 02 HD model
+         */
+        @JsonProperty("speech-02-hd")
+        SPEECH_02_HD("speech-02-hd"),
+        /**
+         * Speech 02 Turbo model
+         */
+        @JsonProperty("speech-02-turbo")
+        SPEECH_02_TURBO("speech-02-turbo"),
+        /**
+         * Speech 01 HD model
+         */
+        @JsonProperty("speech-01-hd")
+        SPEECH_01_HD("speech-01-hd"),
+        /**
+         * Speech 01 Turbo model
+         */
+        @JsonProperty("speech-01-turbo")
+        SPEECH_01_TURBO("speech-01-turbo"),
+        /**
+         * Eleven Flash v2 model
+         */
+        @JsonProperty("eleven_flash_v2")
+        ELEVEN_FLASH_V2("eleven_flash_v2"),
+        /**
+         * Eleven Flash v2.5 model
+         */
+        @JsonProperty("eleven_flash_v2_5")
+        ELEVEN_FLASH_V2_5("eleven_flash_v2_5"),
+        /**
+         * Eleven Turbo v2 model
+         */
+        @JsonProperty("eleven_turbo_v2")
+        ELEVEN_TURBO_V2("eleven_turbo_v2"),
+        /**
+         * Eleven Turbo v2.5 model
+         */
+        @JsonProperty("eleven_turbo_v2_5")
+        ELEVEN_TURBO_V2_5("eleven_turbo_v2_5"),
+        /**
+         * Eleven Multilingual v2 model
+         */
+        @JsonProperty("eleven_multilingual_v2")
+        ELEVEN_MULTILINGUAL_V2("eleven_multilingual_v2");
 
+        // @formatter:on
 
-            public final String value;
-            public final String description;
-            public final String voiceType;
+        public final String value;
 
-            private Model(String value, String description, String voiceType) {
-                this.value = value;
-                this.description = description;
-                this.voiceType = voiceType;
-            }
-
-            public String getValue() {
-                return this.value;
-            }
-
-            public String getDescription() {
-                return this.description;
-            }
-
-            public String getVoiceType() {
-                return this.voiceType;
-            }
+        TtsModel(String value) {
+            this.value = value;
         }
 
-        /**
-         * The voice to use for azure-tts.
-         */
-        public enum AzureTtsVoice {
-
-        }
-
-        /**
-         * The voice to use for sambert-tts.
-         */
-        public enum SambertTtsVoice {
-
-        }
-
-        /**
-         * The voice to use for speech-tts.
-         */
-        public enum SpeechTtsVoice {
-
-        }
-
-        /**
-         * The voice to use for eleven-tts.
-         */
-        public enum ElevenTtsVoice {
-
-        }
-        
-        /**
-         * The voice to use for edge-tts.
-         */
-        @Getter
-        public enum EdgeTtsVoice {
-
-            af_ZA_AdriNeural("af-ZA-AdriNeural", "Adri", "af", "Female", "Afrikaans (South Africa)"),
-
-            // 中文语音
-            zh_CN_XiaoxiaoNeural("zh-CN-XiaoxiaoNeural", "Xiaoxiao", "zh", "Female", "Chinese (Mainland) - 晓晓"),
-            zh_CN_YunxiNeural("zh-CN-YunxiNeural", "Yunxi", "zh", "Male", "Chinese (Mainland) - 云希"),
-            zh_CN_YunjianNeural("zh-CN-YunjianNeural", "Yunjian", "zh", "Male", "Chinese (Mainland) - 云健"),
-            zh_CN_XiaoyiNeural("zh-CN-XiaoyiNeural", "Xiaoyi", "zh", "Female", "Chinese (Mainland) - 晓伊"),
-            zh_CN_YunyangNeural("zh-CN-YunyangNeural", "Yunyang", "zh", "Male", "Chinese (Mainland) - 云扬"),
-            zh_TW_HsiaoChenNeural("zh-TW-HsiaoChenNeural", "HsiaoChen", "zh", "Female", "Chinese (Taiwan) - 曉臻"),
-            zh_HK_HiuMaanNeural("zh-HK-HiuMaanNeural", "HiuMaan", "zh", "Female", "Chinese (Hong Kong) - 曉曼"),
-
-            // 英语语音
-            en_US_AriaNeural("en-US-AriaNeural", "Aria", "en", "Female", "English (United States)"),
-            en_US_JennyNeural("en-US-JennyNeural", "Jenny", "en", "Female", "English (United States)"),
-            en_US_GuyNeural("en-US-GuyNeural", "Guy", "en", "Male", "English (United States)"),
-            en_GB_SoniaNeural("en-GB-SoniaNeural", "Sonia", "en", "Female", "English (United Kingdom)"),
-            en_GB_RyanNeural("en-GB-RyanNeural", "Ryan", "en", "Male", "English (United Kingdom)"),
-            en_AU_AnnetteNeural("en-AU-AnnetteNeural", "Annette", "en", "Female", "English (Australia)"),
-            en_AU_CarlyNeural("en-AU-CarlyNeural", "Carly", "en", "Female", "English (Australia)"),
-
-            // 日语语音
-            ja_JP_NanamiNeural("ja-JP-NanamiNeural", "Nanami", "ja", "Female", "Japanese - 七海"),
-            ja_JP_KeitaNeural("ja-JP-KeitaNeural", "Keita", "ja", "Male", "Japanese - 慶太"),
-
-            // 韩语语音
-            ko_KR_SoonBokNeural("ko-KR-SoonBokNeural", "SoonBok", "ko", "Female", "Korean - 順福"),
-            ko_KR_InJoonNeural("ko-KR-InJoonNeural", "InJoon", "ko", "Male", "Korean - 仁俊"),
-
-            // 法语语音
-            fr_FR_DeniseNeural("fr-FR-DeniseNeural", "Denise", "fr", "Female", "French (France)"),
-            fr_FR_HenriNeural("fr-FR-HenriNeural", "Henri", "fr", "Male", "French (France)"),
-            fr_CA_SylvieNeural("fr-CA-SylvieNeural", "Sylvie", "fr", "Female", "French (Canada)"),
-
-            // 德语语音
-            de_DE_KatjaNeural("de-DE-KatjaNeural", "Katja", "de", "Female", "German (Germany)"),
-            de_DE_ConradNeural("de-DE-ConradNeural", "Conrad", "de", "Male", "German (Germany)"),
-
-            // 西班牙语语音
-            es_ES_ElviraNeural("es-ES-ElviraNeural", "Elvira", "es", "Female", "Spanish (Spain)"),
-            es_ES_AlvaroNeural("es-ES-AlvaroNeural", "Alvaro", "es", "Male", "Spanish (Spain)"),
-            es_MX_DaliaNeural("es-MX-DaliaNeural", "Dalia", "es", "Female", "Spanish (Mexico)"),
-
-            // 意大利语语音
-            it_IT_ElsaNeural("it-IT-ElsaNeural", "Elsa", "it", "Female", "Italian (Italy)"),
-            it_IT_DiegoNeural("it-IT-DiegoNeural", "Diego", "it", "Male", "Italian (Italy)"),
-
-            // 葡萄牙语语音
-            pt_BR_FranciscaNeural("pt-BR-FranciscaNeural", "Francisca", "pt", "Female", "Portuguese (Brazil)"),
-            pt_BR_AntonioNeural("pt-BR-AntonioNeural", "Antonio", "pt", "Male", "Portuguese (Brazil)"),
-            pt_PT_FernandaNeural("pt-PT-FernandaNeural", "Fernanda", "pt", "Female", "Portuguese (Portugal)"),
-
-            // 俄语语音
-            ru_RU_SvetlanaNeural("ru-RU-SvetlanaNeural", "Svetlana", "ru", "Female", "Russian (Russia)"),
-            ru_RU_DmitryNeural("ru-RU-DmitryNeural", "Dmitry", "ru", "Male", "Russian (Russia)"),
-
-            // 阿拉伯语语音
-            ar_SA_ZariyahNeural("ar-SA-ZariyahNeural", "Zariyah", "ar", "Female", "Arabic (Saudi Arabia)"),
-            ar_EG_SalmaNeural("ar-EG-SalmaNeural", "Salma", "ar", "Female", "Arabic (Egypt)"),
-
-            // 印地语语音
-            hi_IN_SwaraNeural("hi-IN-SwaraNeural", "Swara", "hi", "Female", "Hindi (India)"),
-            hi_IN_MadhurNeural("hi-IN-MadhurNeural", "Madhur", "hi", "Male", "Hindi (India)"),
-            ;
-
-            public final String voiceId;
-            public final String voiceName;
-            public final String language;
-            public final String gender;
-            public final String description;
-
-            private EdgeTtsVoice(String voiceId, String voiceName, String language, String gender, String description) {
-                this.voiceId = voiceId;
-                this.voiceName = voiceName;
-                this.language = language;
-                this.gender = gender;
-                this.description = description;
-            }
+        public String getValue() {
+            return this.value;
         }
 
     }
@@ -257,29 +207,145 @@ public class UnifiedTtsAudioApi {
 
     }
 
+    /**
+     * Request to generates audio from the input text.
+     * @param text The input text to convert to speech.
+     */
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record SpeechResponse(
-            @JsonProperty("code") Integer code,
-            @JsonProperty("msg") String msg,
-            @JsonProperty("filename") String filename,
-            @JsonProperty("url") String url,
-            @JsonProperty("audio_files") List<AudioFile> audioFiles) {
+    public record SpeechRequest(
+            @JsonProperty("model") TtsModel model, // TTS模型名称，可通过模型列表接口获取
+            @JsonProperty("text") String text, // 要转换为语音的文本内容（最大支持10,000字符）
+            @JsonProperty("voice") String voice, // 音色ID，每个模型下的音色唯一标识
+            @JsonProperty("format") AudioResponseFormat format, // 输出音频格式，支持mp3、wav等，默认mp3
+            @JsonProperty("speed") float speed, // 语速倍率，范围0.5-2.0，默认1.0
+            @JsonProperty("pitch") float pitch, // 音调倍率，范围0.5-2.0，默认1.0
+            @JsonProperty("volume") float volume // 音量倍率，范围0.5-2.0，默认1.0
+    ) {
+
+        public static Builder builder() {
+            return new Builder();
+        }
+
+        /**
+         * Builder for the SpeechRequest.
+         */
+        public static class Builder {
+
+            private TtsModel model = TtsModel.EDGE_TTS;
+
+            private String input;
+
+            private String voice;
+
+            private AudioResponseFormat responseFormat = AudioResponseFormat.MP3;
+
+            private Float speed;
+
+            private Float pitch;
+
+            private Float volume;
+
+            public Builder model(TtsModel model) {
+                this.model = model;
+                return this;
+            }
+
+            public Builder input(String input) {
+                this.input = input;
+                return this;
+            }
+
+            public Builder voice(String voice) {
+                this.voice = voice;
+                return this;
+            }
+
+            public Builder responseFormat(AudioResponseFormat responseFormat) {
+                this.responseFormat = responseFormat;
+                return this;
+            }
+
+            public Builder speed(Float speed) {
+                this.speed = speed;
+                return this;
+            }
+
+            public Builder pitch(Float pitch) {
+                this.pitch = pitch;
+                return this;
+            }
+
+            public Builder volume(Float volume) {
+                this.volume = volume;
+                return this;
+            }
+
+            public SpeechRequest build() {
+                Assert.notNull(this.model, "model must not be empty");
+                Assert.hasText(this.input, "input must not be empty");
+
+                return new SpeechRequest(this.model, this.input, this.voice, this.responseFormat, this.speed, this.pitch, this.volume);
+            }
+
+        }
+
+        /**
+         * The format to audio in. Supported formats are mp3, opus, aac, wav, pcm and
+         * flac. Defaults to mp3.
+         */
+        public enum AudioResponseFormat {
+
+            // @formatter:off
+            @JsonProperty("mp3")
+            MP3("mp3"),
+            @JsonProperty("wav")
+            WAV("wav");
+            // @formatter:on
+
+            public final String value;
+
+            AudioResponseFormat(String value) {
+                this.value = value;
+            }
+
+            public String getValue() {
+                return this.value;
+            }
+
+        }
+    }
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record SpeechResponse (
+            @JsonProperty("success") Boolean success,
+            @JsonProperty("message") String message,
+            @JsonProperty("timestamp") Long timestamp,
+            @JsonProperty("data") AudioFile data) {
 
         @JsonInclude(JsonInclude.Include.NON_NULL)
         public record AudioFile(
-                @JsonProperty("audio_duration") Float audioDuration,
-                @JsonProperty("filename") String filename,
-                @JsonProperty("inference_time") Float inferenceTime,
-                @JsonProperty("url") String url) {
+                @JsonProperty("request_id") String requestId,
+                @JsonProperty("audio_url") String audioUrl,
+                @JsonProperty("file_size") Long fileSize) {
         }
 
+        public SpeechResponse(Boolean success, String message, Long timestamp, AudioFile data) {
+            this.success = success;
+            this.message = message;
+            this.timestamp = timestamp;
+            this.data = data;
+        }
+
+        public AudioFile getData() {
+            return data;
+        }
+        
     }
 
     /**
      * Request to get the list of available models.
      * @return Response entity containing the list of available models.
      */
-    public ResponseEntity<SpeechModelResponse> getModels() {
+    public ResponseEntity<SpeechModelResponse> fetchModels() {
         return this.restClient.get()
                 .uri("/tools/models")
                 .retrieve()
@@ -290,7 +356,7 @@ public class UnifiedTtsAudioApi {
      * Request to get the list of available models.
      * @return Response entity containing the list of available models.
      */
-    public ResponseEntity<SpeechModelVoiceResponse> getModelVoices(String  model) {
+    public ResponseEntity<SpeechModelVoiceResponse> fetchModelVoices(String  model) {
         return this.restClient.get()
                 .uri(String.format("/tools/voices/%s", model))
                 .retrieve()
@@ -298,45 +364,134 @@ public class UnifiedTtsAudioApi {
     }
 
     /**
-     * Request to generates audio from the input text.
-     * @param speechRequest The request body.
-     * @return Response entity containing the audio SpeechResponse.
+     * 根据返回的 {@code audio_url} 下载音频字节。
+     * <p>作为可覆写的保护方法，方便单元测试替换真实下载行为。
      */
-    public ResponseEntity<SpeechResponse> createSpeech(SpeechRequest speechRequest) {
-
-        Assert.notNull(speechRequest, "The request body can not be null.");
-        Assert.isTrue(speechRequest.stream() == 0, "Request must set the steam property to 0.");
-        MultiValueMap body = ApiUtils.toMultiValueMap(speechRequest);
-        return this.restClient.post()
-                .uri("/tts")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .body(body)
+    public byte[] fetchAudio(String audioUrl) {
+        ResponseEntity<byte[]> response = this.restClient
+                .get()
+                .uri(audioUrl)
+                .accept(MediaType.APPLICATION_OCTET_STREAM, MediaType.valueOf("audio/mpeg"), MediaType.valueOf("audio/mp3"))
                 .retrieve()
-                .toEntity(SpeechResponse.class);
+                .toEntity(byte[].class);
+        if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+            return response.getBody();
+        }
+        throw new IllegalStateException("Download audio failed: " + response.getStatusCode());
     }
 
     /**
-     * Streams audio generated from the input text.
+     * 调用合成并将音频写入指定文件。
      *
-     * This method sends a POST request to the OpenAI API to generate audio from the
-     * provided text. The audio is streamed back as a Flux of ResponseEntity objects, each
-     * containing a byte array of the audio data.
-     * @param requestBody The request body containing the details for the audio
-     * generation, such as the input text, model, voice, and response format.
-     * @return A Flux of ResponseEntity objects, each containing a byte array of the audio
-     * data.
+     * <p>若输出路径的父目录不存在，会自动创建；失败时抛出运行时异常。
+     *
+     * @param audioFile TTS 请求参数
+     * @param outputPath 目标文件路径（例如 output.mp3）
+     * @return 实际写入的文件路径
      */
-    public Flux<ResponseEntity<SpeechResponse>> stream(SpeechRequest requestBody) {
-
-        return webClient.post()
-                .uri("/tts")
-                .body(Mono.just(requestBody), SpeechRequest.class)
-                .accept(MediaType.APPLICATION_OCTET_STREAM)
-                .exchangeToFlux(clientResponse -> {
-                    HttpHeaders headers = clientResponse.headers().asHttpHeaders();
-                    return clientResponse.bodyToFlux(SpeechResponse.class)
-                            .map(bytes -> ResponseEntity.ok().headers(headers).body(bytes));
-                });
+    public Path saveToFile(UnifiedTtsAudioApi.SpeechResponse.AudioFile audioFile, Path outputPath) {
+        if (audioFile == null || audioFile.audioUrl() == null) {
+            throw new IllegalStateException("UnifiedTTS response missing audio_url");
+        }
+        byte[] data = this.fetchAudio(audioFile.audioUrl());
+        try {
+            if (outputPath.getParent() != null) {
+                Files.createDirectories(outputPath.getParent());
+            }
+            Files.write(outputPath, data);
+            return outputPath;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to write TTS output to file: " + outputPath, e);
+        }
     }
 
+    /**
+     * 调用 UnifiedTTS 同步 TTS 接口，返回 JSON 响应。
+     * Request to generates audio from the input text.
+     * @param request The request body.
+     * @return Response entity containing the audio binary.
+     * @throws IllegalStateException 当服务端返回非 2xx、无内容、或 {@code success=false} 时抛出
+     */
+    public ResponseEntity<UnifiedTtsAudioApi.SpeechResponse> createSpeech(SpeechRequest request) {
+        ResponseEntity<UnifiedTtsAudioApi.SpeechResponse> response = this.restClient
+                .post()
+                .uri("/v1/common/tts-sync")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(request)
+                .retrieve()
+                .toEntity(UnifiedTtsAudioApi.SpeechResponse.class);
+
+        if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+            return response;
+        }
+        throw new IllegalStateException("UnifiedTTS synthesize failed: " + response.getStatusCode());
+    }
+
+    /**
+     * Builder to construct {@link UnifiedTtsAudioApi} instance.
+     */
+    public static class Builder {
+
+        private String baseUrl = UnifiedTtsConnectionProperties.DEFAULT_BASE_URL;
+
+        private ApiKey apiKey;
+
+        private MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+
+        private RestClient.Builder restClientBuilder = RestClient.builder();
+
+        private WebClient.Builder webClientBuilder = WebClient.builder();
+
+        private ResponseErrorHandler responseErrorHandler = RetryUtils.DEFAULT_RESPONSE_ERROR_HANDLER;
+
+        public Builder baseUrl(String baseUrl) {
+            Assert.hasText(baseUrl, "baseUrl cannot be null or empty");
+            this.baseUrl = baseUrl;
+            return this;
+        }
+
+        public Builder apiKey(ApiKey apiKey) {
+            Assert.notNull(apiKey, "apiKey cannot be null");
+            this.apiKey = apiKey;
+            return this;
+        }
+
+        public Builder apiKey(String simpleApiKey) {
+            Assert.notNull(simpleApiKey, "simpleApiKey cannot be null");
+            this.apiKey = new SimpleApiKey(simpleApiKey);
+            return this;
+        }
+
+        public Builder headers(MultiValueMap<String, String> headers) {
+            Assert.notNull(headers, "headers cannot be null");
+            this.headers = headers;
+            return this;
+        }
+
+        public Builder restClientBuilder(RestClient.Builder restClientBuilder) {
+            Assert.notNull(restClientBuilder, "restClientBuilder cannot be null");
+            this.restClientBuilder = restClientBuilder;
+            return this;
+        }
+
+        public Builder webClientBuilder(WebClient.Builder webClientBuilder) {
+            Assert.notNull(webClientBuilder, "webClientBuilder cannot be null");
+            this.webClientBuilder = webClientBuilder;
+            return this;
+        }
+
+        public Builder responseErrorHandler(ResponseErrorHandler responseErrorHandler) {
+            Assert.notNull(responseErrorHandler, "responseErrorHandler cannot be null");
+            this.responseErrorHandler = responseErrorHandler;
+            return this;
+        }
+
+        public UnifiedTtsAudioApi build() {
+            Assert.notNull(this.apiKey, "apiKey must be set");
+            return new UnifiedTtsAudioApi(this.baseUrl, this.apiKey, this.headers, this.restClientBuilder,
+                    this.webClientBuilder, this.responseErrorHandler);
+        }
+
+    }
 }

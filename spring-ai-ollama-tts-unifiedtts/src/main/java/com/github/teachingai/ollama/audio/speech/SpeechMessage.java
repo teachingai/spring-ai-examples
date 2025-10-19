@@ -1,10 +1,10 @@
-package com.github.teachingai.ollama.speech;
+package com.github.teachingai.ollama.audio.speech;
 
 import java.util.Objects;
 
 /**
  * The {@link SpeechMessage} class represents a single text message to be converted to
- * speech by the ChatTTS API.
+ * speech by the UnifiedTTS API.
  *
  * @since 2026.06.28
  */
