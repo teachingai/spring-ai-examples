@@ -20,12 +20,17 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <commons-exec.version>1.4.0</commons-exec.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
+        <commonmark.version>0.27.0</commonmark.version>
+        <tts-edge-java.version>1.3.1</tts-edge-java.version>
         <protobuf-java.version>4.31.0</protobuf-java.version>
         <google-protos.version>2.57.0</google-protos.version>
         <guava.version>33.4.8-jre</guava.version>
         <fastjson2.version>2.0.58</fastjson2.version>
+        <hutool.version>5.8.40</hutool.version>
 		<java.version>17</java.version>
+        <jlayer.version>1.0.1</jlayer.version>
         <mcp-bom.version>0.10.0</mcp-bom.version>
         <knife4j.version>4.5.0</knife4j.version>
         <pdfbox.version>3.0.5</pdfbox.version>
@@ -36,6 +41,7 @@
         <spring-ai-retry.version>${spring-ai.version}</spring-ai-retry.version>
         <tika.version>3.2.2</tika.version>
         <testcontainers.version>1.21.3</testcontainers.version>
+        <whispercpp.version>1.4.0</whispercpp.version>
     </properties>
 
     <modules>
@@ -52,7 +58,6 @@
         <module>spring-ai-minimax</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
-        <module>spring-ai-nvidia</module>
         <module>spring-ai-oci-genai-cohere</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama-generation</module>
@@ -72,13 +77,14 @@
         <module>spring-ai-ollama-rag-cassandra</module>
         <module>spring-ai-ollama-rag-chroma</module>
         <module>spring-ai-ollama-rag-couchbase</module>
-        <module>spring-ai-ollama-rag-es</module>
+        <module>spring-ai-ollama-rag-elasticsearch</module>
         <module>spring-ai-ollama-rag-gemfire</module>
         <module>spring-ai-ollama-rag-mariadb</module>
         <module>spring-ai-ollama-rag-milvus</module>
         <module>spring-ai-ollama-rag-mongodb</module>
         <module>spring-ai-ollama-rag-neo4j</module>
         <module>spring-ai-ollama-rag-opensearch</module>
+        <module>spring-ai-ollama-rag-oracle</module>
         <module>spring-ai-ollama-rag-pgvector</module>
         <module>spring-ai-ollama-rag-pinecone</module>
         <module>spring-ai-ollama-rag-qdrant</module>
@@ -106,9 +112,26 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-exec</artifactId>
+                <version>${commons-exec.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.commonmark/commonmark -->
+            <dependency>
+                <groupId>org.commonmark</groupId>
+                <artifactId>commonmark</artifactId>
+                <version>${commonmark.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jetbrains</groupId>
                 <artifactId>annotations</artifactId>
                 <version>26.0.2-1</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javazoom/jlayer -->
+            <dependency>
+                <groupId>javazoom</groupId>
+                <artifactId>jlayer</artifactId>
+                <version>${jlayer.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/io.modelcontextprotocol.sdk/mcp-bom -->
             <dependency>
@@ -117,6 +140,13 @@
                 <version>${mcp-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- For TTS : https://github.com/WhiteMagic2014/tts-edge-java -->
+            <!-- https://mvnrepository.com/artifact/io.github.whitemagic2014/tts-edge-java -->
+            <dependency>
+                <groupId>io.github.whitemagic2014</groupId>
+                <artifactId>tts-edge-java</artifactId>
+                <version>${tts-edge-java.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom -->
             <dependency>
@@ -203,6 +233,11 @@
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
             <dependency>
@@ -299,6 +334,12 @@
                 <version>${tika.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.github.ggerganov/whispercpp -->
+            <dependency>
+                <groupId>io.github.ggerganov</groupId>
+                <artifactId>whispercpp</artifactId>
+                <version>${whispercpp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -9,8 +9,6 @@
     </parent>
 
     <artifactId>spring-ai-ollama-tools</artifactId>
-    <name>spring-ai-ollama-functions</name>
-    <description>spring-ai-ollama-functions</description>
 
     <dependencies>
         <!-- For Spring AI Common -->
@@ -18,6 +16,11 @@
             <groupId>com.github.teachingai</groupId>
             <artifactId>spring-ai-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <!-- For Markdown -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
@@ -34,15 +37,26 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
-        <!-- For Chat Memory -->
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-model-chat-memory</artifactId>
-        </dependency>
         <!-- For Log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- For Knife4j -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
         <!-- For Embed Tomcat -->
         <!-- <dependency>

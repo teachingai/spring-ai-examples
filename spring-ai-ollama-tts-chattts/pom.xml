@@ -9,35 +9,23 @@
     </parent>
 
     <artifactId>spring-ai-ollama-tts-chattts</artifactId>
-    <name>spring-ai-ollama-voice-chattts</name>
-    <description>spring-ai-ollama-voice-chattts</description>
 
     <dependencies>
-
-        <!-- For Lombok -->
+        <!-- For Spring AI Common -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.github.teachingai</groupId>
+            <artifactId>spring-ai-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
-        <!-- For Commons -->
+        <!-- For Mp3 Play -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>javazoom</groupId>
+            <artifactId>jlayer</artifactId>
         </dependency>
-        <!-- For Caffeine -->
+        <!-- For Markdown -->
         <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-        </dependency>
-        <!-- For FastJson2 -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-        </dependency>
-        <!-- For Log4j2 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
@@ -52,29 +40,28 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-retry</artifactId>
+            <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.commonmark</groupId>
-            <artifactId>commonmark</artifactId>
-            <version>0.17.0</version>
-        </dependency>
-        <!-- For springdoc -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-        <!-- For Web Server -->
+        <!-- For Log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- For Knife4j -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                    <groupId>org.springframework.boot</groupId>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
         <!-- For Embed Tomcat -->
         <!-- <dependency>
@@ -101,30 +88,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- For TTS : https://github.com/WhiteMagic2014/tts-edge-java -->
-        <!-- https://mvnrepository.com/artifact/io.github.whitemagic2014/tts-edge-java -->
-        <dependency>
-            <groupId>io.github.whitemagic2014</groupId>
-            <artifactId>tts-edge-java</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        <!-- Apache Commons Exec -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-exec</artifactId>
-            <version>1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.21</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/javazoom/jlayer -->
-        <dependency>
-            <groupId>javazoom</groupId>
-            <artifactId>jlayer</artifactId>
-            <version>1.0.1</version>
-        </dependency>
         <!-- For Testcontainers : https://testcontainers.com/ -->
         <dependency>
             <groupId>org.testcontainers</groupId>
@@ -136,7 +99,6 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
