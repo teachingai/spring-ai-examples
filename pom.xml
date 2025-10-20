@@ -91,11 +91,11 @@
         <module>spring-ai-ollama-rag-redis</module>
         <module>spring-ai-ollama-rag-typesense</module>
         <module>spring-ai-ollama-rag-weaviate</module>
-        <module>spring-ai-ollama-tts-chattts</module>
-        <module>spring-ai-ollama-tts-edgetts</module>
-        <module>spring-ai-ollama-tts-emoti</module>
-        <module>spring-ai-ollama-tts-mars5tts</module>
-        <module>spring-ai-ollama-tts-whisper</module>
+        <module>spring-ai-ollama-audio-chattts</module>
+        <module>spring-ai-ollama-audio-edgetts</module>
+        <module>spring-ai-ollama-audio-emoti</module>
+        <module>spring-ai-ollama-audio-mars5tts</module>
+        <module>spring-ai-ollama-audio-whisper</module>
         <module>spring-ai-openai</module>
         <module>spring-ai-postgresml</module>
         <module>spring-ai-qianfan</module>
@@ -106,7 +106,7 @@
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
         <module>spring-ai-project-hotel-recommend</module>
-        <module>spring-ai-ollama-tts-unifiedtts</module>
+        <module>spring-ai-ollama-audio-unifiedtts</module>
     </modules>
 
     <dependencyManagement>

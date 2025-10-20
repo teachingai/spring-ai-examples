@@ -1,4 +1,4 @@
-package com.github.teachingai.ollama;
+package com.github.teachingai.zhipuai;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

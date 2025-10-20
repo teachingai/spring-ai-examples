@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-tts-mars5tts</artifactId>
+    <artifactId>spring-ai-ollama-tts-edget</artifactId>
 
     <dependencies>
         <!-- For Spring AI Common -->
@@ -16,6 +16,11 @@
             <groupId>com.github.teachingai</groupId>
             <artifactId>spring-ai-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <!-- For Edge TTS : https://github.com/WhiteMagic2014/tts-edge-java -->
+        <dependency>
+            <groupId>io.github.whitemagic2014</groupId>
+            <artifactId>tts-edge-java</artifactId>
         </dependency>
         <!-- For Mp3 Play -->
         <dependency>

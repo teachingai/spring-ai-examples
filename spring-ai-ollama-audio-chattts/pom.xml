@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-tts-chattts</artifactId>
+    <artifactId>spring-ai-ollama-audio-chattts</artifactId>
 
     <dependencies>
         <!-- For Spring AI Common -->
