@@ -95,6 +95,7 @@
         <module>spring-ai-ollama-audio-edgetts</module>
         <module>spring-ai-ollama-audio-emoti</module>
         <module>spring-ai-ollama-audio-mars5tts</module>
+        <module>spring-ai-ollama-audio-unifiedtts</module>
         <module>spring-ai-ollama-audio-whisper</module>
         <module>spring-ai-openai</module>
         <module>spring-ai-postgresml</module>
@@ -106,7 +107,6 @@
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
         <module>spring-ai-project-hotel-recommend</module>
-        <module>spring-ai-ollama-audio-unifiedtts</module>
     </modules>
 
     <dependencyManagement>

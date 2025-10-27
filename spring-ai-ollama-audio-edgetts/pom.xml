@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-tts-edget</artifactId>
+    <artifactId>spring-ai-ollama-audio-edgetts</artifactId>
 
     <dependencies>
         <!-- For Spring AI Common -->

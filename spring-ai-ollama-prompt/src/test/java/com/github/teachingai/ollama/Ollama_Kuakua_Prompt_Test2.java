@@ -31,7 +31,7 @@ public class Ollama_Kuakua_Prompt_Test2 {
          */
         var ollamaApi = OllamaApi.builder().build();
         var ollamaOptions = OllamaOptions.builder()
-                .model("qwen2-7b-kuakua:latest")
+                .model("qwen3:8b")
                 .format("json")
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
@@ -52,7 +52,7 @@ public class Ollama_Kuakua_Prompt_Test2 {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             Prompt prompt = new Prompt(historyList, OllamaOptions.builder()
-                    .model("qwen2-7b-kuakua:latest")
+                    .model("qwen3:8b")
                     .temperature(0.7d)
                     .lowVRAM(Boolean.TRUE)
                     .seed(ThreadLocalRandom.current().nextInt()).build()

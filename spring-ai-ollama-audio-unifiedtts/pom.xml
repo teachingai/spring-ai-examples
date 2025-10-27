@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-ai-ollama-tts-unified</artifactId>
+    <artifactId>spring-ai-ollama-audio-unifiedtts</artifactId>
 
     <dependencies>
         <!-- For Spring AI Common -->
@@ -22,12 +22,10 @@
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>
         </dependency>
-
-
-        unifiedtts-core
+        <!-- For Markdown
+                 unifiedtts-core
         spring-ai-autoconfigure-tts-unified
-
-        <!-- For Markdown -->
+         -->
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark</artifactId>
