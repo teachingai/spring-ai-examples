@@ -33,7 +33,7 @@ public class OllamaChatTest {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         var chatTtsApi = new ChatTtsAudioApi();
         var chatTtsClient = new ChatTtsAudioSpeechModel(chatTtsApi, ChatTtsAudioSpeechOptions.builder()

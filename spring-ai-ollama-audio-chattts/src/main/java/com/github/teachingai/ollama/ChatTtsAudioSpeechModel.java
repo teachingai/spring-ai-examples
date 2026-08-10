@@ -9,8 +9,6 @@ import com.github.partmeai.ollama.metadata.audio.ChatTtsAudioSpeechResponseMetad
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.metadata.RateLimit;
-import org.springframework.ai.model.ModelOptions;
-import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
@@ -137,17 +135,11 @@ public class ChatTtsAudioSpeechModel implements SpeechModel, StreamingSpeechClie
     private ChatTtsAudioApi.SpeechRequest createRequestBody(SpeechPrompt prompt) {
 
         String input = prompt.getInstructions().getText();
-        var request = new ChatTtsAudioApi.SpeechRequest(input);
-
-        if (this.defaultOptions != null) {
-            request = ModelOptionsUtils.merge(request, this.defaultOptions, ChatTtsAudioApi.SpeechRequest.class);
-        }
+        ChatTtsAudioSpeechOptions options = this.defaultOptions;
 
         if (prompt.getOptions() != null) {
             if (prompt.getOptions() instanceof ChatTtsAudioSpeechOptions runtimeOptions) {
-                var updatedRuntimeOptions = ModelOptionsUtils.copyToTarget(runtimeOptions, ModelOptions.class,
-                        ChatTtsAudioSpeechOptions.class);
-                request = ModelOptionsUtils.merge(request, updatedRuntimeOptions, ChatTtsAudioApi.SpeechRequest.class);
+                options = merge(runtimeOptions, options);
             }
             else {
                 throw new IllegalArgumentException("Prompt options are not of type SpeechOptions: "
@@ -156,7 +148,10 @@ public class ChatTtsAudioSpeechModel implements SpeechModel, StreamingSpeechClie
         }
 
 
-        return request;
+        return new ChatTtsAudioApi.SpeechRequest(input, options.getPrompt(), options.getVoice(), options.getSpeed(),
+                options.getTemperature(), options.getTopP(), options.getTopK(), options.getMaxRefineTokens(),
+                options.getMaxInferTokens(), options.getTextSeed(), options.getSkipRefine(), options.getStream(),
+                options.getCustomVoice());
 
     }
 
@@ -165,7 +160,17 @@ public class ChatTtsAudioSpeechModel implements SpeechModel, StreamingSpeechClie
 
         mergedBuilder.withText(source.getText() != null ? source.getText() : target.getText());
         mergedBuilder.withVoice(source.getVoice() != null ? source.getVoice() : target.getVoice());
+        mergedBuilder.withPrompt(source.getPrompt() != null ? source.getPrompt() : target.getPrompt());
         mergedBuilder.withSpeed(source.getSpeed() != null ? source.getSpeed() : target.getSpeed());
+        mergedBuilder.withTemperature(source.getTemperature() != null ? source.getTemperature() : target.getTemperature());
+        mergedBuilder.withTopP(source.getTopP() != null ? source.getTopP() : target.getTopP());
+        mergedBuilder.withTopK(source.getTopK() != null ? source.getTopK() : target.getTopK());
+        mergedBuilder.withMaxRefineTokens(source.getMaxRefineTokens() != null ? source.getMaxRefineTokens() : target.getMaxRefineTokens());
+        mergedBuilder.withMaxInferTokens(source.getMaxInferTokens() != null ? source.getMaxInferTokens() : target.getMaxInferTokens());
+        mergedBuilder.withTextSeed(source.getTextSeed() != null ? source.getTextSeed() : target.getTextSeed());
+        mergedBuilder.withSkipRefine(source.getSkipRefine() != null ? source.getSkipRefine() : target.getSkipRefine());
+        mergedBuilder.withStream(source.getStream() != null ? source.getStream() : target.getStream());
+        mergedBuilder.withCustomVoice(source.getCustomVoice() != null ? source.getCustomVoice() : target.getCustomVoice());
 
         return mergedBuilder.build();
     }

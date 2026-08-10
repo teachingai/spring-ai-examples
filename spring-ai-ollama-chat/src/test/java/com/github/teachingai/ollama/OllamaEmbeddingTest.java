@@ -18,7 +18,7 @@ public class OllamaEmbeddingTest {
         var ollamaApi = OllamaApi.builder().build();
         var ollamaOptions = OllamaEmbeddingOptions.builder().model("bge-m3:latest").build();
         var embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
         //测试数据
         VectorStore vectorStore = SimpleVectorStore.builder(embeddingModel).build();
         vectorStore.add(List.of(

@@ -28,7 +28,7 @@ public class Ollama_Prompt_Test1 {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         List<Message> messages  = List.of(
                 new SystemMessage("你的任务是识别用户对手机流量套餐产品的选择条件。\n" +

@@ -22,7 +22,7 @@ void testFactChecking() {
     // Set up the Ollama API
     OllamaApi ollamaApi = OllamaApi.builder().baseUrl("http://localhost:11434").build();
 
-    ChatModel chatModel = OllamaChatModel.builder().ollamaApi(ollamaApi).defaultOptions(
+    ChatModel chatModel = OllamaChatModel.builder().ollamaApi(ollamaApi).options(
             OllamaChatOptions.builder().model(BESPOKE_MINICHECK).numPredict(2).temperature(0.0d).build()).build();
 
     // Create the FactCheckingEvaluator（1.1.x 使用工厂方法，内部绑定 bespoke-minicheck 模型名）

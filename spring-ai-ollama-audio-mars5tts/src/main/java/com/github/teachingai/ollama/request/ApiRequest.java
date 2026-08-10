@@ -2,7 +2,7 @@ package com.github.partmeai.ollama.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.ai.model.ModelOptionsUtils;
+import org.springframework.ai.util.JsonHelper;
 import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
 import java.util.List;
@@ -69,7 +69,7 @@ public class ApiRequest {
              */
             @ConstructorBinding
             public Function(String description, String name, String jsonSchema) {
-                this(description, name, ModelOptionsUtils.jsonToMap(jsonSchema));
+                this(description, name, new JsonHelper().fromJsonToMap(jsonSchema));
             }
         }
     }
@@ -195,7 +195,7 @@ public class ApiRequest {
              * Specifying a particular function forces the model to call that function.
              */
             public static String FUNCTION(String functionName) {
-                return ModelOptionsUtils.toJsonString(Map.of("type", "function", "function", Map.of("name", functionName)));
+                return new JsonHelper().toJson(Map.of("type", "function", "function", Map.of("name", functionName)));
             }
         }
 

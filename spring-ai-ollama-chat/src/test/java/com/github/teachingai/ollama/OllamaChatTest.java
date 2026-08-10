@@ -22,7 +22,7 @@ public class OllamaChatTest {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         Scanner scanner = new Scanner(System.in);
         while (true) {

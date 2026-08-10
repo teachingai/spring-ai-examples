@@ -49,7 +49,7 @@ public class UnifiedTtsAudioApi {
                               ResponseErrorHandler responseErrorHandler) {
 
         Consumer<HttpHeaders> authHeaders = h -> {
-            h.addAll(headers);
+            headers.forEach(h::addAll);
         };
 
         // @formatter:off

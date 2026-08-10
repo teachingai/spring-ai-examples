@@ -58,7 +58,7 @@ public class Ollama_Prompt_Test7 {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         getCompletion(chatModel, "流量最大的套餐是什么？", "qwen2:7b");
         getCompletion(chatModel, "多少钱？", "qwen2:7b");

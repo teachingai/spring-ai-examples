@@ -34,7 +34,7 @@ public class OllamaEmbeddingTest5 {
         var ollamaApi = OllamaApi.builder().build();
         var ollamaOptions = OllamaEmbeddingOptions.builder().model("mxbai-embed-large").build();
         var embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         /*
          * 1、解析 llama2.pdf

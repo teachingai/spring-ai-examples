@@ -73,7 +73,7 @@ public class Ollama_Prompt_Test8 {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         String output_format = "如果信息准确，输出：Y\n" +
                 "如果信息不准确，输出：N\n";

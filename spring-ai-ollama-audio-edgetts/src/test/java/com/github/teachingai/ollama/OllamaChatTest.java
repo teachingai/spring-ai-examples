@@ -29,7 +29,7 @@ public class OllamaChatTest {
          var ollamaApi = OllamaApi.builder().build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(OllamaChatOptions.builder()
+                .options(OllamaChatOptions.builder()
                         .model("qwen2:1.5b")
                         .temperature(0.9d)
                         .build())

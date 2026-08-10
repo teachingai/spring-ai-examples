@@ -9,8 +9,6 @@ import com.github.partmeai.ollama.audio.speech.SpeechPrompt;
 import com.github.partmeai.ollama.audio.speech.SpeechResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ai.model.ModelOptions;
-import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
 
@@ -91,17 +89,11 @@ public class EdgeTtsNativeAudioSpeechClient implements SpeechClient {
     private EdgeTtsNativeAudioApi.SpeechRequest createRequestBody(SpeechPrompt prompt) {
 
         String input = prompt.getInstructions().getText();
-        var request = new EdgeTtsNativeAudioApi.SpeechRequest(input);
-
-        if (this.defaultOptions != null) {
-            request = ModelOptionsUtils.merge(request, this.defaultOptions, EdgeTtsNativeAudioApi.SpeechRequest.class);
-        }
+        EdgeTtsAudioSpeechOptions options = this.defaultOptions;
 
         if (prompt.getOptions() != null) {
             if (prompt.getOptions() instanceof EdgeTtsAudioSpeechOptions runtimeOptions) {
-                var updatedRuntimeOptions = ModelOptionsUtils.copyToTarget(runtimeOptions, ModelOptions.class,
-                        EdgeTtsAudioSpeechOptions.class);
-                request = ModelOptionsUtils.merge(request, updatedRuntimeOptions, EdgeTtsNativeAudioApi.SpeechRequest.class);
+                options = merge(runtimeOptions, options);
             }
             else {
                 throw new IllegalArgumentException("Prompt options are not of type SpeechOptions: "
@@ -110,8 +102,24 @@ public class EdgeTtsNativeAudioSpeechClient implements SpeechClient {
         }
 
 
-        return request;
+        return new EdgeTtsNativeAudioApi.SpeechRequest(input, options.getVoice(), options.getRate(), options.getVolume(),
+                options.getPitch(), options.getWordsInCue(), options.getWriteSubtitles(), options.getProxy(),
+                options.getOutput());
 
+    }
+
+    private EdgeTtsAudioSpeechOptions merge(EdgeTtsAudioSpeechOptions source, EdgeTtsAudioSpeechOptions target) {
+        return EdgeTtsAudioSpeechOptions.builder()
+                .withText(source.getText() != null ? source.getText() : target.getText())
+                .withVoice(source.getVoice() != null ? source.getVoice() : target.getVoice())
+                .withRate(source.getRate() != null ? source.getRate() : target.getRate())
+                .withVolume(source.getVolume() != null ? source.getVolume() : target.getVolume())
+                .withPitch(source.getPitch() != null ? source.getPitch() : target.getPitch())
+                .withWordsInCue(source.getWordsInCue() != null ? source.getWordsInCue() : target.getWordsInCue())
+                .withWriteSubtitles(source.getWriteSubtitles() != null ? source.getWriteSubtitles() : target.getWriteSubtitles())
+                .withProxy(source.getProxy() != null ? source.getProxy() : target.getProxy())
+                .withOutput(source.getOutput() != null ? source.getOutput() : target.getOutput())
+                .build();
     }
 
 }

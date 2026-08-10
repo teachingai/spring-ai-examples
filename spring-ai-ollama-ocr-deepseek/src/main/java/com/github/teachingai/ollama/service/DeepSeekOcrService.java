@@ -2,13 +2,15 @@ package com.github.partmeai.ollama.service;
 
 import com.github.partmeai.ollama.response.OcrResponse;
 import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.ai.chat.messages.Media;
+import org.springframework.ai.content.Media;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -51,8 +53,9 @@ public class DeepSeekOcrService {
         long startTime = System.currentTimeMillis();
         
         try {
-            Media imageMedia = new Media(MimeTypeUtils.IMAGE_JPEG, imageBase64);
-            UserMessage userMessage = new UserMessage(prompt, List.of(imageMedia));
+            Media imageMedia = new Media(MimeTypeUtils.IMAGE_JPEG,
+                    new ByteArrayResource(Base64.getDecoder().decode(imageBase64)));
+            UserMessage userMessage = UserMessage.builder().text(prompt).media(imageMedia).build();
             Prompt chatPrompt = new Prompt(List.of(userMessage));
             
             String result = chatModel.call(chatPrompt).getResult().getOutput().getText();

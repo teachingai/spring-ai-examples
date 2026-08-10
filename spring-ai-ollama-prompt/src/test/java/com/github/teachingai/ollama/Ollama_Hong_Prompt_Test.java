@@ -40,7 +40,7 @@ public class Ollama_Hong_Prompt_Test {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         List<Message> historyList = new ArrayList<>();
         // 系统提示消息

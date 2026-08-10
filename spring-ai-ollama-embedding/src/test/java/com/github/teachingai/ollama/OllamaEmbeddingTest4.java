@@ -31,7 +31,7 @@ public class OllamaEmbeddingTest4 {
         var ollamaApi = OllamaApi.builder().build();
         var ollamaOptions = OllamaEmbeddingOptions.builder().model("shaw/dmeta-embedding-zh").build();
         var embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
         /*
          * 1、简单的文本嵌入
          */

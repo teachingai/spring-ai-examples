@@ -34,8 +34,9 @@
             <artifactId>spring-ai-autoconfigure-retry</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>com.github.partmeai</groupId>
             <artifactId>spring-ai-starter-model-zhipuai</artifactId>
+            <version>zhipuai-sdk-java-v4-1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

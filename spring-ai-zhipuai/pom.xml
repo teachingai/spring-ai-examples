@@ -20,8 +20,9 @@
         </dependency>
         <!-- For Chat Completion & Embedding -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
+            <groupId>com.github.partmeai</groupId>
             <artifactId>spring-ai-starter-model-zhipuai</artifactId>
+            <version>zhipuai-sdk-java-v4-1.0.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -51,10 +52,6 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-vector-store-azure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-azure-cosmos-db</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -158,7 +155,7 @@
         <!-- For Embed Undertow -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

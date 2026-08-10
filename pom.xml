@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
+        <version>4.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -69,13 +69,15 @@
         <perf4j.version>0.9.16</perf4j.version>
         <sa-token.version>1.44.0</sa-token.version>
         <springdoc.version>2.7.0</springdoc.version>
-        <spring-ai.version>1.1.7</spring-ai.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
+        <maven.compiler.proc>full</maven.compiler.proc>
         <spring-ai-alibaba.version>1.1.2.3</spring-ai-alibaba.version>
         <spring-ai-alibaba-nl2sql.version>1.0.0.3-20260305-cve</spring-ai-alibaba-nl2sql.version>
         <spring-ai-alibaba-graph.version>1.1.2.2</spring-ai-alibaba-graph.version>
         <spring-ai-alibaba-mcp.version>1.0.0.2</spring-ai-alibaba-mcp.version>
         <spring-ai-community.version>1.0.0</spring-ai-community.version>
         <spring-ai-retry.version>${spring-ai.version}</spring-ai-retry.version>
+        <spring-retry.version>2.0.12</spring-retry.version>
         <tika.version>3.2.2</tika.version>
         <testcontainers.version>1.21.3</testcontainers.version>
         <whispercpp.version>1.4.0</whispercpp.version>
@@ -84,18 +86,14 @@
     <modules>
         <module>spring-ai-amazon-bedrock</module>
         <module>spring-ai-anthropic</module>
-        <module>spring-ai-azure-openai</module>
         <module>spring-ai-common</module>
         <module>spring-ai-coze</module>
         <module>spring-ai-deepseek</module>
         <module>spring-ai-huaweiai-gallery</module>
         <module>spring-ai-huaweiai-pangu</module>
-        <module>spring-ai-huggingface</module>
         <module>spring-ai-llmsfreeapi</module>
-        <module>spring-ai-minimax</module>
         <module>spring-ai-mistralai</module>
         <module>spring-ai-moonshotai</module>
-        <module>spring-ai-oci-genai-cohere</module>
         <!-- 基于 ollama 的相关整合示例 -->
         <module>spring-ai-ollama-generation</module>
         <module>spring-ai-ollama-chat</module>
@@ -145,7 +143,6 @@
         <module>spring-ai-qwen</module>
         <module>spring-ai-sql</module>
         <module>spring-ai-stabilityai</module>
-        <module>spring-ai-vertexai-gemini</module>
         <module>spring-ai-watsonxai</module>
         <module>spring-ai-zhipuai</module>
         <module>spring-ai-project-hotel-recommend</module>
@@ -466,6 +463,11 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-retry</artifactId>
                 <version>${spring-ai-retry.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${spring-retry.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
             <dependency>

@@ -35,7 +35,7 @@ public class Ollama_Kuakua_Prompt_Test3 {
                 .temperature(0.9d).build();
         var chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
 
         List<Message> historyList = new ArrayList<>();
         String firstText = "今天工作很累呢～";

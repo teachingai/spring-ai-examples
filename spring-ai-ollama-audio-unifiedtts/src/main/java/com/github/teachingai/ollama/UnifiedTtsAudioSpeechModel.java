@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.metadata.RateLimit;
 import org.springframework.ai.retry.RetryUtils;
+import org.springframework.core.retry.RetryTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -101,7 +101,7 @@ public class UnifiedTtsAudioSpeechModel implements SpeechModel {
         UnifiedTtsAudioApi.SpeechRequest speechRequest = createRequest(speechPrompt);
 
         ResponseEntity<UnifiedTtsAudioApi.SpeechResponse> speechEntity = this.retryTemplate
-                .execute(ctx -> this.audioApi.createSpeech(speechRequest));
+                .invoke(() -> this.audioApi.createSpeech(speechRequest));
 
         var speech = speechEntity.getBody();
 

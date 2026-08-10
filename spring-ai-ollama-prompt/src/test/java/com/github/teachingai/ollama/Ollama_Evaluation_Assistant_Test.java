@@ -41,7 +41,7 @@ public class Ollama_Evaluation_Assistant_Test {
                 .temperature(0.85d).build();
         chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
     }
 
     @Test

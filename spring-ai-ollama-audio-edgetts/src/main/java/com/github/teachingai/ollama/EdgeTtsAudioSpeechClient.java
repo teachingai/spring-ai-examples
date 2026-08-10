@@ -9,8 +9,6 @@ import com.github.partmeai.ollama.metadata.audio.EdgeTtsAudioSpeechResponseMetad
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.metadata.RateLimit;
-import org.springframework.ai.model.ModelOptions;
-import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.util.Assert;
@@ -127,17 +125,11 @@ public class EdgeTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
     private EdgeTtsAudioApi.SpeechRequest createRequestBody(SpeechPrompt prompt) {
 
         String input = prompt.getInstructions().getText();
-        var request = new EdgeTtsAudioApi.SpeechRequest(input);
-
-        if (this.defaultOptions != null) {
-            request = ModelOptionsUtils.merge(request, this.defaultOptions, EdgeTtsAudioApi.SpeechRequest.class);
-        }
+        EdgeTtsAudioSpeechOptions options = this.defaultOptions;
 
         if (prompt.getOptions() != null) {
             if (prompt.getOptions() instanceof EdgeTtsAudioSpeechOptions runtimeOptions) {
-                var updatedRuntimeOptions = ModelOptionsUtils.copyToTarget(runtimeOptions, ModelOptions.class,
-                        EdgeTtsAudioSpeechOptions.class);
-                request = ModelOptionsUtils.merge(request, updatedRuntimeOptions, EdgeTtsAudioApi.SpeechRequest.class);
+                options = merge(runtimeOptions, options);
             }
             else {
                 throw new IllegalArgumentException("Prompt options are not of type SpeechOptions: "
@@ -146,7 +138,8 @@ public class EdgeTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
         }
 
 
-        return request;
+        return new EdgeTtsAudioApi.SpeechRequest(input, null, options.getVoice(), null, null, null, null,
+                null, null, null, null, null, null);
 
     }
 
@@ -155,6 +148,13 @@ public class EdgeTtsAudioSpeechClient implements SpeechClient, StreamingSpeechCl
 
         mergedBuilder.withText(source.getText() != null ? source.getText() : target.getText());
         mergedBuilder.withVoice(source.getVoice() != null ? source.getVoice() : target.getVoice());
+        mergedBuilder.withRate(source.getRate() != null ? source.getRate() : target.getRate());
+        mergedBuilder.withVolume(source.getVolume() != null ? source.getVolume() : target.getVolume());
+        mergedBuilder.withPitch(source.getPitch() != null ? source.getPitch() : target.getPitch());
+        mergedBuilder.withWordsInCue(source.getWordsInCue() != null ? source.getWordsInCue() : target.getWordsInCue());
+        mergedBuilder.withWriteSubtitles(source.getWriteSubtitles() != null ? source.getWriteSubtitles() : target.getWriteSubtitles());
+        mergedBuilder.withProxy(source.getProxy() != null ? source.getProxy() : target.getProxy());
+        mergedBuilder.withOutput(source.getOutput() != null ? source.getOutput() : target.getOutput());
 
         return mergedBuilder.build();
     }

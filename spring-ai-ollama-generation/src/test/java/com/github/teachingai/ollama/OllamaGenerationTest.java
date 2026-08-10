@@ -26,7 +26,7 @@ public class OllamaGenerationTest {
                 .temperature(0.9d).build();
         chatModel = OllamaChatModel.builder()
                 .ollamaApi(ollamaApi)
-                .defaultOptions(ollamaOptions).build();
+                .options(ollamaOptions).build();
     }
 
     @Test

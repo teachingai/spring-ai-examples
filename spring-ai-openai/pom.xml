@@ -54,10 +54,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-azure-cosmos-db</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-vector-store-cassandra</artifactId>
         </dependency>
         <dependency>
@@ -158,7 +154,7 @@
         <!-- For Embed Undertow -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

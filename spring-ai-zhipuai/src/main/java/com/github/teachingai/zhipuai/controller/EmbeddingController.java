@@ -1,6 +1,6 @@
 package com.github.partmeai.zhipuai.controller;
 
-import org.springframework.ai.zhipuai.ZhiPuAiEmbeddingModel;
+import org.springframework.ai.zhipuai.ZhipuAiEmbeddingClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,10 +11,10 @@ import java.util.Map;
 @RestController
 public class EmbeddingController {
 
-    private final ZhiPuAiEmbeddingModel embeddingModel;
+    private final ZhipuAiEmbeddingClient embeddingModel;
 
     @Autowired
-    public EmbeddingController(ZhiPuAiEmbeddingModel embeddingModel) {
+    public EmbeddingController(ZhipuAiEmbeddingClient embeddingModel) {
         this.embeddingModel = embeddingModel;
     }
 
